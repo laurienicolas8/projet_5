@@ -1,17 +1,90 @@
 body {
-  padding-top: 56px;
+    font-family: 'Bellota', cursive;
+}
+
+#menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo_button {
+    width: 100px;
+}
+
+.item_menu {
+    color: black;
+    font-size: 1.5em;
+    margin: 20px;
+}
+
+.item_menu:hover {
+    text-decoration: none;
+    color: black;
 }
 
 .carousel-item {
-  height: 65vh;
-  min-height: 300px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    height: 65vh;
+    min-height: 300px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .portfolio-item {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.footer_front {
+    height: 150px;
+    margin: 0 -150px;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #E6E6E6;
+    position: relative;
+}
+
+.title_footer {
+    font-size: 2.5em;
+}
+
+.title_contact {
+    font-size: 1.6em;
+}
+
+.login_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #57A2FF;
+    color: white;
+    width: 190px;
+    height: 50px;
+    padding: 30px;
+    border: 2px solid #57A2FF;
+    border-radius: 20px;
+    font-size: 1.3em;
+    transition: all 400ms;
+}
+
+.login_button:hover {
+    text-decoration: none;
+    color: #57A2FF;
+    background-color: white;
+    border: 2px solid #57A2FF;
+    border-radius: 0px;
+}
+
+.up {
+    position: absolute;
+    color: black;
+    right: 20px;
+    top: 20px;
+}
+
+.up:hover {
+    color: black;
 }

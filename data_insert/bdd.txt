@@ -1,0 +1,354 @@
+CATEGORY
+
+1 - Animaux
+image : animal.png
+
+2 - Corps humain
+image : anatomy.png
+
+3 - Médias
+image : media.png
+
+4 - Sciences
+image : sciences.png
+
+5 - Histoire
+image : history.png
+
+6 - Géographie
+image : globe.png
+
+7 - Cuisine
+image : cook.png
+
+8 - Cinéma
+image : cinema.png
+
+9 - Sport
+image : sport.png
+
+10 - Société
+image : society.png
+
+
+
+QUIZ 
+
+I - Animaux 
+1 - Les grands singes
+image : monkey.jpg
+
+2 - Les animaux de l'océan
+image : whale.jpg
+
+3 - Les oiseaux
+image : bird.jpg
+
+4 - Les animaux de la jungle
+image : jungle.jpg
+
+5 - Les félins
+image : lion.jpg
+
+6 - Les amphibiens
+image : frog.jpg
+
+7 - Les reptiles
+image : lezard.jpg
+
+8 - Les canidés
+image : dog.jpg
+
+9 - Les insectes
+image : butterfly.jpg
+
+10 - Les crustacés
+image : crab.jpg
+
+
+II - Corps humain
+1 - Les os
+image : bones.jpg
+
+2 - Les muscles
+image : muscle.jpg
+
+3 - Les cheveux
+image : hairs.jpg
+
+4 - Le visage
+image : face.jpg
+
+5 - Les sens
+image : senses.jpg
+
+6 - Le cerveau
+image : brain.jpg
+
+7 - Le sang
+image : blood.jpg
+
+8 - Le système nerveux
+image : nerves.jpg
+
+9 - Le coeur
+image : heart.jpg
+
+10 - Les maladies
+image : virus.jpg
+
+
+III - Medias
+1 - La télévision
+image : tv.jpg
+
+2 - La radio
+image : radio.jpg
+
+3 - Youtube
+image : youtube.jpg
+
+4 - Les émissions de tv
+image : tvshow.jpg
+
+5 - Les stars des réseaux
+image : starinsta.jpg
+
+6 - Les réseaux sociaux
+image : socialmedia.jpg
+
+7 - Les icônes de la télévision française
+image : vip.jpg
+
+8 - Internet
+image : google.jpg
+
+9 - La presse écrite
+image : newpaper.jpg
+
+10 - Le sport dans les médias
+image : sportmedia.jpg
+
+
+IV - Sciences
+1 - La Terre
+image : earth.jpg
+
+2 - L'astronomie
+image : astronomy.jpg
+
+3 - La chimie
+image : chemistry.jpg
+
+4 - Les sciences sociales
+image : social.jpg
+
+5 - Le climat
+image : climat.jpg
+
+6 - Les ordinateurs
+image : computer.jpg
+
+7 - L'économie
+image : economy.jpg
+
+8 - Les découvertes scientifiques
+image : compass.jpg
+
+9 - Les scientifiques
+image : einstein.jpg
+
+10 - Les mathématiques
+image : maths.jpg
+
+
+V - Histoire
+1 - Les rois de France
+image : frenchkings.jpg
+
+2 - Les empires
+image : empire.jpg
+
+3 - Les vikings
+image : vikings.jpg
+
+4 - La colonisation
+image : colonial.jpg
+
+5 - La guerre froide
+image : coldwar.jpg
+
+6 - La première guerre mondiale
+image : ww1.jpg
+
+7 - La seconde guerre mondiale
+image : ww2.jpg
+
+8 - La révolution française
+image : revolution.jpg
+
+9 - La révolution industrielle
+image : industry.jpg
+
+10 - La Renaissance
+image : renaissance.jpg
+
+
+VI - Géographie
+1 - Les frontières insolites
+image : border.jpg
+
+2 - Les continents
+image : continent.jpg
+
+3 - Les capitales
+image : capitale.jpg
+
+4 - Les fleuves
+image : river.jpg
+
+5 - Les états américains
+image : usa.jpg
+
+6 - Les volcans
+image : volcanos.jpg
+
+7 - Les pôles
+image : pole.jpg
+
+8 - Les montagnes célébres
+image : rushmore.jpg
+
+9 - Les monuments
+image : monument.jpg
+
+10 - Peuples du monde
+image : people.jpg
+
+
+VII - Cuisine
+1 - Les spécialités françaises
+image : escargot.jpg
+
+2 - Les épices
+image : spices.jpg
+
+3 - Les pâtisseries
+image : dessert.jpg
+
+4 - Les vins
+image : wine.jpg
+
+5 - Les fruits
+image : fruits.jpg
+
+6 - Les légumes
+image : veget.jpg
+
+7 - Les champignons
+image : mushrooms.jpg
+
+8 - Les cocktails
+image : cocktail.jpg
+
+9 - Les plats de Noël
+image : christmas.jpg
+
+10 - Les spécialités mondiales
+image : pizza.jpg
+
+
+VIII - Cinéma
+1 - Les films Disney
+image : disney.jpg
+
+2 - Les réalisateurs célèbres
+image : director.jpg
+
+3 - L'univers Marvel
+image : marvel.jpg
+
+4 - Le festival de Cannes
+image : cannes.jpg
+
+5 - La cérémonie des Oscars
+image : oscars.jpg
+
+6 - Game of Thrones
+image : got.jpg
+
+7 - Breaking Bad
+image : breakingbad.jpg
+
+8 - Les acteurs célébres
+image : actor.jpg
+
+9 - Les actrices célèbres
+image : actress.jpg
+
+10 - Les biopics
+image : biopic.jpg
+
+
+IX - Sport
+1 - Les clubs de football européens
+image : stadium.jpg
+
+2 - NBA
+image : nba.jpg
+
+3 - Les stars du tennis
+image : tennis.jpg
+
+4 - Le superbowl
+image : superbowl.jpg
+
+5 - Les jeux olympiques d'été
+image : josummer.jpg
+
+6 - Les jeux olympiques d'hiver
+image : jowinter.jpg
+
+7 - Les plus grands athlètes
+image : athletes.jpg
+
+8 - Les icônes féminines
+image : womansport.jpg
+
+9 - Les records sportifs
+image : records.jpg
+
+10 - La coupe du monde de football
+image : worldcup.jpg
+
+
+X - Société
+1 - Les lois
+image : justice.jpg
+
+2 - La bourse
+image : bourse.jpg
+
+3 - Le Coronavirus
+image : corona.jpg
+
+4 - Les grands mouvements sociaux
+image : manif.jpg
+
+5 - Statistiques
+image : stats.jpg
+
+6 - L'écologie
+image : eco.jpg
+
+7 - Les religions
+image : religion.jpg
+
+8 - La sexualité
+image : sexe.jpg
+
+9 - Les coutûmes
+image : customs.jpg
+
+10 - Les présidents français
+image : france.jpg

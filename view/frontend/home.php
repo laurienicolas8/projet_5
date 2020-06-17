@@ -1,4 +1,6 @@
-<header>
+<?php ob_start();?>
+
+<div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,13 +39,13 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </header>
+  </div>
 
 
   <!-- Page Content -->
   <div class="container">
 
-    <h1 class="my-4">Welcome to Modern Business</h1>
+    <h1 class="my-4">Choisir par catégories...</h1>
 
     <!-- Marketing Icons Section -->
     <div class="row">
@@ -84,7 +86,7 @@
     <!-- /.row -->
 
     <!-- Portfolio Section -->
-    <h2>Portfolio Heading</h2>
+    <h2>...ou en vrac !</h2>
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">
@@ -155,3 +157,8 @@
       </div>
     </div>
     <!-- /.row -->
+
+<?php 
+$content = ob_get_clean();
+require('template_frontend.php');
+?>

@@ -1,0 +1,10 @@
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Animaux', 'animal.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Corsp humain', 'anatomy.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Médias', 'media.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Sciences', 'sciences.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Histoire', 'history.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Géographie', 'globe.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Cuisine', 'cook.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Cinéma', 'cinema.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Sport', 'sport.png');
+INSERT INTO category (nameCategory, imageCategory) VALUES ('Société', 'society.png');
