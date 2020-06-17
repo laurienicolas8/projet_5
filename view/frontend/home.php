@@ -45,48 +45,59 @@
   <!-- Page Content -->
   <div class="container">
 
-    <h1 class="my-4">Choisir par catégories...</h1>
+    <h2 class="my-4 h2_home">Choisir par catégorie...</h2>
 
     <!-- Marketing Icons Section -->
     <div class="row">
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
+        <div class='category_container'>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/animal.png'></a>
+                <p class='title_category'>Animaux</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/anatomy.png'></a>
+                <p class='title_category'>Corps humain</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/media.png'></a>
+                <p class='title_category'>Médias</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/sciences.png'></a>
+                <p class='title_category'>Sciences</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/history.png'></a>
+                <p class='title_category'>Histoire</p></p>
+            </div>
         </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 mb-4">
-        <div class="card h-100">
-          <h4 class="card-header">Card Title</h4>
-          <div class="card-body">
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Learn More</a>
-          </div>
-        </div>
-      </div>
+        <div class='category_container'>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/globe.png'></a>
+                <p class='title_category'>Géographie</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/cook.png'></a>
+                <p class='title_category'>Cuisine</p></p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/cinema.png'></a>
+                <p class='title_category'>Cinéma</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/sport.png'></a>
+                <p class='title_category'>Sport</p>
+            </div>
+            <div class='category col-lg-2'>
+                <a href='' class='img_category'><img src='../../public/images/img_categories/society.png'></a>
+                <p class='title_category'>Société</p>
+            </div>
+        </div>  
     </div>
     <!-- /.row -->
 
     <!-- Portfolio Section -->
-    <h2>...ou en vrac !</h2>
+    <h2 class='my-4 h2_home'>...ou en vrac !</h2>
 
     <div class="row">
       <div class="col-lg-4 col-sm-6 portfolio-item">

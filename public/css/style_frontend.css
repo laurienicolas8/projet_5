@@ -4,7 +4,7 @@ body {
 
 #menu {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -35,6 +35,35 @@ body {
 
 .portfolio-item {
     margin-bottom: 30px;
+}
+
+.h2_home {
+    text-align: center;
+}
+
+.category_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.category {
+    text-align: center;
+}
+
+.img_category img{
+    border-radius: 50%;
+    max-width: 80%;
+    transition: all 400ms;
+}
+
+.img_category img:hover {
+    transform: scale(1.1);
+}
+
+.title_category {
+    font-size: 1.4em;
 }
 
 .footer_front {

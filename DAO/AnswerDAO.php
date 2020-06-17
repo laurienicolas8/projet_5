@@ -17,11 +17,11 @@ class AnswerDAO extends DAO {
 
     }
 
-    public function createAnswer($answer, $explanation, $rightAnswer, $idQuestion) {
+    public function createAnswer($answer, $rightAnswer, $idQuestion) {
 
     }
 
-    public function modifyAnswer($idAnswer, $answer, $explanation, $rightAnswer) {
+    public function modifyAnswer($idAnswer, $answer, $rightAnswer) {
 
     }
 }

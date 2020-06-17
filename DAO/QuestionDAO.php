@@ -17,11 +17,11 @@ class QuestionDAO extends DAO {
 
     }
 
-    public function createQuestion($question, $idQuiz, $idLevel) {
+    public function createQuestion($question, $explanation, $idQuiz) {
 
     }
 
-    public function modifyQuestion($idQuestion, $question) {
+    public function modifyQuestion($idQuestion, $question, $explanation) {
         
     }
 }
