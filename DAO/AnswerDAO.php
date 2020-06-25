@@ -10,7 +10,7 @@ class AnswerDAO extends DAO {
     }
     
     public function getQuestionAnswers($idQuestion) {
-
+    
     }
 
     public function getRightAnswer($idQuestion) {
