@@ -1,12 +1,13 @@
 <?php 
+namespace projet_5\AnswerDAO;
+
+require('./model/Answer.php');
+use projet_5\Answer;
+
 
 class AnswerDAO extends DAO {
 
-    protected $answer;
-
     public function __construct() {
-        require('./model/Answer.php');
-        $this->answer = new Answer;
     }
     
     public function getQuestionAnswers($idQuestion) {

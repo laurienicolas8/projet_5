@@ -1,4 +1,5 @@
 <?php
+namespace projet_5\Question;
 
 class Question {
 

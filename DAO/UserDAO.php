@@ -1,12 +1,14 @@
 <?php 
+namespace projet_5\UserDAO;
+
+require('./model/User.php');
+use projet_5\User;
+
 
 class UserDAO extends DAO {
 
-    protected $user;
-
     public function __construct() {
-        require('./model/User.php');
-        $this->user = new User;
+       
     }
 
     public function getUser($idUser) {

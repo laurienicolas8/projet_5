@@ -1,12 +1,14 @@
 <?php
+namespace projet_5\CategoryDAO;
+
+require('./model/Category.php');
+use projet_5\Category;
+
 
 class CategoryDAO extends DAO {
 
-    protected $category;
-
     public function __construct() {
-        require('./model/Category.php');
-        //$this->category = new Category;
+        
     }
 
     public function getAllCategories() {

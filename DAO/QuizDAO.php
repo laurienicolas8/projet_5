@@ -1,12 +1,14 @@
 <?php
+namespace projet_5\QuizDAO;
+
+require('./model/Quiz.php');
+use projet_5\Quiz;
+
 
 class QuizDAO extends DAO {
 
-    protected $quiz;
-
     public function __construct() {
-        require('./model/Quiz.php');
-        $this->quiz = new Quiz;
+
     }
 
     public function getAllQuiz() {
