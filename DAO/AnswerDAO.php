@@ -1,7 +1,7 @@
 <?php 
 namespace projet_5\AnswerDAO;
 
-require('./model/Answer.php');
+require('./vendor/autoload.php');
 use projet_5\Answer;
 
 

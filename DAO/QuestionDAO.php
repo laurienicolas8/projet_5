@@ -1,7 +1,7 @@
 <?php
 namespace projet_5\QuestionDAO;
 
-require('./model/Question.php');
+require('./vendor/autoload.php');
 use projet_5\Question;
 
 
@@ -15,9 +15,9 @@ class QuestionDAO extends DAO {
 
     }
 
-    public function getSingleQuestion($idQuestion) {
+    /*public function getSingleQuestion($idQuestion) {
 
-    }
+    }*/
 
     public function createQuestion($question, $explanation, $idQuiz) {
 

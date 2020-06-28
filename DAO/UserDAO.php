@@ -1,7 +1,7 @@
 <?php 
 namespace projet_5\UserDAO;
 
-require('./model/User.php');
+require('./vendor/autoload.php');
 use projet_5\User;
 
 

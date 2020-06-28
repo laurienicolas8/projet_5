@@ -1,7 +1,7 @@
 <?php
 namespace projet_5\CategoryDAO;
 
-require('./model/Category.php');
+require('./vendor/autoload.php');
 use projet_5\Category;
 
 

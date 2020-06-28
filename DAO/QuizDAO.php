@@ -1,7 +1,7 @@
 <?php
 namespace projet_5\QuizDAO;
 
-require('./model/Quiz.php');
+require('./vendor/autoload.php');
 use projet_5\Quiz;
 
 
