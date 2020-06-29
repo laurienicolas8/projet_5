@@ -1,8 +1,7 @@
 <?php 
-namespace projet_5\UserDAO;
+namespace UserDAO;
 
 require('./vendor/autoload.php');
-use projet_5\User;
 
 
 class UserDAO extends DAO {
@@ -12,7 +11,11 @@ class UserDAO extends DAO {
     }
 
     public function getUser($idUser) {
-
+        $req = 'SELECT * from user WHERE idUser = ?';
+        $data = $this->createQuery($req, [$idUser]);
+        $user = new User;
+        $user->hydrate($data);
+        return $user;
     }
 
     public function createUser($nameUser, $password, $admin) {

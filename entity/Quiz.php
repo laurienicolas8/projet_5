@@ -1,5 +1,5 @@
 <?php 
-namespace projet_5\Quiz;
+namespace Quiz;
 
 class Quiz {
 

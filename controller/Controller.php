@@ -1,5 +1,5 @@
 <?php 
-namespace projet_5\Controller;
+namespace Controller;
 
 require('./vendor/autoload.php');
 

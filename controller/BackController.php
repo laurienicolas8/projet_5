@@ -1,5 +1,5 @@
 <?php 
-namespace projet_5\BackController;
+namespace BackController;
 
 require('./vendor/autoload.php');
 

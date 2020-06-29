@@ -1,8 +1,7 @@
 <?php
-namespace projet_5\QuestionDAO;
+namespace QuestionDAO;
 
 require('./vendor/autoload.php');
-use projet_5\Question;
 
 
 class QuestionDAO extends DAO {

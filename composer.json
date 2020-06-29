@@ -1,15 +1,5 @@
 {
-    "name": "projet_5/altorouter",
     "require": {
-        "altorouter/altorouter": "^2.0"
-    },
-    "authors": [
-        {
-            "name": "Laurie Nicolas",
-            "email": "laurienicolas8@gmail.com"
-        }
-    ],
-    "require-dev": {
-        "symfony/var-dumper": "^3.4"
+        "altorouter/altorouter": "1.1.0"
     }
 }

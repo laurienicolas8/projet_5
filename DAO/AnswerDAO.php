@@ -1,8 +1,7 @@
 <?php 
-namespace projet_5\AnswerDAO;
+namespace AnswerDAO;
 
 require('./vendor/autoload.php');
-use projet_5\Answer;
 
 
 class AnswerDAO extends DAO {
@@ -15,7 +14,11 @@ class AnswerDAO extends DAO {
     }
 
     public function getRightAnswer($idQuestion) {
-
+        $req = 'SELECT rightAnswer from answer WHERE idQuestion = ?';
+        $data = $this->createQuery($req, [$idQuestion]);
+        $rightAnswer = new Answer;
+        $rightAnswer->hydrate($data);
+        return $rightAnswer;
     }
 
     public function createAnswer($answer, $rightAnswer, $idQuestion) {

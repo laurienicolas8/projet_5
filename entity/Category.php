@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\Category;
+namespace Category;
 
 class Category {
 

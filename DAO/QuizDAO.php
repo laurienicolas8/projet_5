@@ -1,8 +1,7 @@
 <?php
-namespace projet_5\QuizDAO;
+namespace QuizDAO;
 
 require('./vendor/autoload.php');
-use projet_5\Quiz;
 
 
 class QuizDAO extends DAO {
@@ -16,7 +15,11 @@ class QuizDAO extends DAO {
     }
 
     public function getSingleQuiz($idQuiz) {
-
+        $req = 'SELECT * from quiz WHERE idQuiz = ?';
+        $data = $this->createQuery($req, [$idQuiz]);
+        $quiz = new Quiz;
+        $quiz->hydrate($data);
+        return $quiz;
     }
 
     public function getQuizByCategory($idCategory) {

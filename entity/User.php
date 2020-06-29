@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\User;
+namespace User;
 
 class User {
 

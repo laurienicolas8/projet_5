@@ -1,5 +1,5 @@
 <?php 
-namespace projet_5\Answer;
+namespace Answer;
 
 class Answer {
 

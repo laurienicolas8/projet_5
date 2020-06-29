@@ -1,8 +1,7 @@
 <?php
-namespace projet_5\CategoryDAO;
+namespace CategoryDAO;
 
 require('./vendor/autoload.php');
-use projet_5\Category;
 
 
 class CategoryDAO extends DAO {
