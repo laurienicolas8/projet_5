@@ -1,8 +1,9 @@
 <?php
-namespace Router;
+namespace App;
 
-require 'vendor/autoload.php';
-use \FrontController;
+use App\Controller\FrontController;
+
+require('../vendor/autoload.php');
 
 $router = new \AltoRouter();
 $frontController = new FrontController();
