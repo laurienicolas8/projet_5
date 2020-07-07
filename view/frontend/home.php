@@ -51,45 +51,45 @@
     <div class="row">
         <div class='category_container'>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/animal.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/animal.png'></a>
                 <p class='title_category'>Animaux</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/anatomy.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/anatomy.png'></a>
                 <p class='title_category'>Corps humain</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/media.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/media.png'></a>
                 <p class='title_category'>Médias</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/sciences.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/sciences.png'></a>
                 <p class='title_category'>Sciences</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/history.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/history.png'></a>
                 <p class='title_category'>Histoire</p></p>
             </div>
         </div>
         <div class='category_container'>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/globe.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/globe.png'></a>
                 <p class='title_category'>Géographie</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/cook.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/cook.png'></a>
                 <p class='title_category'>Cuisine</p></p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/cinema.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/cinema.png'></a>
                 <p class='title_category'>Cinéma</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/sport.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/sport.png'></a>
                 <p class='title_category'>Sport</p>
             </div>
             <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='../../public/images/img_categories/society.png'></a>
+                <a href='' class='img_category'><img src='public/images/img_categories/society.png'></a>
                 <p class='title_category'>Société</p>
             </div>
         </div>  

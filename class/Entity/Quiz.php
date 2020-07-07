@@ -1,5 +1,5 @@
 <?php 
-namespace projet_5\entity\Quiz;
+namespace App\Entity\Quiz;
 
 class Quiz {
 

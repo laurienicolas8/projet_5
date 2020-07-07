@@ -1,9 +1,13 @@
 <?php 
 namespace App\Controller;
 
-require('./vendor/autoload.php');
+use Exception;
+use App\Controller\Controller;
 
-class BackController extends \Controller {
+require('vendor/autoload.php');
+
+
+class BackController extends Controller {
     
     public function dashboard() {
 
@@ -18,7 +22,11 @@ class BackController extends \Controller {
     }
 
     public function newCategory($nameCategory, $imageCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function editQuiz() {
@@ -26,15 +34,27 @@ class BackController extends \Controller {
     }
 
     public function newQuiz($nameQuiz, $imageQuiz, $idCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function newQuestion($question, $explanation) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function newAnswer($answer, $rightAnswer, $idQuestion) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function modification() {
@@ -46,11 +66,19 @@ class BackController extends \Controller {
     }
 
     public function accessUpdateCategory($idCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function updateCategory($nameCategory, $imageCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function whichQuizUpdate() {
@@ -58,19 +86,35 @@ class BackController extends \Controller {
     }
 
     public function accessUpdateQuiz($idQuiz) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function updateQuiz($nameQuiz, $imageQuiz, $idCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function updateQuestion($question, $explanation) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function updateAnswer($answer, $rightAnswer, $idQuestion) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function suppression() {
@@ -82,7 +126,11 @@ class BackController extends \Controller {
     }
 
     public function deleteCategory($idCategory) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function whichQuizDelete() {
@@ -90,19 +138,35 @@ class BackController extends \Controller {
     }
 
     public function deleteQuiz($idQuiz) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function deleteQuestion($idQuestion) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function deleteAnswer($idAnswer) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function infoUser($idUser) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function editUser() {
@@ -110,7 +174,11 @@ class BackController extends \Controller {
     }
 
     public function newUser($nameUser, $password, $admin) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function whichUserUpdate() {
@@ -118,7 +186,11 @@ class BackController extends \Controller {
     }
 
     public function updateUser($nameUser, $password, $admin) {
+        try {
 
+        } catch (Exception $e) {
+
+        }
     }
 
     public function whichUserDelete() {
@@ -126,7 +198,10 @@ class BackController extends \Controller {
     }
 
     public function deleteUser($idUser) {
-        
-    }
+        try {
 
+        } catch (Exception $e) {
+
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\entity\User;
+namespace App\Entity\User;
 
 class User {
 

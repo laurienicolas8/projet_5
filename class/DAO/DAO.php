@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\DAO\DAO;
+namespace App\DAO;
 
 class DAO {
     const DB_HOST = 'mysql:host=localhost;dbname=book;port=3308';

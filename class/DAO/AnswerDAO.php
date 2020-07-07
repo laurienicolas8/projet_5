@@ -1,8 +1,7 @@
 <?php 
-namespace projet_5\DAO\AnswerDAO;
+namespace App\DAO;
 
-require('./vendor/autoload.php');
-
+require('vendor/autoload.php');
 
 class AnswerDAO extends DAO {
 

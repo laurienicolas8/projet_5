@@ -1,7 +1,7 @@
 <?php 
-namespace projet_5\DAO\UserDAO;
+namespace App\DAO;
 
-require('./vendor/autoload.php');
+require('vendor/autoload.php');
 
 
 class UserDAO extends DAO {

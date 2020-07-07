@@ -1,7 +1,7 @@
 <?php
-namespace projet_5\DAO\QuizDAO;
+namespace App\DAO;
 
-require('./vendor/autoload.php');
+require('vendor/autoload.php');
 
 
 class QuizDAO extends DAO {
@@ -20,6 +20,14 @@ class QuizDAO extends DAO {
         $quiz = new Quiz;
         $quiz->hydrate($data);
         return $quiz;
+    }
+
+    public function getSliderQuiz() {
+
+    }
+
+    public function getHomeQuiz() {
+        
     }
 
     public function getQuizByCategory($idCategory) {

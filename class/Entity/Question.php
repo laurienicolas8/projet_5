@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\entity\Question;
+namespace App\Entity\Question;
 
 class Question {
 

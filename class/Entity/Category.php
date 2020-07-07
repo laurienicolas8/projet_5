@@ -1,5 +1,5 @@
 <?php
-namespace projet_5\entity\Category;
+namespace App\Entity\Category;
 
 class Category {
 

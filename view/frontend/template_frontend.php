@@ -9,9 +9,9 @@
     <title>Questionnary!</title>
 
     <!-- Bootstrap -->
-    <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS -->
-    <link href="../../public/css/style_frontend.css" rel="stylesheet">
+    <link href="public/css/style_frontend.css" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bellota:wght@700&display=swap" rel="stylesheet">
     <!-- Icons -->
@@ -21,7 +21,7 @@
 
 <body>
     <header id='menu'>
-        <a href='' class='logo_button'><img src='../../public/images/logo.png' style='max-width:100%;'></a>
+        <a href='' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;'></a>
         <div class='items'>
             <a href='' class='item_menu'>Quiz par catégories</a>
             <a href='' class='item_menu'>Tous les quiz</a>
@@ -40,8 +40,8 @@
         <a href=''><i class="fas fa-arrow-circle-up fa-2x up"></i></a>
     </footer>
     <!-- Bootstrap - JavaScript -->
-    <script src="../../vendor/jquery/jquery.min.js"></script>
-    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

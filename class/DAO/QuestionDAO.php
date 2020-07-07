@@ -1,7 +1,7 @@
 <?php
-namespace projet_5\DAO\QuestionDAO;
+namespace App\DAO;
 
-require('./vendor/autoload.php');
+require('vendor/autoload.php');
 
 
 class QuestionDAO extends DAO {
@@ -11,7 +11,11 @@ class QuestionDAO extends DAO {
     }
 
     public function getQuizQuestions($idQuiz) {
-
+        $req = 'SELECT * from question WHERE idQuiz = ?';
+        $data = $this->createQuery($req, [$idQuiz]);
+        $questions = new Question;
+        $questions->hydrate($data);
+        return $questions;
     }
 
     /*public function getSingleQuestion($idQuestion) {
