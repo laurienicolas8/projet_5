@@ -1,6 +1,8 @@
 <?php
 namespace App\DAO;
 
+use App\Entity\Quiz;
+
 require('vendor/autoload.php');
 
 
@@ -23,7 +25,7 @@ class QuizDAO extends DAO {
     }
 
     public function getSliderQuiz() {
-
+// ORDER BY RAND() LIMIT 5
     }
 
     public function getHomeQuiz() {

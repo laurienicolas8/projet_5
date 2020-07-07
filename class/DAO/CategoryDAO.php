@@ -1,6 +1,8 @@
 <?php
 namespace App\DAO;
 
+use App\Entity\Category;
+
 require('vendor/autoload.php');
 
 
@@ -11,7 +13,11 @@ class CategoryDAO extends DAO {
     }
 
     public function getAllCategories() {
-        
+        $req = 'SELECT * from category WHERE idCategory = 20';
+        $data = $this->createQuery($req);
+        $category = new Category;
+        $category->hydrate($data);
+        return $category;
     }
 
     public function getSingleCategory($idCategory) {

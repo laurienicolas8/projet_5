@@ -1,5 +1,5 @@
 <?php 
-namespace App\Entity\Answer;
+namespace App\Entity;
 
 class Answer {
 

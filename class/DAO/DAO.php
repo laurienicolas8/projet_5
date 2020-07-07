@@ -1,8 +1,10 @@
 <?php
 namespace App\DAO;
 
+use PDO;
+
 class DAO {
-    const DB_HOST = 'mysql:host=localhost;dbname=book;port=3308';
+    const DB_HOST = 'mysql:host=localhost;dbname=questionnary;port=3308';
     const DB_USER = 'root';
     const DB_PASS = '';
     private $connection; 

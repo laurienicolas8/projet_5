@@ -1,6 +1,8 @@
 <?php 
 namespace App\DAO;
 
+use App\Entity\User;
+
 require('vendor/autoload.php');
 
 

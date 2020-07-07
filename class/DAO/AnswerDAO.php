@@ -1,6 +1,8 @@
 <?php 
 namespace App\DAO;
 
+use App\Entity\Answer;
+
 require('vendor/autoload.php');
 
 class AnswerDAO extends DAO {
