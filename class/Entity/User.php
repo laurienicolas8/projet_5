@@ -1,26 +1,12 @@
 <?php
 namespace App\Entity;
 
-class User {
+class User extends Entity {
 
     private $_idUser;
     private $_nameUser;
     private $_password;
     private $_admin;
-
-    public function hydrate(array $data) {
-        foreach ($donnees as $key => $value) {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $method = 'set'.ucfirst($key);
-                
-            // Si le setter correspondant existe.
-            if (method_exists($this, $method))
-            {
-            // On appelle le setter.
-            $this->$method($value);
-            }
-        }
-    }
 
     //getters
     public function idUser() {

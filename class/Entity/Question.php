@@ -1,26 +1,12 @@
 <?php
 namespace App\Entity;
 
-class Question {
+class Question extends Entity {
 
     private $_idQuestion;
     private $_question;
     private $_explanation;
     private $_idQuiz;
-
-    public function hydrate(array $data) {
-        foreach ($donnees as $key => $value) {
-            // on récupère le nom du setter correspondant à l'attribut
-            $method = 'set'.ucfirst($key);
-                
-            // si le setter correspondant existe
-            if (method_exists($this, $method))
-            {
-            // On appelle le setter.
-            $this->$method($value);
-            }
-        }
-    }
 
     //getters
     public function idQuestion() {
