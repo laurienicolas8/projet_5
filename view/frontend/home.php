@@ -1,173 +1,99 @@
-<?php ob_start();?>
+<?php ob_start();
+use App\Entity\Quiz;
+use App\Entity\Category;
+?>
 
+<!-- SLIDER -->
 <div>
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <!-- Slide One - Set the background image for this slide in the line below -->
-        <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>First Slide</h3>
-            <p>This is a description for the first slide.</p>
-          </div>
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>First Slide</h3>
+                    <p>This is a description for the first slide.</p>
+                </div>
+            </div>
+
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Second Slide</h3>
+                    <p>This is a description for the second slide.</p>
+                </div>
+            </div>
+
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Third Slide</h3>
+                    <p>This is a description for the third slide.</p>
+                </div>
+            </div>
         </div>
-        <!-- Slide Two - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Second Slide</h3>
-            <p>This is a description for the second slide.</p>
-          </div>
-        </div>
-        <!-- Slide Three - Set the background image for this slide in the line below -->
-        <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
-          <div class="carousel-caption d-none d-md-block">
-            <h3>Third Slide</h3>
-            <p>This is a description for the third slide.</p>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-  </div>
+</div>
 
 
-  <!-- Page Content -->
-  <div class="container">
-
+<!-- PAGE CONTENT -->
+<div class="container">
     <h2 class="my-4 h2_home">Choisir par catégorie...</h2>
 
-    <!-- Marketing Icons Section -->
+    <!-- CATEGORIES -->
     <div class="row">
         <div class='category_container'>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/animal.png'></a>
-                <p class='title_category'>Animaux</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/anatomy.png'></a>
-                <p class='title_category'>Corps humain</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/media.png'></a>
-                <p class='title_category'>Médias</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/sciences.png'></a>
-                <p class='title_category'>Sciences</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/history.png'></a>
-                <p class='title_category'>Histoire</p></p>
-            </div>
-        </div>
-        <div class='category_container'>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/globe.png'></a>
-                <p class='title_category'>Géographie</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/cook.png'></a>
-                <p class='title_category'>Cuisine</p></p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/cinema.png'></a>
-                <p class='title_category'>Cinéma</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/sport.png'></a>
-                <p class='title_category'>Sport</p>
-            </div>
-            <div class='category col-lg-2'>
-                <a href='' class='img_category'><img src='public/images/img_categories/society.png'></a>
-                <p class='title_category'>Société</p>
-            </div>
+            <?php 
+            foreach ($categories as $category) {
+              $category = new Category($category);
+              echo '<div class="category col-lg-2">
+                        <a href="" class="img_category"><img src="public/images/img_categories/'.$category->imageCategory().'" alt="Illustration catégorie"></a>
+                        <p class="title_category">'.$category->nameCategory().'</p>
+                    </div>';
+            }
+            ?>
         </div>  
     </div>
-    <!-- /.row -->
+    <!-- END ROW CATEGORIES -->
 
-    <!-- Portfolio Section -->
+    <!-- QUIZ -->
     <h2 class='my-4 h2_home'>...ou en vrac !</h2>
-
     <div class="row">
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project One</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-          </div>
+        <?php 
+        foreach ($homeQuiz as $quiz) {
+            $quiz = new Quiz($quiz);
+            echo '<div class="col-lg-4 col-sm-6 portfolio-item">
+                      <div class="card h-100">
+                          <a href="#"><img class="card-img-top" src="public/images/img_quiz/'.$quiz->imageQuiz().'" alt="Image quiz"></a>
+                          <div class="card-body">
+                              <h4 class="card-title">
+                                  <a href="#">'.$quiz->nameQuiz().'</a>
+                              </h4>                    
+                          </div>
+                      </div>
+                  </div>';
+        }
+        ?>
+        <div class="col-lg-12 div_button_all_quiz">
+            <a href="" class="button_all_quiz">Voir tous les quiz</a>
         </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Two</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Three</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos quisquam, error quod sed cumque, odio distinctio velit nostrum temporibus necessitatibus et facere atque iure perspiciatis mollitia recusandae vero vel quam!</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Four</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Five</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Project Six</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque earum nostrum suscipit ducimus nihil provident, perferendis rem illo, voluptate atque, sit eius in voluptates, nemo repellat fugiat excepturi! Nemo, esse.</p>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- /.row -->
+    <!-- END ROW QUIZ -->
+</div>
 
 <?php 
 $content = ob_get_clean();

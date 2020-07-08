@@ -7,9 +7,6 @@ require('vendor/autoload.php');
 
 class AnswerDAO extends DAO {
 
-    public function __construct() {
-    }
-    
     public function getQuestionAnswers($idQuestion) {
     
     }

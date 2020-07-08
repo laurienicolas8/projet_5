@@ -1,28 +1,20 @@
 body {
     font-family: 'Bellota', cursive;
+    margin: 0;
 }
 
+/* HEADER */
 #menu {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
 
 .logo_button {
     width: 100px;
 }
+/* END HEADER */
 
-.item_menu {
-    color: black;
-    font-size: 1.5em;
-    margin: 20px;
-}
-
-.item_menu:hover {
-    text-decoration: none;
-    color: black;
-}
-
+/* SLIDER HOME */
 .carousel-item {
     height: 65vh;
     min-height: 300px;
@@ -32,7 +24,9 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+/* END SLIDER HOME */
 
+/* CATEGORIES HOME */
 .portfolio-item {
     margin-bottom: 30px;
 }
@@ -50,6 +44,7 @@ body {
 
 .category {
     text-align: center;
+    margin: 0 10px;
 }
 
 .img_category img{
@@ -65,10 +60,65 @@ body {
 .title_category {
     font-size: 1.4em;
 }
+/* END CATEGORIES HOME */
 
+/* QUIZ HOME */
+.card-body {
+    background-color: #E6E6E6;
+    transition: all 200ms;
+}
+
+.card-body:hover {
+    transform: scale(1.1);
+    background-color: #57A2FF;
+    border-radius: 8px;
+}
+
+.card-body:hover a {
+    color: white;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-title a{
+    color: black;
+}
+
+.card-title a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.div_button_all_quiz {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.button_all_quiz {
+    padding: 15px;
+    color: white;
+    font-size: 1.2em;
+    background-color: #57A2FF;
+    border: 3px solid #57A2FF;
+    border-radius: 30px;
+    transition: all 400ms;
+}
+
+.button_all_quiz:hover {
+    color: #57A2FF;
+    text-decoration: none;
+    background-color: white;
+    transform: scale(1.1);
+}
+
+/* END QUIZ HOME */
+
+/* FOOTER */
 .footer_front {
     height: 150px;
-    margin: 0 -150px;
     padding: 30px 100px;
     display: flex;
     justify-content: space-around;
@@ -117,3 +167,4 @@ body {
 .up:hover {
     color: black;
 }
+/* END FOOTER */

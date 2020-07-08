@@ -8,16 +8,10 @@ require('vendor/autoload.php');
 
 class QuestionDAO extends DAO {
 
-    public function __construct() {
-    
-    }
-
     public function getQuizQuestions($idQuiz) {
-        $req = 'SELECT * from question WHERE idQuiz = ?';
+        $req = 'SELECT * FROM question WHERE idQuiz = ?';
         $data = $this->createQuery($req, [$idQuiz]);
-        $questions = new Question;
-        $questions->hydrate($data);
-        return $questions;
+        return $data;
     }
 
     /*public function getSingleQuestion($idQuestion) {

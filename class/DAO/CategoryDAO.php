@@ -12,11 +12,7 @@ class CategoryDAO extends DAO {
     public function getAllCategories() {
         $req = 'SELECT * FROM category';
         $data = $this->createQuery($req);
-        foreach ($data as $element) {
-            $category = new Category($element);
-            dump($category);
-        }
-        return $category;
+        return $data;
     }
 
     public function getSingleCategory($idCategory) {

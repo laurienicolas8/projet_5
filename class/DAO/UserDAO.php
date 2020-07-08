@@ -7,11 +7,7 @@ require('vendor/autoload.php');
 
 
 class UserDAO extends DAO {
-
-    public function __construct() {
-       
-    }
-
+    
     public function getUser($idUser) {
         $req = 'SELECT * from user WHERE idUser = ?';
         $data = $this->createQuery($req, [$idUser]);

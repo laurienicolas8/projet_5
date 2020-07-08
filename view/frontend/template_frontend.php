@@ -22,10 +22,6 @@
 <body>
     <header id='menu'>
         <a href='' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;'></a>
-        <div class='items'>
-            <a href='' class='item_menu'>Quiz par catégories</a>
-            <a href='' class='item_menu'>Tous les quiz</a>
-        </div>
     </header>
 
     <?php echo $content ?>
