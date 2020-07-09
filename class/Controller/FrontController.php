@@ -12,12 +12,12 @@ class FrontController extends Controller {
         $sliderQuiz = $this->quizDAO->getSliderQuiz();
         $categories = $this->categoryDAO->getAllCategories();
         $homeQuiz = $this->quizDAO->getHomeQuiz();
-        require('view/frontend/home.php');
+        require_once('view/frontend/home.php');
     }
 
     public function allQuiz() {
         $quiz = $this->quizDAO->getAllQuiz();
-        require('view/frontend/all_quiz.php');
+        require_once('view/frontend/all_quiz.php');
     }
 
     public function singleCategory($idCategory) {
