@@ -14,10 +14,6 @@ class QuestionDAO extends DAO {
         return $data;
     }
 
-    /*public function getSingleQuestion($idQuestion) {
-
-    }*/
-
     public function createQuestion($question, $explanation, $idQuiz) {
 
     }

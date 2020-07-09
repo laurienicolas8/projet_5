@@ -15,11 +15,6 @@ class FrontController extends Controller {
         require('view/frontend/home.php');
     }
 
-    public function allCategories() {
-        $categories = $this->categoryDAO->getAllCategories();
-        require('view/frontend/all_categories.php');
-    }
-
     public function allQuiz() {
         $quiz = $this->quizDAO->getAllQuiz();
         require('view/frontend/all_quiz.php');

@@ -12,13 +12,14 @@ $backController = new BackController();
 // Itinéraires
 // FRONT
 $router->map('GET', '/', $frontController->home());
-$router->map('GET', '/all_categories', $frontController->allCategories());
 $router->map('GET', '/all_quiz', $frontController->allQuiz());
-$router->map('GET', '/single_category/[i:id]', $frontController->singleCategory($idCategory)); //param
-$router->map('GET', '/start_quiz/[i:id]', $frontController->startQuiz($idQuiz)); //param
-$router->map('GET', '/quiz/[i:id]', $frontController->showQuizQuestions($idQuiz)); //param
+$router->map('GET', '/single_category/[i:id]', $frontController->singleCategory($idCategory));
+$router->map('GET', '/start_quiz/[i:id]', $frontController->startQuiz($idQuiz)); 
+$router->map('GET', '/quiz/[i:id]', $frontController->showQuizQuestions($idQuiz));
 
 //BACK
+
+
 
 // Trouver une correspondance entre l'URL reçue et les itinéraires
 $match = $router->match();

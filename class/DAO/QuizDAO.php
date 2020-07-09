@@ -9,7 +9,7 @@ require('vendor/autoload.php');
 class QuizDAO extends DAO {
 
     public function getAllQuiz() {
-        $req = 'SELECT * FROM quiz';
+        $req = 'SELECT * FROM quiz ORDER BY RAND()';
         $data = $this->createQuery($req);
         return $data;
     }
