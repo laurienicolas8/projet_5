@@ -29,21 +29,20 @@ class Router {
             array('GET', '/all_quiz', function() {
                 $this->frontController->allQuiz();
             }),
-            array('GET', '/single_category/[i:id]', function() {
-                $this->frontController->singleCategory($id);
+            array('GET', '/single_category/[i:id]', function($idCategory) {
+                $this->frontController->singleCategory($idCategory);
             }),
-            array('GET', '/start_quiz/[i:id]', function() {
-                $this->frontController->startQuiz($id);
+            array('GET', '/start_quiz/[i:id]', function($idQuiz) {
+                $this->frontController->startQuiz($idQuiz);
             }),
-            array('GET', '/quiz/[i:id]', function() {
-                $this->frontController->showQuizQuestions($id);
+            array('GET', '/quiz/[i:id]', function($idQuiz) {
+                $this->frontController->showQuizQuestions($idQuiz);
             }),
             //BACK
         ));
 
         // Trouver une correspondance entre l'URL reçue et les itinéraires
         $match = $this->router->match();
-        dump($match);
 
         if ($match !==null) {
             if (is_callable($match['target'])) {
