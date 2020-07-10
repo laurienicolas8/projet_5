@@ -16,8 +16,7 @@ class AnswerDAO extends DAO {
     public function getRightAnswer($idQuestion) {
         $req = 'SELECT rightAnswer from answer WHERE idQuestion = ?';
         $data = $this->createQuery($req, [$idQuestion]);
-        $rightAnswer = new Answer;
-        $rightAnswer->hydrate($data);
+        $rightAnswer = new Answer($data);
         return $rightAnswer;
     }
 

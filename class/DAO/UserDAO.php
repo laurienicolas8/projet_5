@@ -11,8 +11,7 @@ class UserDAO extends DAO {
     public function getUser($idUser) {
         $req = 'SELECT * from user WHERE idUser = ?';
         $data = $this->createQuery($req, [$idUser]);
-        $user = new User;
-        $user->hydrate($data);
+        $user = new User($data);
         return $user;
     }
 
