@@ -9,6 +9,7 @@ use App\DAO\QuestionDAO;
 
 require('vendor/autoload.php');
 
+
 class Controller {
 
     public $answerDAO;
@@ -16,6 +17,7 @@ class Controller {
     public $questionDAO;
     public $quizDAO;
     public $userDAO;
+    public $twig;
 
     public function __construct() {
         $this->answerDAO = new AnswerDAO;
@@ -23,5 +25,10 @@ class Controller {
         $this->questionDAO = new QuestionDAO;
         $this->quizDAO = new QuizDAO;
         $this->userDAO = new UserDAO;
+        $loader = new \Twig\Loader\FilesystemLoader('view');
+        $this->twig = new \Twig\Environment($loader, [
+            'cache' => false,
+        ]);
+        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
     }
 }

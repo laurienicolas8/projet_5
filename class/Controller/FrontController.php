@@ -2,6 +2,9 @@
 namespace App\Controller;
 
 use Exception;
+use App\Entity\Quiz;
+use App\Entity\Category;
+use App\Entity\Question;
 use App\Controller\Controller;
 
 require('vendor/autoload.php');
@@ -9,22 +12,42 @@ require('vendor/autoload.php');
 class FrontController extends Controller {
     
     public function home() {
-        $sliderQuiz = $this->quizDAO->getSliderQuiz();
         $categories = $this->categoryDAO->getAllCategories();
-        $homeQuiz = $this->quizDAO->getHomeQuiz();
-        require('view/frontend/home.php');
+        $allQuiz = $this->quizDAO->getHomeQuiz();
+        foreach ($categories as $category) {
+            $allcategories[] = new Category($category);
+        }
+        foreach ($allQuiz as $quiz) {
+            $homeQuiz[] = new Quiz($quiz);
+        }
+        echo $this->twig->render('home.twig', [
+            'allcategories' => $allcategories, 
+            'homeQuiz' => $homeQuiz,
+        ]);
     }
 
     public function allQuiz() {
         $quiz = $this->quizDAO->getAllQuiz();
-        require('view/frontend/all_quiz.php');
+        foreach ($quiz as $oneQuiz) {
+            $allQuiz[] = new Quiz($oneQuiz);
+        }
+        echo $this->twig->render('all_quiz.twig', ['allQuiz' => $allQuiz]);
     }
 
     public function singleCategory($idCategory) {
         try {
-            $category = $this->categoryDAO->getSingleCategory($idCategory);
-            $quiz = $this->quizDAO->getQuizByCategory($idCategory);
-            require('view/frontend/single_category.php');
+            $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
+            $quizByCategory = $this->quizDAO->getQuizByCategory($idCategory);
+            foreach ($singleCategory as $category) {
+                $oneCategory[] = new Category($category);
+            }
+            foreach ($quizByCategory as $quiz) {
+                $allQuiz[] = new Quiz($quiz);
+            }
+            echo $this->twig->render('single_category.twig', [
+                'oneCategory' => $oneCategory,
+                'allQuiz' => $allQuiz,
+            ]);
         } catch (Exception $e) {
             echo 'Erreur : Catégorie inconnue';
         }
@@ -32,8 +55,11 @@ class FrontController extends Controller {
 
     public function startQuiz($idQuiz) {
         try {
-            $quiz = $this->quizDAO->getSingleQuiz($idQuiz);
-            require('view/frontend/start_quiz.php');
+            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
+            foreach ($singleQuiz as $quiz) {
+                $oneQuiz[] = new Quiz($quiz);
+            }
+            echo $this->twig->render('start_quiz.twig', ['oneQuiz' => $oneQuiz]);
         } catch (Exception $e) {
             echo 'Erreur : Quiz inconnu';
         }
@@ -41,9 +67,18 @@ class FrontController extends Controller {
 
     public function showQuizQuestions($idQuiz) { // answers ?
         try {
-            $quiz = $this->quizDAO->getSingleQuiz($idQuiz);
+            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
             $questions = $this->questionDAO->getQuizQuestions($idQuiz);
-            require('view/frontend/start_quiz.php');
+            foreach ($singleQuiz as $quiz) {
+                $oneQuiz[] = new Quiz($quiz);
+            }
+            foreach ($questions as $question) {
+                $allQuestions[] = new Question($question);
+            }
+            echo $this->twig->render('questions.twig', [
+                'oneQuiz' => $oneQuiz,
+                'allQuestions' => $allQuestions,
+            ]);
         } catch (Exception $e) {
             echo 'Erreur : Quiz inconnu';
         }

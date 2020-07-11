@@ -6,7 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Questionnary!</title>
+    {% block head %}
+    {% endblock %}
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +25,8 @@
         <a href='' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;'></a>
     </header>
 
-    <?php echo $content ?>
+    {% block content %}
+    {% endblock %}
 
     <footer class='footer_front'>
         <p class='title_footer'>Questionnary!</p>

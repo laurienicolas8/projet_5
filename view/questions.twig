@@ -1,0 +1,26 @@
+{% extends 'template_frontend.twig' %}
+
+{% block content %}
+
+<div class="container col-lg-11">
+    <div class="row">
+        {% for quiz in oneQuiz %}
+            <div class="col-lg-12">
+                <h1 class="title_start_quiz">{{ quiz.nameQuiz }}</h1>
+            </div>
+        {% endfor %}
+
+        {% for question in allQuestions %}
+            <div class="col-lg-9 question_container">
+                <div class="question_div">
+                    <p class="question">{{ question.question }}</p>
+                    <p class="explanation">{{ question.explanation }}</p>
+                </div>
+                <button type="button" class=" col-lg-1 btn btn-success btn_valid">Valider</button>
+            </div>
+        {% endfor %}
+    </div>
+<!-- END ROW QUIZ -->
+</div>
+
+{% endblock %}

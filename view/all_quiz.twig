@@ -1,0 +1,26 @@
+{% extends 'template_frontend.twig' %}
+
+{% block content %}
+
+<div class="container col-lg-11">
+    <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+
+    <!-- ALL QUIZ -->
+    <div class="row">
+        {% for quiz in allQuiz %}
+            <div class="col-lg-3 mb-4">
+                <div class="card h-100">
+                    <h4 class="card-header">{{ quiz.nameQuiz }}</h4>
+                    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="height: 250px; max-width: 100%;" alt="Image quiz">
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lancer ce quiz</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    
+    </div>
+<!-- END ROW ALL QUIZ -->
+</div>
+
+{% endblock %}

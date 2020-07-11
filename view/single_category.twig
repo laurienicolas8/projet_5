@@ -1,0 +1,30 @@
+{% extends 'template_frontend.twig' %}
+
+{% block content %}
+
+<div class="container col-lg-11">
+    <div class="title-category">
+        {% for category in oneCategory %}
+            <img class="img-category" src="public/images/img_categories/{{ category.imageCategory }}">
+            <h1>{{ category.nameCategory }}</h1>
+        {% endfor %}
+    </div>
+
+    <!-- QUIZ OF THE CATEGORY -->
+    <div class="row">
+        {% for quiz in allQuiz %}
+            <div class="col-lg-2 mb-4 etiq_quiz">
+                <div class="card h-100">
+                    <h4 class="card-header">{{ quiz.nameQuiz }}</h4>
+                    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="height: 150px; max-width: 100%;" alt="Image quiz">
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-primary">Lancer ce quiz</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+<!-- END ROW QUIZ -->
+</div>
+
+{% endblock %}

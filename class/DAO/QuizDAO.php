@@ -17,18 +17,11 @@ class QuizDAO extends DAO {
     public function getSingleQuiz($idQuiz) {
         $req = 'SELECT * FROM quiz WHERE idQuiz = ?';   
         $data = $this->createQuery($req, [$idQuiz]);
-        $quiz = new Quiz($data);
-        return $quiz;
-    }
-
-    public function getSliderQuiz() {  
-        $req = 'SELECT * FROM quiz ORDER BY RAND() LIMIT 3';
-        $data = $this->createQuery($req);
         return $data;
     }
 
     public function getHomeQuiz() {
-        $req = 'SELECT * FROM quiz ORDER BY RAND() LIMIT 9';
+        $req = 'SELECT * FROM quiz ORDER BY RAND() LIMIT 6';
         $data = $this->createQuery($req);
         return $data;
     }

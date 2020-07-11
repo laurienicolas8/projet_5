@@ -18,8 +18,7 @@ class CategoryDAO extends DAO {
     public function getSingleCategory($idCategory) {
         $req = 'SELECT * FROM category WHERE idCategory = ?';
         $data = $this->createQuery($req, [$idCategory]);
-        $category = new Category($data);
-        return $category;
+        return $data;
     }
 
     public function createCategory($nameCategory, $imageCategory) {

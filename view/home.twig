@@ -1,7 +1,6 @@
-<?php ob_start();
-use App\Entity\Quiz;
-use App\Entity\Category;
-?>
+{% extends 'template_frontend.twig' %}
+
+{% block content %}
 
 <!-- SLIDER -->
 <div>
@@ -57,15 +56,12 @@ use App\Entity\Category;
     <!-- CATEGORIES -->
     <div class="row">
         <div class='category_container'>
-            <?php 
-            foreach ($categories as $category) {
-              $category = new Category($category);
-              echo '<div class="category col-lg-2">
-                        <a href="" class="img_category"><img src="public/images/img_categories/'.$category->imageCategory().'" alt="Illustration catégorie"></a>
-                        <p class="title_category">'.$category->nameCategory().'</p>
-                    </div>';
-            }
-            ?>
+            {% for category in allcategories %}
+                <div class="category col-lg-2">
+                    <a href="" class="img_category"><img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie"></a>
+                    <p class="title_category">{{ category.nameCategory }}</p>
+                </div>
+            {% endfor %}
         </div>  
     </div>
     <!-- END ROW CATEGORIES -->
@@ -73,21 +69,18 @@ use App\Entity\Category;
     <!-- QUIZ -->
     <h2 class='my-4 h2_home'>...ou en vrac !</h2>
     <div class="row">
-        <?php 
-        foreach ($homeQuiz as $quiz) {
-            $quiz = new Quiz($quiz);
-            echo '<div class="col-lg-4 col-sm-6 portfolio-item">
-                      <div class="card h-100">
-                          <a href="#"><img class="card-img-top" src="public/images/img_quiz/'.$quiz->imageQuiz().'" alt="Image quiz"></a>
-                          <div class="card-body">
-                              <h4 class="card-title">
-                                  <a href="#">'.$quiz->nameQuiz().'</a>
-                              </h4>                    
-                          </div>
-                      </div>
-                  </div>';
-        }
-        ?>
+        {% for quiz in homeQuiz %}
+            <div class="col-lg-4 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="$router->router"><img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image quiz"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">{{ quiz.nameQuiz }}</a>
+                        </h4>                    
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
         <div class="col-lg-12 div_button_all_quiz">
             <a href="" class="button_all_quiz">Voir tous les quiz</a>
         </div>
@@ -95,7 +88,4 @@ use App\Entity\Category;
     <!-- END ROW QUIZ -->
 </div>
 
-<?php 
-$content = ob_get_clean();
-require('template_frontend.php');
-?>
+{% endblock %}
