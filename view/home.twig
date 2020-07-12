@@ -58,7 +58,7 @@
         <div class='category_container'>
             {% for category in allCategories %}
                 <div class="category col-lg-2">
-                    <a href="" class="img_category"><img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie"></a>
+                    <a href="/projet_5/single-category-{{ category.idCategory }}" class="img_category"><img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie"></a>
                     <p class="title_category">{{ category.nameCategory }}</p>
                 </div>
             {% endfor %}
@@ -72,17 +72,17 @@
         {% for quiz in homeQuiz %}
             <div class="col-lg-4 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <a href="$router->router"><img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image quiz"></a>
+                    <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}"><img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image quiz"></a>
                     <div class="card-body">
                         <h4 class="card-title">
-                            <a href="#">{{ quiz.nameQuiz }}</a>
+                            <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
                         </h4>                    
                     </div>
                 </div>
             </div>
         {% endfor %}
         <div class="col-lg-12 div_button_all_quiz">
-            <a href="" class="button_all_quiz">Voir tous les quiz</a>
+            <a href="/projet_5/all-quiz" class="button_all_quiz">Voir tous les quiz</a>
         </div>
     </div>
     <!-- END ROW QUIZ -->

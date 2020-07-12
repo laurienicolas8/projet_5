@@ -11,9 +11,9 @@
             <div class="col-lg-3 mb-4">
                 <div class="card h-100">
                     <h4 class="card-header">{{ quiz.nameQuiz }}</h4>
-                    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="height: 250px; max-width: 100%;" alt="Image quiz">
+                    <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}"><img src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="height: 250px; max-width: 100%;" alt="Image quiz"></a>
                     <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Lancer ce quiz</a>
+                        <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}" class="btn btn-primary">Lancer ce quiz</a>
                     </div>
                 </div>
             </div>
