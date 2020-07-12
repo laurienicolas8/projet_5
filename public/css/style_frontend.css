@@ -204,6 +204,21 @@ p.title_start_quiz {
 }
 /* END QUESTIONS SECTION */
 
+/* LOGIN PAGE */
+.login_form {
+    width: 500px;
+    margin: auto;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background: #fff;
+    transform: translateY(20%);
+    border-radius: 5%;
+}
+/* END LOGIN PAGE */
+
 /* FOOTER */
 .footer_front {
     height: 150px;

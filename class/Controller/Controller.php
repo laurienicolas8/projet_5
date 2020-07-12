@@ -29,6 +29,5 @@ class Controller {
         $this->twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
-        $this->twig->addExtension(new \Twig\Extension\DebugExtension());
     }
 }

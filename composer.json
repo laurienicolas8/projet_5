@@ -2,7 +2,8 @@
     "require": {
         "altorouter/altorouter": "^2.0",
         "symfony/var-dumper": "^3.4",
-        "twig/twig": "3.0"
+        "twig/twig": "3.0",
+        "symfony/asset": "^5.1"
     },
 
     "autoload": {

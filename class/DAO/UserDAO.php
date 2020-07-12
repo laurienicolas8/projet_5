@@ -8,11 +8,15 @@ require('vendor/autoload.php');
 
 class UserDAO extends DAO {
     
-    public function getUser($idUser) {
+    public function getSingleUser($idUser) {
         $req = 'SELECT * from user WHERE idUser = ?';
         $data = $this->createQuery($req, [$idUser]);
-        $user = new User($data);
-        return $user;
+        return $data;
+    }
+    public function getAllUsers() {
+        $req = 'SELECT * from user';
+        $data = $this->createQuery($req);
+        return $data;
     }
 
     public function createUser($nameUser, $password, $admin) {

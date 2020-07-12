@@ -15,13 +15,13 @@ class FrontController extends Controller {
         $categories = $this->categoryDAO->getAllCategories();
         $allQuiz = $this->quizDAO->getHomeQuiz();
         foreach ($categories as $category) {
-            $allcategories[] = new Category($category);
+            $allCategories[] = new Category($category);
         }
         foreach ($allQuiz as $quiz) {
             $homeQuiz[] = new Quiz($quiz);
         }
         echo $this->twig->render('home.twig', [
-            'allcategories' => $allcategories, 
+            'allCategories' => $allCategories, 
             'homeQuiz' => $homeQuiz,
         ]);
     }
@@ -31,7 +31,9 @@ class FrontController extends Controller {
         foreach ($quiz as $oneQuiz) {
             $allQuiz[] = new Quiz($oneQuiz);
         }
-        echo $this->twig->render('all_quiz.twig', ['allQuiz' => $allQuiz]);
+        echo $this->twig->render('all_quiz.twig', [
+            'allQuiz' => $allQuiz,
+        ]);
     }
 
     public function singleCategory($idCategory) {
@@ -49,7 +51,7 @@ class FrontController extends Controller {
                 'allQuiz' => $allQuiz,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Catégorie inconnue';
+            echo 'Erreur : Aucune catégorie identifiée';
         }
     }
 
@@ -61,7 +63,7 @@ class FrontController extends Controller {
             }
             echo $this->twig->render('start_quiz.twig', ['oneQuiz' => $oneQuiz]);
         } catch (Exception $e) {
-            echo 'Erreur : Quiz inconnu';
+            echo 'Erreur : Aucun quiz identifié';
         }
     }
 
@@ -80,7 +82,11 @@ class FrontController extends Controller {
                 'allQuestions' => $allQuestions,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Quiz inconnu';
+            echo 'Erreur : Aucun quiz identifié';
         }
+    }
+
+    public function login() {
+        echo $this->twig->render('login.twig');
     }
 }

@@ -20,6 +20,12 @@ class CategoryDAO extends DAO {
         $data = $this->createQuery($req, [$idCategory]);
         return $data;
     }
+    
+    public function getCountCategories() {
+        $req = 'SELECT COUNT(*) FROM category';
+        $data = $this->createQuery($req);
+        return $data;
+    }
 
     public function createCategory($nameCategory, $imageCategory) {
 

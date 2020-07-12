@@ -32,6 +32,12 @@ class QuizDAO extends DAO {
         return $data;
     }
 
+    public function getCountQuiz() {
+        $req = 'SELECT COUNT(*) FROM quiz';
+        $data = $this->createQuery($req);
+        return $data;
+    }
+
     public function createQuiz($nameQuiz, $imageQuiz, $idCategory) {
 
     }
