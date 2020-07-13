@@ -4,8 +4,8 @@
 
 <h1 class="warning_title"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Attention<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></h1>
 
-{% for quiz in oneQuiz %}
-<p class="alert_text">Vous êtes sur le point de supprimer le quiz {{ quiz.nameQuiz }}. Attention, la suppression d'un élément est irréversible et peut entraîner la suppression d'autres éléments contenus par celui-ci ou en lien avec. Etes-vous sûr(e) de vouloir supprimer ce quiz ?</p>
+{% for question in oneQuestion %}
+<p class="alert_text">Vous êtes sur le point de supprimer la question suivante : "{{ question.question }}". Attention, la suppression d'un élément est irréversible et peut entraîner la suppression d'autres éléments contenus par celui-ci ou en lien avec. Etes-vous sûr(e) de vouloir supprimer cette question ?</p>
 {% endfor %}
 
 <div class="d-flex justify-content-around">

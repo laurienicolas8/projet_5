@@ -19,11 +19,11 @@ class UserDAO extends DAO {
         return $data;
     }
 
-    public function createUser($nameUser, $password, $admin) {
+    public function createUser($identifiant, $pseudo, $password, $nameUser, $lastnameUser, $admin) {
 
     }
 
-    public function modifyUser($nameUser, $password, $admin) {
+    public function modifyUser($identifiant, $pseudo, $password, $nameUser, $lastnameUser, $admin) {
 
     }
 

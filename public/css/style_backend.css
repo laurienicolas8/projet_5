@@ -1,0 +1,270 @@
+.body_container {
+    margin: 15px;
+}
+
+/* SIDEBAR ADMIN */
+#wrapper {
+    overflow-x: hidden;
+ }
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}
+/* END SIDEBAR ADMIN */
+
+/* DASHBOARD */
+.dashboard_data_container {
+    margin: 50px;
+}
+
+.circle_dashboard {
+    width: 100px;
+    height: 100px;
+    margin: 20px 30px;
+    background-color: #00AB11;
+    color: white;
+    border: 3px solid #00AB11;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.5em;
+}
+
+.data_dashboard {
+    font-size: 1.4em;
+}
+/* END DASHBOARD */
+
+/* CATEGORIES */
+.categories_container {
+    margin: 30px 0;
+}
+
+.category a {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.category img {
+    max-width: 70%;
+    border-radius: 60%;
+}
+
+.title_category {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.4em;
+}
+/* END CATEGORIES */
+
+/* ALERT */
+.warning_title {
+    display: flex;
+    justify-content: center;
+}
+
+.warning_title i {
+    margin: 0 30px;
+}
+
+.alert_text {
+    margin: 50px 50px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.alert_button {
+    
+    color: white;
+    font-size: 1.3em;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.alert_button:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.delete_button {
+    background-color: red;
+}
+
+.cancel_button {
+    background-color: #B0B0B0;
+}
+/* END ALERT */
+
+/* DETAILS CATEGORY */
+.title_details_category h1 {
+    margin-right: 35px;
+}
+
+.title_details_category img{
+    max-width: 5%;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.icons_category {
+    margin: 0 10px;
+}
+
+.link_pencil {
+    color: black;
+}
+
+.link_pencil:hover {
+    color: black;
+}
+
+.quiz_by_category {
+    border: 2px solid grey;
+    margin: 25px 0;
+    padding: 15px;
+}
+
+.quiz_by_category h2 {
+    font-size: 1.4em;
+}
+
+.quiz_icon {
+    color: black;
+}
+
+.quiz_icon:hover {
+    color: black;
+}
+/* END DETAILS CATEGORY */
+
+/* DETAILS QUIZ */
+.title_details_quiz h1 {
+    margin-right: 35px;
+}
+
+.title_details_quiz img {
+    max-width: 15%;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.icons_quiz {
+    margin: 0 10px;
+}
+
+.new_question_link {
+    color: black;
+    margin-left: 35px;
+}
+
+.new_question_link:hover {
+    color: black;
+    text-decoration: none;
+}
+/* END DETAILS QUIZ */
+
+/* DETAILS QUESTION */
+.data_question {
+    text-align: center;
+    margin: 60px 0;
+    font-size: 1.4em;
+}
+
+.answers {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 20px;
+    background-color: #336DFF;
+    border-radius: 10px;
+    color: white;
+}
+
+.answer_icon {
+    margin: 10px 0px;
+}
+/* END DETAILS QUESTION */
+
+/* QUIZ */
+.quiz_card {
+    margin-bottom: 40px;
+}
+
+.name_quiz {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+/* END QUIZ */
+
+/* USERS */
+.user_icon {
+    color: black;
+    margin: 8px;
+}
+
+.user_icon:hover {
+    color: black;
+}
+
+.user_card {
+    margin: 30px;
+}
+
+.name_user {
+    font-size: 1.2em;
+    margin: 0;
+}
+/* END USERS */
+
+/* DETAILS USER */
+.title_details_user h1 {
+    margin-right: 35px;
+}
+
+.data_user_container {
+    margin: 40px 0;
+}
+
+.data_user {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+/* END DETAILS USER */

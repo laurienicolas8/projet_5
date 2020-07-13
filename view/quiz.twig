@@ -1,0 +1,28 @@
+{% extends 'template_backend.twig' %}
+
+{% block content %}
+
+<h1>Quiz</h1>
+
+<div class="col-lg-12 d-flex justify-content-between flex-wrap categories_container">
+    <div class="card quiz_card" style="width: 14rem;">
+        <img class="card-img-top" src="" alt="Card image cap">
+        <div class="card-body">
+            <p class="card-text name_quiz">Nouveau quiz</p>
+        </div>
+    </div>
+    {% for quiz in allQuiz %}
+    <div class="card quiz_card" style="width: 14rem;">
+        <img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Card image cap">
+        <div class="card-body">
+            <a class="card-text name_quiz">{{ quiz.nameQuiz }}</a>
+        </div>
+        <div class="card-footer d-flex justify-content-between all_quiz_icons">
+            <a href="/projet_5/details-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-list-ul fa-lg quiz_icon" aria-hidden="true"></i></a>
+            <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

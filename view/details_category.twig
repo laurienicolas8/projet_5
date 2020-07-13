@@ -1,0 +1,24 @@
+{% extends 'template_backend.twig' %}
+
+{% block content %}
+
+{% for category in oneCategory %}
+<div class="d-flex align-items-center title_details_category">
+    <img src="public/images/img_categories/{{ category.imageCategory }}"></img>
+    <h1>Catégorie | {{ category.nameCategory }}</h1>
+    <a href="/projet_5/edit-category-{{ category.idCategory }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_category" aria-hidden="true"></i></a>
+    <a href="/projet_5/alert-category-{{ category.idCategory }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_category" aria-hidden="true"></i></a>
+</div>
+{% endfor %}
+
+{% for quiz in allQuiz %}
+<div class="d-flex justify-content-between align-items-center quiz_by_category">
+    <h2>{{ quiz.nameQuiz }}</h2>
+    <div class="col-lg-1 d-flex justify-content-between quiz_icons">
+        <a href="/projet_5/details-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-list-ul fa-lg quiz_icon" aria-hidden="true"></i></a>
+        <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

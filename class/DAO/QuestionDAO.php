@@ -14,7 +14,7 @@ class QuestionDAO extends DAO {
         return $data;
     }
 
-    public function getSingleQuiz($idQuestion) {
+    public function getSingleQuestion($idQuestion) {
         $req = 'SELECT * FROM question WHERE idQuestion = ?';
         $data = $this->createQuery($req, [$idQuestion]);
         return $data;

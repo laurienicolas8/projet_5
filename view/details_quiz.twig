@@ -1,0 +1,28 @@
+{% extends 'template_backend.twig' %}
+
+{% block content %}
+
+{% for quiz in oneQuiz %}
+<div class="d-flex align-items-center title_details_quiz">
+    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}"></img>
+    <h1>Quiz | {{ quiz.nameQuiz }}</h1>
+    <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_quiz" aria-hidden="true"></i></a>
+    <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_quiz" aria-hidden="true"></i></a>
+</div>
+{% endfor %}
+
+<div class="d-flex align-items-center quiz_by_category">
+    <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+    <a href="" class="new_question_link"><h2>Nouvelle question</h2></a>
+</div>
+{% for question in allQuestions %}
+<div class="d-flex justify-content-between align-items-center quiz_by_category">
+    <h2>{{ question.question }}</h2>
+    <div class="col-lg-1 d-flex justify-content-between quiz_icons">
+        <a href="/projet_5/details-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-list-ul fa-lg quiz_icon" aria-hidden="true"></i></a>
+        <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

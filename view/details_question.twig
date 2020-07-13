@@ -1,0 +1,31 @@
+{% extends 'template_backend.twig' %}
+
+{% block content %}
+
+{% for question in oneQuestion %}
+<div class="d-flex align-items-center title_details_quiz">
+    <h1>Question {{ question.idQuestion }}</h1>
+    <a href="/projet_5/edit-question-{{ question.idQuestion }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_quiz" aria-hidden="true"></i></a>
+    <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_quiz" aria-hidden="true"></i></a>
+</div>
+
+<p class="data_question">{{ question.question }}</p>
+{% endfor %}
+
+<div class="col-lg-12 d-flex justify-content-center align-items-center">
+    {% for answer in allAnswers %}
+    <div class="col-lg-3 d-flex justify-content-center answers">
+        {{ answer.answer }}
+    </div>
+    <div class="col-lg-1 d-flex flex-column">
+        <a href="" class="quiz_icon"><i class="fa fa-pencil fa-lg answer_icon" aria-hidden="true"></i></a>
+        <a href="" class="quiz_icon"><i class="fa fa-trash-o fa-lg answer_icon" aria-hidden="true"></i></a>
+    </div>
+    {% endfor %}
+</div>
+
+{% for question in oneQuestion %}
+<p class="data_question">{{ question.explanation }}</p>
+{% endfor %}
+
+{% endblock %}

@@ -2,7 +2,11 @@
 namespace App\Controller;
 
 use Exception;
+use App\Entity\Quiz;
 use App\Entity\User;
+use App\Entity\Answer;
+use App\Entity\Category;
+use App\Entity\Question;
 use App\Controller\Controller;
 
 require('vendor/autoload.php');
@@ -98,7 +102,7 @@ class BackController extends Controller {
 
     public function editQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->categoryDAO->getSingleQuiz($idQuiz);
+            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
             foreach ($singleQuiz as $quiz) {
                 $oneQuiz[] = new Quiz($quiz);
             }
@@ -112,7 +116,7 @@ class BackController extends Controller {
 
     public function alertQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->categoryDAO->getSingleQuiz($idQuiz);
+            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
             foreach ($singleQuiz as $quiz) {
                 $oneQuiz[] = new Quiz($quiz);
             }
@@ -140,6 +144,38 @@ class BackController extends Controller {
             ]);
         } catch (Exception $e) {
             echo 'Erreur : Aucun quiz identifié';
+        }
+    }
+
+    public function newQuestion() {
+        echo $this->twig->render('new_question.twig');
+    }
+
+    public function editQuestion($idQuestion) {
+        try {
+            $singleQuestion = $this->userDAO->getSingleQuestion($idQuestion);
+            foreach ($singleQuestion as $question) {
+                $oneQuestion[] = new Question($question);
+            }
+            echo $this->twig->render('edit_question.twig', [
+                'oneQuestion' => $oneQuestion,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur : Aucune question identifiée';
+        }
+    }
+
+    public function alertQuestion($idQuestion) {
+        try {
+            $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
+            foreach ($singleQuestion as $question) {
+                $oneQuestion[] = new Question($question);
+            }
+            echo $this->twig->render('alert_question.twig', [
+                'oneQuestion' => $oneQuestion,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur : Aucune question identifiée';
         }
     }
 

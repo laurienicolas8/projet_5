@@ -79,6 +79,15 @@ class Router {
             array('GET', '/details-quiz-[i:id]', function($idQuiz) {
                 $this->backController->detailsQuiz($idQuiz);
             }, 'details-quiz'),
+            array('GET', '/new-question', function() {
+                $this->backController->newQuestion();
+            }, 'new-question'),
+            array('GET', '/edit-question-[i:id]', function($idQuestion) {
+                $this->backController->editQuestion($idQuestion);
+            }, 'edit-question'),
+            array('GET', '/alert-question-[i:id]', function($idQuestion) {
+                $this->backController->alertQuestion($idQuestion);
+            }, 'alert-question'),
             array('GET', '/details-question-[i:id]', function($idQuestion) {
                 $this->backController->detailsQuestion($idQuestion);
             }, 'details-question'),
@@ -94,7 +103,7 @@ class Router {
             array('GET', '/alert-user-[i:id]', function($idUser) {
                 $this->backController->alertUser($idUser);
             }, 'alert-user'),
-            array('GET', '/detais-user-[i:id]', function($idUser) {
+            array('GET', '/details-user-[i:id]', function($idUser) {
                 $this->backController->detailsUser($idUser);
             }, 'details-user'),
         ));

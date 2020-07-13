@@ -8,7 +8,7 @@ require('vendor/autoload.php');
 class AnswerDAO extends DAO {
 
     public function getQuestionAnswers($idQuestion) {
-        $req = 'SELECT * from answer WHERE idQuestion = ?';
+        $req = 'SELECT * from answer WHERE idQuestion = ? ORDER BY RAND()';
         $data = $this->createQuery($req, [$idQuestion]);
         return $data;
     }

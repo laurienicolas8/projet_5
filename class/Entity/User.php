@@ -4,8 +4,10 @@ namespace App\Entity;
 class User extends Entity {
 
     private $_idUser;
-    private $_nameUser;
+    private $_identifiant;
     private $_password;
+    private $_nameUser;
+    private $_lastnameUser;
     private $_admin;
 
     //getters
@@ -13,30 +15,50 @@ class User extends Entity {
         return $this->_idUser;
     }
 
-    public function nameUser() {
-        return $this->_idUser;
+    public function identifiant() {
+        return $this->_identifiant;
     }
 
     public function password() {
-        return $this->_idUser;
+        return $this->_password;
+    }
+
+    public function nameUser() {
+        return $this->_nameUser;
+    }
+
+    public function lastnameUser() {
+        return $this->_lastnameUser;
     }
 
     public function admin() {
-        return $this->_idUser;
+        return $this->_admin;
     }
 
 
     //setters
     public function setIdUser($idUser) {
-        $idQuiz = (int) $idQuiz;
-        if ($idQuiz > 0) {
-            $this->_idQuiz = $idQuiz;
+        $idUser = (int) $idUser;
+        if ($idUser > 0) {
+            $this->_idUser = $idUser;
+        }
+    }
+
+    public function setIdentifiant($identifiant) {
+        if (is_string($identifiant)) {
+            $this->_identifiant = $identifiant;
         }
     }
 
     public function setNameUser($nameUser) {
         if (is_string($nameUser)) {
             $this->_nameUser = $nameUser;
+        }
+    }
+
+    public function setLastnameUser($lastnameUser) {
+        if (is_string($lastnameUser)) {
+            $this->_lastnameUser = $lastnameUser;
         }
     }
 
@@ -47,8 +69,8 @@ class User extends Entity {
     }
 
     public function setAdmin($admin) {
-        if (is_string($admin)) {
+        //if (is_bool($admin)){
             $this->_admin = $admin;
-        }
+        //}
     }
 } 
