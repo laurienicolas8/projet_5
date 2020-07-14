@@ -1,5 +1,9 @@
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Bellota', cursive;
+    font-family: 'Nunito', sans-serif;
     margin: 0;
 }
 
@@ -24,6 +28,28 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
+
+.carousel {
+    margin-top: 30px;
+}
+
+.arrow_container {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow_container:hover {
+    text-decoration: none;
+}
+
+.arrow_down_home {
+    color: #B5B5B5;
+    transition: all 300ms;
+}
+
+.arrow_down_home:hover {
+    color: #616161;
+}
 /* END SLIDER HOME */
 
 /* CATEGORIES HOME */
@@ -33,6 +59,11 @@ body {
 
 .h2_home {
     text-align: center;
+}
+
+.p_home {
+    margin-bottom: 25px;
+    font-size: 1.1em;
 }
 
 .category_container {
@@ -50,11 +81,11 @@ body {
 .img_category img{
     border-radius: 50%;
     max-width: 80%;
-    transition: all 400ms;
+    transition: all 200ms;
 }
 
 .img_category img:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
 }
 
 .title_category {
@@ -63,19 +94,26 @@ body {
 /* END CATEGORIES HOME */
 
 /* QUIZ HOME */
-.card-body {
-    background-color: #E6E6E6;
+.card {
     transition: all 200ms;
 }
 
-.card-body:hover {
+.card:hover {
     transform: scale(1.1);
-    background-color: #57A2FF;
-    border-radius: 8px;
 }
 
-.card-body:hover a {
-    color: white;
+.card:hover .card-body{
+    background-color: #E6E6E6;
+    border-radius: 2px;
+}
+
+.card-body {
+    background-color: #8C8C8C;
+    transition: all 200ms;
+}
+
+.card:hover a {
+    color: black;
 }
 
 .card-title {
@@ -83,12 +121,12 @@ body {
 }
 
 .card-title a{
-    color: black;
+    color: white;
 }
 
-.card-title a:hover {
+.card-body a:hover {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .div_button_all_quiz {
@@ -104,17 +142,35 @@ body {
     background-color: #57A2FF;
     border: 3px solid #57A2FF;
     border-radius: 30px;
-    transition: all 400ms;
+    transition: all 200ms;
 }
 
 .button_all_quiz:hover {
-    color: #57A2FF;
+    color: white;
     text-decoration: none;
-    background-color: white;
-    transform: scale(1.1);
+    border-radius: 10px;
+    transform: scale(1.15);
 }
 
 /* END QUIZ HOME */
+
+/* ALL QUIZ */
+.img_all_quiz {
+    margin : 30px auto 50px auto;
+}
+
+.back_arrow {
+    color: #616161;
+    position: absolute;
+    transition: all 200ms;
+    left: -25px;
+}
+
+.back_arrow:hover {
+    color: black;
+    transform: scale(1.2);
+}
+/* END ALL QUIZ */
 
 /* QUIZ BY CATEGORY */
 .title-category {
@@ -124,7 +180,7 @@ body {
 
 .title-category img {
     border-radius: 50%;
-    width: 12%;
+    width: 11%;
     margin: 20px;
 }
 
@@ -132,19 +188,26 @@ body {
     margin: 0 30px;
 }
 
-.etiq_quiz {
-    margin: 0 20px;
+.quiz_single_category {
+    margin: 20px;
 }
 /* END QUIZ BY CATEGORY */
 
 /* START QUIZ SECTION */
 .title_start_quiz {
     text-align: center;
-    margin: 30px;
+    margin: 30px 0;
+    width: 100%;
+    padding: 15px;
+    background-color: #E0E0E0;
+    box-shadow: 2px 2px 2px #8C8C8C;
 }
 
-p.title_start_quiz {
-    font-size: 1.2em;
+.p_start_quiz {
+    display: flex;
+    justify-content: center;
+    font-size: 1.3em;
+    margin-bottom: 20px;
 }
 
 .start_quiz_container {
@@ -162,20 +225,33 @@ p.title_start_quiz {
     display: flex;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 10px;
     font-size: 1.5em;
     margin: 0 100px;
     color: white;
-    background-color: #B8B8B8;
-    height: 220px;
-    width: 220px;
-    border-radius: 50%;
-    transition: all 400ms;
+    background-color: #28B032;
+    border-radius: 50px;
+    transition: all 200ms;
 }
 
 .btn_start_quiz:hover {
+    background-color: #28B032;
     text-decoration: none;
     color: white;
+    border-radius: 20px;
+    transform: scale(1.1);
+}
+
+.back_arrow_start {
+    color: #616161;
+    position: absolute;
+    transition: all 200ms;
+    left: 20px;
+    top: 85px;
+}
+
+.back_arrow_start:hover {
+    color: black;
     transform: scale(1.2);
 }
 /* END QUIZ SECTION */
@@ -221,6 +297,7 @@ p.title_start_quiz {
 
 /* FOOTER */
 .footer_front {
+    margin-top: 50px;
     height: 150px;
     padding: 30px 100px;
     display: flex;
@@ -249,7 +326,7 @@ p.title_start_quiz {
     border: 2px solid #57A2FF;
     border-radius: 20px;
     font-size: 1.3em;
-    transition: all 400ms;
+    transition: all 300ms;
 }
 
 .login_button:hover {
@@ -265,9 +342,11 @@ p.title_start_quiz {
     color: black;
     right: 20px;
     top: 20px;
+    transition: all 200ms;
 }
 
 .up:hover {
     color: black;
+    transform: scale(1.2);
 }
 /* END FOOTER */

@@ -21,7 +21,7 @@ class QuizDAO extends DAO {
     }
 
     public function getHomeQuiz() {
-        $req = 'SELECT * FROM quiz ORDER BY RAND() LIMIT 6';
+        $req = 'SELECT * FROM quiz ORDER BY RAND() LIMIT 8';
         $data = $this->createQuery($req);
         return $data;
     }

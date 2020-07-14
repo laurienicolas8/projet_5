@@ -58,10 +58,17 @@ class FrontController extends Controller {
     public function startQuiz($idQuiz) {
         try {
             $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
+            $countQuestions = $this->questionDAO->getCountQuizQuestions($idQuiz);
             foreach ($singleQuiz as $quiz) {
                 $oneQuiz[] = new Quiz($quiz);
             }
-            echo $this->twig->render('start_quiz.twig', ['oneQuiz' => $oneQuiz]);
+            foreach ($countQuestions as $count) {
+                $oneCount = $count;
+            }
+            echo $this->twig->render('start_quiz.twig', [
+                'oneQuiz' => $oneQuiz,
+                'oneCount' => $oneCount,
+            ]);
         } catch (Exception $e) {
             echo 'Erreur : Aucun quiz identifié';
         }

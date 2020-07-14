@@ -8,7 +8,7 @@
 
 {% for category in oneCategory %}
 <div class="d-flex align-items-center title_details_category">
-    <img src="public/images/img_categories/{{ category.imageCategory }}"></img>
+    <img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration de la catégorie"></img>
     <h1>Catégorie | {{ category.nameCategory }}</h1>
     <a href="/projet_5/edit-category-{{ category.idCategory }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_category" aria-hidden="true"></i></a>
     <a href="/projet_5/alert-category-{{ category.idCategory }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_category" aria-hidden="true"></i></a>

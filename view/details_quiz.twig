@@ -8,7 +8,7 @@
 
 {% for quiz in oneQuiz %}
 <div class="d-flex align-items-center title_details_quiz">
-    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}"></img>
+    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Illustration représentant le quiz"></img>
     <h1>Quiz | {{ quiz.nameQuiz }}</h1>
     <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_quiz" aria-hidden="true"></i></a>
     <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_quiz" aria-hidden="true"></i></a>

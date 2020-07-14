@@ -6,18 +6,20 @@
 
 {% block content %}
 
-<div class="container col-lg-11">
-    <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+<div class="container d-flex flex-column col-lg-11">
+    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+    <img class="img-fluid rounded img_all_quiz" src="public/images/intro_all_quiz.png" style="max-width: 100%;" alt="Image d'accueil des quiz">
 
     <!-- ALL QUIZ -->
     <div class="row">
         {% for quiz in allQuiz %}
-            <div class="col-lg-3 mb-4">
+            <div class="col-lg-3 col-sm-6 portfolio-item">
                 <div class="card h-100">
-                    <h4 class="card-header">{{ quiz.nameQuiz }}</h4>
-                    <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}"><img src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="height: 250px; max-width: 100%;" alt="Image quiz"></a>
-                    <div class="card-footer">
-                        <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}" class="btn btn-primary">Lancer ce quiz</a>
+                    <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}"><img class="card-img-top img_quiz" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="/projet_5/start-quiz-{{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
+                        </h4>                    
                     </div>
                 </div>
             </div>
