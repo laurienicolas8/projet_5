@@ -5,28 +5,37 @@
 {% endblock %}
 
 {% block content %}
+<div class="col-lg-12">
+    {% for quiz in oneQuiz %}
+    <div class="d-flex align-items-center title_details_quiz">
+        <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+        <h1>Quiz | {{ quiz.nameQuiz }}</h1>
+        <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}" class="link_pencil icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+        <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+    </div>
+    {% endfor %}
 
-{% for quiz in oneQuiz %}
-<div class="d-flex align-items-center title_details_quiz">
-    <img src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Illustration représentant le quiz"></img>
-    <h1>Quiz | {{ quiz.nameQuiz }}</h1>
-    <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_quiz" aria-hidden="true"></i></a>
-    <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_quiz" aria-hidden="true"></i></a>
-</div>
-{% endfor %}
-
-<div class="d-flex align-items-center quiz_by_category">
-    <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
-    <a href="" class="new_question_link"><h2>Nouvelle question</h2></a>
-</div>
-{% for question in allQuestions %}
-<div class="d-flex justify-content-between align-items-center quiz_by_category">
-    <h2>{{ question.question }}</h2>
-    <div class="col-lg-1 d-flex justify-content-between quiz_icons">
-        <a href="/projet_5/details-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-list-ul fa-lg quiz_icon" aria-hidden="true"></i></a>
-        <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+    <div class="d-flex justify-content-around flex-wrap questions_container">
+        <div class="d-flex flex-column align-items-center justify-content-center card question_card" style="width: 13rem;">
+            <a href="/projet_5/new-question" class="new_question_link">
+                <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
+                <p>Nouvelle question</p>
+            </a>
+        </div>
+        {% for question in allQuestions %}
+        <div class="d-flex flex-column align-items-center card question_card" style="width: 13rem;">
+            <div class="card-title">
+                <h4 style="color: #8A8A8A;">Question {{ question.idQuestion }}</h4>
+            </div>
+            <div class="card-text text_question">
+                <p class="question">{{ question.question }}</p>
+                <div class="d-flex justify-content-around quiz_icons">
+                    <a href="/projet_5/details-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-info-circle fa-lg info_icon" aria-hidden="true"></i></a>
+                    <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
-
 {% endblock %}

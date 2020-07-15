@@ -9,8 +9,8 @@
 {% for user in oneUser %}
 <div class="d-flex align-items-center title_details_user">
     <h1><i class="fa fa-user" aria-hidden="true"></i> Utilisateur | {{ user.nameUser }} {{ user.lastnameUser }}</h1>
-    <a href="/projet_5/edit-user-{{ user.idUser }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_category" aria-hidden="true"></i></a>
-    <a href="/projet_5/alert-user-{{ user.idUser }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_category" aria-hidden="true"></i></a>
+    <a href="/projet_5/edit-user-{{ user.idUser }}" class="icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+    <a href="/projet_5/alert-user-{{ user.idUser }}" class="icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
 </div>
 
 <div class="data_user_container">

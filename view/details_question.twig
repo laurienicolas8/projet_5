@@ -8,28 +8,41 @@
 
 {% for question in oneQuestion %}
 <div class="d-flex align-items-center title_details_quiz">
+    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
     <h1>Question {{ question.idQuestion }}</h1>
-    <a href="/projet_5/edit-question-{{ question.idQuestion }}" class="link_pencil"><i class="fa fa-pencil fa-lg icons_quiz" aria-hidden="true"></i></a>
-    <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="link_pencil"><i class="fa fa-trash-o fa-lg icons_quiz" aria-hidden="true"></i></a>
+    <a href="/projet_5/edit-question-{{ question.idQuestion }}" class="icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+    <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
 </div>
 
-<p class="data_question">{{ question.question }}</p>
+<div class="d-flex flex-column justify-content-center align-items-center">
+    <p class="data_question">{{ question.question }}</p>
 {% endfor %}
+    
+    <div class="col-lg-12 d-flex flex-wrap justify-content-center align-items-center">
+        <div class="col-lg-3 btn-secondary d-flex justify-content-center new_answer">
+            <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
+            <a href="/projet_5/new-answer" class="link_new_answer">Nouvelle réponse</a>
+        </div>
+        {% for answer in allAnswers %}
+        {% if answer.rightAnswer %}
+        <div class="col-lg-3 btn-success d-flex justify-content-center answers">
+            {{ answer.answer }}
+        </div>
+        {% else %}
+        <div class="col-lg-3 btn-primary d-flex justify-content-center answers">
+            {{ answer.answer }}
+        </div>
+        {% endif %}
+        <div class="col-lg-1 d-flex flex-column">
+            <a href="" class="answer_icon"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+            <a href="" class="answer_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+        </div>
+        {% endfor %}
+    </div>
 
-<div class="col-lg-12 d-flex justify-content-center align-items-center">
-    {% for answer in allAnswers %}
-    <div class="col-lg-3 d-flex justify-content-center answers">
-        {{ answer.answer }}
-    </div>
-    <div class="col-lg-1 d-flex flex-column">
-        <a href="" class="quiz_icon"><i class="fa fa-pencil fa-lg answer_icon" aria-hidden="true"></i></a>
-        <a href="" class="quiz_icon"><i class="fa fa-trash-o fa-lg answer_icon" aria-hidden="true"></i></a>
-    </div>
-    {% endfor %}
+        {% for question in oneQuestion %}
+        <p class="data_question">{{ question.explanation }}</p>
+        {% endfor %}
 </div>
-
-{% for question in oneQuestion %}
-<p class="data_question">{{ question.explanation }}</p>
-{% endfor %}
 
 {% endblock %}

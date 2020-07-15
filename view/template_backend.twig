@@ -15,26 +15,28 @@
 
         <!-- Icons -->
         <script src="https://kit.fontawesome.com/a7057ee266.js"></script>
+
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
     </head>
 
     <body>
         <div class="d-flex" id="wrapper">
-
             <!-- Sidebar -->
-            <div class="bg-light border-right" id="sidebar-wrapper">
-                <div class="sidebar-heading">Questionnary!</div>
+            <div class="bg-dark sidebar_dashboard" id="sidebar-wrapper">
+                <div class="sidebar-heading sidebar_head"><img src="public/images/logo_dark.png" style="max-width: 45%;"></div>
                     <div class="list-group list-group-flush">
-                        <a href="/projet_5/dashboard" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-                        <a href="/projet_5/categories" class="list-group-item list-group-item-action bg-light">Catégories</a>
-                        <a href="/projet_5/quiz" class="list-group-item list-group-item-action bg-light">Quiz</a>
-                        <a href="/projet_5/users" class="list-group-item list-group-item-action bg-light">Utilisateurs</a>
+                        <a href="/projet_5/dashboard" class="list-group-item list-group-item-action bg-dark item_menu_dashboard"><i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard</a>
+                        <a href="/projet_5/categories" class="list-group-item list-group-item-action bg-dark item_menu_dashboard"><i class="fa fa-list-ul" aria-hidden="true"></i> Catégories</a>
+                        <a href="/projet_5/quiz" class="list-group-item list-group-item-action bg-dark item_menu_dashboard"><i class="fa fa-question-circle" aria-hidden="true"></i> Quiz</a>
+                        <a href="/projet_5/users" class="list-group-item list-group-item-action bg-dark item_menu_dashboard"><i class="fa fa-user" aria-hidden="true"></i> Utilisateurs</a>
                     </div>
                 </div>
 
                 <!-- Page Content -->
                 <div id="page-content-wrapper">
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+                    <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar_dashboard">
+                        <button class="btn btn-outline-light" id="menu-toggle"><i class="fa fa-bars fa-lg" aria-hidden="true"></i></button>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>

@@ -1,10 +1,44 @@
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
 .body_container {
     margin: 15px;
 }
 
 /* SIDEBAR ADMIN */
+.sidebar_head {
+    width: 235px;
+    display: flex;
+    justify-content: center;
+}
+
+.sidebar_dashboard {
+    box-shadow: 2px 2px 2px grey;
+}
+
+.navbar_dashboard {
+    box-shadow: 2px 2px 2px grey;
+}
+
+.item_menu_dashboard {
+    color: white;
+    border: 1px solid #6E6E6E;
+    font-size: 1.1em;
+}
+
+.item_menu_dashboard i {
+    margin: 0 10px;
+}
+
+.item_menu_dashboard:hover {
+    color: #CCCCCC;
+}
+
 #wrapper {
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
  }
 
 #sidebar-wrapper {
@@ -50,6 +84,18 @@
 /* END SIDEBAR ADMIN */
 
 /* DASHBOARD */
+.back_arrow {
+    color: #616161;
+    position: relative;
+    transition: all 200ms;
+    left: -15px;
+}
+
+.back_arrow:hover {
+    color: black;
+    transform: scale(1.2);
+}
+
 .dashboard_data_container {
     margin: 50px;
 }
@@ -73,18 +119,36 @@
 /* END DASHBOARD */
 
 /* CATEGORIES */
+.category {
+    margin: 0 5px;
+}
+
 .categories_container {
     margin: 30px 0;
 }
 
-.category a {
+.link_img_category {
     text-align: center;
     margin-top: 25px;
+    transition: all 200ms;
 }
 
-.category img {
-    max-width: 70%;
+.link_img_category:hover {
+    transform: scale(1.2);
+}
+
+.img_new_category {
+    max-width: 69%;
     border-radius: 60%;
+}
+
+.img_category {
+    max-width: 87%;
+    border-radius: 50%;
+}
+
+.card_category_container {
+    width: 105px;
 }
 
 .title_category {
@@ -92,12 +156,42 @@
     margin-top: 10px;
     font-size: 1.4em;
 }
+
+.category_icon {
+    margin: 5px;
+    transition: all 200ms;
+}
+
+.category_icon:hover {
+    transform: scale(1.2);
+}
+
+.category_icons {
+    padding: 25px 5px 0 5px;
+}
+
+.info_icon {
+    color: #B0B0B0;
+}
+
+.info_icon:hover {
+    color: #006BFA;
+}
+
+.delete_icon {
+    color: #B0B0B0;
+}
+
+.delete_icon:hover {
+    color: #C92310;
+}
 /* END CATEGORIES */
 
 /* ALERT */
 .warning_title {
     display: flex;
     justify-content: center;
+    margin-top: 30px;
 }
 
 .warning_title i {
@@ -111,16 +205,18 @@
 }
 
 .alert_button {
-    
     color: white;
     font-size: 1.3em;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 15px;
+    border-radius: 17px;
+    transition: all 200ms;
 }
 
 .alert_button:hover {
     text-decoration: none;
     color: white;
+    border-radius: 3px;
+    transform: scale(1.1);
 }
 
 .delete_button {
@@ -143,8 +239,15 @@
     margin-right: 20px;
 }
 
-.icons_category {
+.icons_title {
     margin: 0 10px;
+    color: #616161;
+    transition: all 200ms;
+}
+
+.icons_title:hover {
+    color: black;
+    transform: scale(1.2);
 }
 
 .link_pencil {
@@ -176,27 +279,50 @@
 
 /* DETAILS QUIZ */
 .title_details_quiz h1 {
-    margin-right: 35px;
+    margin: 10px 35px 20px 10px;
 }
 
-.title_details_quiz img {
-    max-width: 15%;
-    border-radius: 20px;
-    margin-right: 20px;
+.question_card {
+    margin: 20px;
+    padding: 10px;
+    position: relative;
+    transition: all 200ms;
 }
 
-.icons_quiz {
-    margin: 0 10px;
+.question_card:hover {
+    transform: scale(1.1);
 }
 
 .new_question_link {
+    text-align: center;
+    font-size: 1.2em;
+    width: 100%;
+    height: 100%;
+}
+
+.new_question_link i {
+    color: #8A8A8A;
+    margin: 15px;
+}
+
+.new_question_link p {
     color: black;
-    margin-left: 35px;
 }
 
 .new_question_link:hover {
-    color: black;
     text-decoration: none;
+}
+
+.question {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 45px;
+}
+
+.quiz_icons {
+    position: absolute;
+    bottom: 10px;
+    width: 85%;
 }
 /* END DETAILS QUIZ */
 
@@ -211,46 +337,121 @@
     text-align: center;
     font-size: 1.2em;
     padding: 20px;
-    background-color: #336DFF;
     border-radius: 10px;
     color: white;
+    margin: 20px 0;
 }
 
 .answer_icon {
-    margin: 10px 0px;
+    margin: 5px;
+    transition: all 200ms;
+}
+
+.answer_icon:hover {
+    transform: scale(1.1);
+}
+
+.new_answer {
+    text-align: center;
+    font-size: 1.2em;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 0 40px;
+    transition: all 200ms;
+}
+
+.new_answer:hover {
+    transform: scale(1.1);
+}
+
+.new_answer i {
+    margin-right: 10px;
+}
+
+.link_new_answer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.link_new_answer:hover {
+    text-decoration: none;
+    color: white;
 }
 /* END DETAILS QUESTION */
 
 /* QUIZ */
+.quiz_container  {
+    margin: 40px 0;
+}
+
 .quiz_card {
-    margin-bottom: 40px;
+    margin: 0 16px 40px 16px;
+    transition: all 200ms;
+}
+
+.quiz_card:hover {
+    transform: scale(1.1);
 }
 
 .name_quiz {
     display: flex;
     text-align: center;
+    height: 70px;
     justify-content: center;
+    align-items: center;
     font-size: 1.2em;
+}
+
+.name_new_quiz {
+    display: flex;
+    text-align: center;
+    height: 119px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+}
+
+.quiz_icon  {
+    transition: all 200ms;
+}
+
+.quiz_icon:hover {
+    transform: scale(1.2);
 }
 /* END QUIZ */
 
 /* USERS */
-.user_icon {
-    color: black;
-    margin: 8px;
+.user_container {
+    margin-top: 20px;
 }
 
-.user_icon:hover {
-    color: black;
+.link_icon_user {
+    color: #8A8A8A;
+    transition: all 200ms;
+}
+
+.link_icon_user:hover {
+    color: #595959;
+    transform: scale(1.1);
 }
 
 .user_card {
-    margin: 30px;
+    margin: 15px 30px;
 }
 
 .name_user {
     font-size: 1.2em;
-    margin: 0;
+    margin: 10px 0 0 0;
+}
+
+.user_icon {
+    transition: all 200ms;
+}
+
+.user_icon:hover {
+    transform: scale(1.2);
 }
 /* END USERS */
 
