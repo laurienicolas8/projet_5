@@ -33,10 +33,20 @@ class QuestionDAO extends DAO {
     }
 
     public function createQuestion($question, $explanation, $idQuiz) {
-
+        $req = 'INSERT INTO question(question, explanation, idQuiz) VALUES (?, ?, ?)';
+        $data = $this->createQuery($req, [$question, $explanation, $idQuiz]);
+        return $data;
     }
 
     public function modifyQuestion($idQuestion, $question, $explanation) {
-        
+        $req = 'UPDATE question SET question = ?, explanation = ? WHERE idQuestion = ?';
+        $data = $this->createQuery($req, [$question, $explanation, $idQuestion]);
+        return $data;
+    }
+
+    public function  supprQuestion($idQuestion) {
+        $req = 'DELETE FROM question WHERE idQuestion = ?';
+        $data = $this->createQuery($req, [$idQuestion]);
+        return $data;
     }
 }

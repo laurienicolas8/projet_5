@@ -102,18 +102,13 @@ body {
     transform: scale(1.1);
 }
 
-.card:hover .card-body{
-    background-color: #E6E6E6;
-    border-radius: 2px;
-}
-
 .card-body {
-    background-color: #8C8C8C;
+    background-color: #E6E6E6;
     transition: all 200ms;
-}
-
-.card:hover a {
     color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .card-title {
@@ -121,7 +116,7 @@ body {
 }
 
 .card-title a{
-    color: white;
+    color: black;
 }
 
 .card-body a:hover {
@@ -170,6 +165,10 @@ body {
     color: black;
     transform: scale(1.2);
 }
+
+.pagination {
+    width: 100%;
+}
 /* END ALL QUIZ */
 
 /* QUIZ BY CATEGORY */
@@ -189,7 +188,11 @@ body {
 }
 
 .quiz_single_category {
-    margin: 20px;
+    margin: 10px;
+}
+
+.quiz_by_cat_container {
+    margin-left: 40px;
 }
 /* END QUIZ BY CATEGORY */
 

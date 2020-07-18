@@ -420,6 +420,10 @@ body {
 .quiz_icon:hover {
     transform: scale(1.2);
 }
+
+.pagination {
+    width: 100%;
+}
 /* END QUIZ */
 
 /* USERS */
@@ -469,3 +473,13 @@ body {
     margin: 20px 0;
 }
 /* END DETAILS USER */
+
+/* NEW CATEGORY */
+.form_new_container {
+    margin: 30px;
+}
+
+.valid_new_button {
+    margin: 15px 0;
+}
+/* END NEW CATEGORY */

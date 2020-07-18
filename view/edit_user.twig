@@ -1,0 +1,45 @@
+{% extends 'template_backend.twig' %}
+
+{% block head %}
+<title>Modifier</title>
+{% endblock %}
+
+{% block content %}
+<div class="d-flex title-category">
+    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+    <h1>Modifier l'utilisateur</h1>
+</div>
+
+<div class="form_new_container">
+    <form action="" method="post">
+        {% for user in oneUser %}
+        <div class="form-group">
+            <label for="identifiant_user">Identifiant</label>
+            <input type="text" class="form-control" id="identifiant_user" value="{{ user.identifiant }}">
+        </div>
+        <div class="form-group">
+            <label for="password_user">Mot de passe</label>
+            <input type="password" class="form-control" id="password_user" value="{{ user.password }}">
+        </div>
+        <div class="form-group">
+            <label for="lastname_user">Nom</label>
+            <input type="text" class="form-control" id="lastname_user" value="{{ user.lastnameUser }}">
+        </div>
+        <div class="form-group">
+            <label for="name_user">Prénom</label>
+            <input type="text" class="form-control" id="name_user" value="{{ user.nameUser }}">
+        </div>
+        <div class="form-check form-group">
+            {% if user.admin %}
+            <input class="form-check-input" type="checkbox" id="admin_user" checked>
+            {% else %}
+            <input class="form-check-input" type="checkbox" id="admin_user">
+            {% endif %}
+            <label class="form-check-label" for="admin_user">Administrateur</label>
+        </div>
+        <button type="submit" class="btn btn-success valid_new_button">Enregistrer</button>
+        {% endfor %}
+    </form>
+</div>
+
+{% endblock %}

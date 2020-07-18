@@ -26,13 +26,16 @@ class FrontController extends Controller {
         ]);
     }
 
-    public function allQuiz() {
-        $quiz = $this->quizDAO->getAllQuiz();
+    public function allQuiz($currentPage) {
+        $quiz = $this->quizDAO->getAllQuiz($currentPage);
         foreach ($quiz as $oneQuiz) {
             $allQuiz[] = new Quiz($oneQuiz);
+            //$allQuiz[array_key_last($allQuiz)]['category'] = 'test';
         }
         echo $this->twig->render('all_quiz.twig', [
             'allQuiz' => $allQuiz,
+            'nbPages' => $this->quizDAO->nbPages,
+            'currentPage' => $currentPage,
         ]);
     }
 
@@ -74,7 +77,7 @@ class FrontController extends Controller {
         }
     }
 
-    public function showQuizQuestions($idQuiz) { // answers ?
+    public function showQuizQuestions($idQuiz) {
         try {
             $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
             $questions = $this->questionDAO->getQuizQuestions($idQuiz);

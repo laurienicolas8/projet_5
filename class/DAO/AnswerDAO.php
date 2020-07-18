@@ -13,18 +13,21 @@ class AnswerDAO extends DAO {
         return $data;
     }
 
-    public function getRightAnswer($idQuestion) {
-        $req = 'SELECT rightAnswer from answer WHERE idQuestion = ?';
-        $data = $this->createQuery($req, [$idQuestion]);
-        $rightAnswer = new Answer($data);
-        return $rightAnswer;
-    }
-
     public function createAnswer($answer, $rightAnswer, $idQuestion) {
-
+        $req = 'INSERT INTO answer(answer, rightAnswer, idQuestion) VALUES (?, ?, ?)';
+        $data = $this->createQuery($req, [$answer, $rightAnswer, $idQuestion]);
+        return $data;
     }
 
     public function modifyAnswer($idAnswer, $answer, $rightAnswer) {
+        $req = 'UPDATE answer SET answer = ?, rightAnswer = ? WHERE idAnswer = ?';
+        $data = $this->createQuery($req, [$answer, $rightAnswer, $idAnswer]);
+        return $data;
+    }
 
+    public function supprAnswer($idAnswer) {
+        $req = 'DELETE FROM answer WHERE idAnswer = ?';
+        $data = $this->createQuery($req, [$idAnswer]);
+        return $data;
     }
 }

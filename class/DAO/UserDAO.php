@@ -19,15 +19,21 @@ class UserDAO extends DAO {
         return $data;
     }
 
-    public function createUser($identifiant, $pseudo, $password, $nameUser, $lastnameUser, $admin) {
-
+    public function createUser($identifiant, $password, $nameUser, $lastnameUser, $admin) {
+        $req = 'INSERT INTO user(identifiant, password, nameUser, lastnameUser, admin) VALUES (?, ?, ?, ?, ?)';
+        $data = $this->createQuery($req, [$identifiant, $password, $nameUser, $lastnameUser, $admin]);
+        return $data;
     }
 
-    public function modifyUser($identifiant, $pseudo, $password, $nameUser, $lastnameUser, $admin) {
-
+    public function modifyUser($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin) {
+        $req = 'UPDATE user SET identifiant = ?, password = ?, nameUser = ?, lastnameUser = ?, admin = ? WHERE idUser = ?';
+        $data = $this->createQuery($req, [$identifiant, $password, $nameUser, $lastnameUser, $admin, $idUser]);
+        return $data;
     }
 
     public function supprUser($idUser) {
-        
+        $req = 'DELETE FROM user WHERE idUser = ?';
+        $data = $this->createQuery($req, [$idUser]);
+        return $data;
     }
 }

@@ -7,7 +7,7 @@
 {% block content %}
 
 <div class="container col-lg-11">
-<a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
     <div class="title-category">
         {% for category in oneCategory %}
             <img class="img-category" src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie">
@@ -16,7 +16,7 @@
     </div>
 
     <!-- QUIZ OF THE CATEGORY -->
-    <div class="row">
+    <div class="row quiz_by_cat_container">
         {% for quiz in allQuiz %}
             <div class="col-lg-2 col-sm-6 portfolio-item quiz_single_category">
                 <div class="card h-100">
