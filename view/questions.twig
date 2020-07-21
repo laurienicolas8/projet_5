@@ -6,7 +6,7 @@
 
 {% block content %}
 
-<div class="container col-lg-11">
+<div class="container col-lg-12">
     <div class="row">
         {% for quiz in oneQuiz %}
             <div class="col-lg-12">
@@ -15,11 +15,18 @@
         {% endfor %}
 
         {% for question in allQuestions %}
-            <div class="col-lg-9 question_container">
-                <div class="question_div">
-                    <p class="question">{{ question.question }}</p>
-                    <p class="explanation">{{ question.explanation }}</p>
+            <div class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
+                <p class="question">{{ question.question }}</p>
+                <div class="d-flex">
+                    {% for answer in allAnswers %}
+                        {% if answer.idQuestion == question.idQuestion %}
+                            <div class="btn-primary answer">
+                                {{ answer.answer }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
+                <p class="explanation">{{ question.explanation }}</p>
                 <button type="button" class=" col-lg-1 btn btn-success btn_valid">Valider</button>
             </div>
         {% endfor %}

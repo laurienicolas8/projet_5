@@ -15,19 +15,19 @@ class AnswerDAO extends DAO {
 
     public function createAnswer($answer, $rightAnswer, $idQuestion) {
         $req = 'INSERT INTO answer(answer, rightAnswer, idQuestion) VALUES (?, ?, ?)';
-        $data = $this->createQuery($req, [$answer, $rightAnswer, $idQuestion]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$answer, $rightAnswer, $idQuestion]);
     }
 
     public function modifyAnswer($idAnswer, $answer, $rightAnswer) {
         $req = 'UPDATE answer SET answer = ?, rightAnswer = ? WHERE idAnswer = ?';
-        $data = $this->createQuery($req, [$answer, $rightAnswer, $idAnswer]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$answer, $rightAnswer, $idQuestion]);
     }
 
     public function supprAnswer($idAnswer) {
         $req = 'DELETE FROM answer WHERE idAnswer = ?';
-        $data = $this->createQuery($req, [$idAnswer]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$idAnswer]);
     }
 }

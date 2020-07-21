@@ -258,6 +258,10 @@ body {
     color: black;
 }
 
+.category_container {
+    margin: 20px 0;
+}
+
 .quiz_by_category {
     border: 2px solid grey;
     margin: 25px 0;
@@ -423,6 +427,11 @@ body {
 
 .pagination {
     width: 100%;
+}
+
+.quiz_category_card {
+    color: grey;
+    padding: 3px;
 }
 /* END QUIZ */
 

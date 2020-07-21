@@ -22,7 +22,7 @@ class BackController extends Controller {
         try {
             $this->answerDAO->createAnswer($answer, $rightAnswer, $idQuestion);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de créer cette réponse';
+            echo 'Erreur controller : Impossible de créer cette réponse';
         }
     }
 
@@ -30,7 +30,7 @@ class BackController extends Controller {
         try {
             $this->answerDAO->modifyAnswer($idAnswer, $answer, $rightAnswer, $idQuestion);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de modifier cette réponse';
+            echo 'Erreur controller : Impossible de modifier cette réponse';
         }
     }
 
@@ -38,7 +38,7 @@ class BackController extends Controller {
         try {
             $this->answerDAO->supprAnswer($idAnswer);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de supprimer cette réponse';
+            echo 'Erreur controller : Impossible de supprimer cette réponse';
         }
     }
 
@@ -68,7 +68,7 @@ class BackController extends Controller {
                 'allQuiz' => $allQuiz,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune catégorie identifiée';
+            echo 'Erreur controller : Aucune catégorie identifiée';
         }
     }
 
@@ -80,7 +80,7 @@ class BackController extends Controller {
         try {
             $this->categoryDAO->createCategory($nameCategory, $imageCategory);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de créer cette catégorie';
+            echo 'Erreur controller : Impossible de créer cette catégorie';
         }
     }
 
@@ -94,7 +94,7 @@ class BackController extends Controller {
                 'oneCategory' => $oneCategory,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune catégorie identifiée';
+            echo 'Erreur controller : Aucune catégorie identifiée';
         }
     }
 
@@ -102,7 +102,7 @@ class BackController extends Controller {
         try {
             $this->categoryDAO->modifyCategory($idCategory, $nameCategory, $imageCategory);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de modifier cette catégorie';
+            echo 'Erreur controller : Impossible de modifier cette catégorie';
         }
     }
 
@@ -116,7 +116,7 @@ class BackController extends Controller {
                 'oneCategory' => $oneCategory,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune catégorie identifiée';
+            echo 'Erreur controller : Aucune catégorie identifiée';
         }
     }
 
@@ -126,26 +126,40 @@ class BackController extends Controller {
             $categories = $this->categoryDAO->getAllCategories();
             foreach ($categories as $category) {
                 $allCategories[] = new Category($category);
-            }
+            };
             echo $this->twig->render('categories.twig', [
                 'allCategories' => $allCategories, 
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de supprimer cette catégorie';
+            echo 'Erreur controller : Impossible de supprimer cette catégorie';
         }
     }
 
     //---------- QUIZ ----------//
     public function quiz($currentPage) {
-        $quiz = $this->quizDAO->getAllQuiz($currentPage);
-        foreach ($quiz as $oneQuiz) {
-            $allQuiz[] = new Quiz($oneQuiz);
+        try {
+            $quiz = $this->quizDAO->getAllQuiz($currentPage);
+            foreach ($quiz as $oneQuiz) {
+                $quizCategory[] = $oneQuiz['idCategory'];
+                $allQuiz[] = new Quiz($oneQuiz);
+            }
+            // Supprimer les doublons pour éviter les doublons de catégorie dans la view
+            $quizUnique = array_unique($quizCategory);
+            foreach ($quizUnique as $quiz) {
+                $singleCategory = $this->categoryDAO->getSingleCategory($quiz);
+                foreach ($singleCategory as $category) {
+                    $oneCategory[] = new Category($category);
+                }
+            }
+            echo $this->twig->render('quiz.twig', [
+                'allQuiz' => $allQuiz,
+                'oneCategory' => $oneCategory,
+                'nbPages' => $this->quizDAO->nbPages,
+                'currentPage' => $currentPage,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : La numéro de la page est inconnu';
         }
-        echo $this->twig->render('quiz.twig', [
-            'allQuiz' => $allQuiz,
-            'nbPages' => $this->quizDAO->nbPages,
-            'currentPage' => $currentPage,
-        ]);
     }
 
     public function detailsQuiz($idQuiz) {
@@ -163,7 +177,7 @@ class BackController extends Controller {
                 'allQuestions' => $allQuestions,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun quiz identifié';
+            echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
@@ -181,7 +195,7 @@ class BackController extends Controller {
         try {
             $this->quizDAO->createQuiz($nameQuiz, $imageQuiz, $idCategory);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de créer ce quiz';
+            echo 'Erreur controller : Impossible de créer ce quiz';
         }
     }
 
@@ -200,7 +214,7 @@ class BackController extends Controller {
                 'allCategories' => $allCategories,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun quiz identifié';
+            echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
@@ -208,7 +222,7 @@ class BackController extends Controller {
         try {
             $this->quizDAO->modifyQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de modifier ce quiz';
+            echo 'Erreur controller : Impossible de modifier ce quiz';
         }
     }
 
@@ -222,7 +236,7 @@ class BackController extends Controller {
                 'oneQuiz' => $oneQuiz,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun quiz identifié';
+            echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
@@ -230,7 +244,7 @@ class BackController extends Controller {
         try {   
             $this->quizDAO->supprQuiz($idQuiz);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de supprimer ce quiz';
+            echo 'Erreur controller : Impossible de supprimer ce quiz';
         }
     }
 
@@ -250,7 +264,7 @@ class BackController extends Controller {
                 'allAnswers' => $allAnswers,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune question identifiée';
+            echo 'Erreur controller : Aucune question identifiée';
         }
     }
 
@@ -262,7 +276,7 @@ class BackController extends Controller {
         try {
             $this->questionDAO->createQuestion($question, $explanation, $idQuiz);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de créer cette question';
+            echo 'Erreur controller : Impossible de créer cette question';
         }
     }
 
@@ -276,7 +290,7 @@ class BackController extends Controller {
                 'oneQuestion' => $oneQuestion,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune question identifiée';
+            echo 'Erreur controller : Aucune question identifiée';
         }
     }
 
@@ -284,7 +298,7 @@ class BackController extends Controller {
         try {
             $this->questionDAO->modifyQuestion($idQuestion, $question, $explanation, $idQuiz);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de modifier cette question';
+            echo 'Erreur controller : Impossible de modifier cette question';
         }
     }
 
@@ -298,7 +312,7 @@ class BackController extends Controller {
                 'oneQuestion' => $oneQuestion,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune question identifiée';
+            echo 'Erreur controller : Aucune question identifiée';
         }
     }
 
@@ -306,7 +320,7 @@ class BackController extends Controller {
         try {
             $this->questionDAO->supprQuestion($idQuestion);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de supprimer cette question';
+            echo 'Erreur controller : Impossible de supprimer cette question';
         }      
     }
 
@@ -331,7 +345,7 @@ class BackController extends Controller {
                 'oneUser' => $oneUser,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun utilisateur identifié';
+            echo 'Erreur controller : Aucun utilisateur identifié';
         }
     }
 
@@ -343,7 +357,7 @@ class BackController extends Controller {
         try {
             $this->userDAO->createUser($identifiant, $password, $nameUser, $lastnameUser, $admin);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de créer cet utilisateur';
+            echo 'Erreur controller : Impossible de créer cet utilisateur';
         }
     }
 
@@ -357,7 +371,7 @@ class BackController extends Controller {
                 'oneUser' => $oneUser,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun utilisateur identifié';
+            echo 'Erreur controller : Aucun utilisateur identifié';
         }
     }
 
@@ -365,7 +379,7 @@ class BackController extends Controller {
         try {
             $this->userDAO->modifyUser($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de modifier cet utilisateur';
+            echo 'Erreur controller : Impossible de modifier cet utilisateur';
         }
     }
 
@@ -379,7 +393,7 @@ class BackController extends Controller {
                 'oneUser' => $oneUser,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun utilisateur identifié';
+            echo 'Erreur controller : Aucun utilisateur identifié';
         }
     }
 
@@ -387,7 +401,7 @@ class BackController extends Controller {
         try {
             $this->userDAO->supprUser($idUser);
         } catch (Exception $e) {
-            echo 'Erreur : Impossible de supprimer cet utilisateur';
+            echo 'Erreur controller : Impossible de supprimer cet utilisateur';
         }
     }
 }

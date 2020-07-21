@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use Exception;
 use App\Entity\Quiz;
+use App\Entity\Answer;
 use App\Entity\Category;
 use App\Entity\Question;
 use App\Controller\Controller;
@@ -18,25 +19,48 @@ class FrontController extends Controller {
             $allCategories[] = new Category($category);
         }
         foreach ($allQuiz as $quiz) {
+            $quizCategory[] = $quiz['idCategory'];
             $homeQuiz[] = new Quiz($quiz);
+        }
+        // Supprimer les doublons pour éviter les doublons de catégorie dans la view
+        $quizUnique = array_unique($quizCategory);
+        foreach ($quizUnique as $quiz) {
+            $singleCategory = $this->categoryDAO->getSingleCategory($quiz);
+            foreach ($singleCategory as $category) {
+                $oneCategory[] = new Category($category);
+            }
         }
         echo $this->twig->render('home.twig', [
             'allCategories' => $allCategories, 
             'homeQuiz' => $homeQuiz,
+            'oneCategory' => $oneCategory,
         ]);
     }
 
     public function allQuiz($currentPage) {
-        $quiz = $this->quizDAO->getAllQuiz($currentPage);
-        foreach ($quiz as $oneQuiz) {
-            $allQuiz[] = new Quiz($oneQuiz);
-            //$allQuiz[array_key_last($allQuiz)]['category'] = 'test';
+        try {
+            $quiz = $this->quizDAO->getAllQuiz($currentPage);
+            foreach ($quiz as $oneQuiz) {
+                $quizCategory[] = $oneQuiz['idCategory'];
+                $allQuiz[] = new Quiz($oneQuiz);
+            }
+            // Supprimer les doublons pour éviter les doublons de catégorie dans la view
+            $quizUnique = array_unique($quizCategory);
+            foreach ($quizUnique as $quiz) {
+                $singleCategory = $this->categoryDAO->getSingleCategory($quiz);
+                foreach ($singleCategory as $category) {
+                    $oneCategory[] = new Category($category);
+                }
+            }
+            echo $this->twig->render('all_quiz.twig', [
+                'allQuiz' => $allQuiz,
+                'oneCategory' => $oneCategory,
+                'nbPages' => $this->quizDAO->nbPages,
+                'currentPage' => $currentPage,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : La numéro de la page est inconnu';
         }
-        echo $this->twig->render('all_quiz.twig', [
-            'allQuiz' => $allQuiz,
-            'nbPages' => $this->quizDAO->nbPages,
-            'currentPage' => $currentPage,
-        ]);
     }
 
     public function singleCategory($idCategory) {
@@ -54,7 +78,7 @@ class FrontController extends Controller {
                 'allQuiz' => $allQuiz,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucune catégorie identifiée';
+            echo 'Erreur controller : Aucune catégorie identifiée';
         }
     }
 
@@ -73,7 +97,7 @@ class FrontController extends Controller {
                 'oneCount' => $oneCount,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun quiz identifié';
+            echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
@@ -87,12 +111,19 @@ class FrontController extends Controller {
             foreach ($questions as $question) {
                 $allQuestions[] = new Question($question);
             }
+            foreach ($allQuestions as $oneQuestion) {
+                $answers = $this->answerDAO->getQuestionAnswers($oneQuestion->idQuestion());
+                foreach ($answers as $answer) {
+                    $allAnswers[] = new Answer($answer);
+                }
+            }
             echo $this->twig->render('questions.twig', [
                 'oneQuiz' => $oneQuiz,
                 'allQuestions' => $allQuestions,
+                'allAnswers' => $allAnswers,
             ]);
         } catch (Exception $e) {
-            echo 'Erreur : Aucun quiz identifié';
+            echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 

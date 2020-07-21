@@ -11,26 +11,34 @@
 </div>
 
 <div class="form_new_container">
-    <form action="" method="post">
+    <form action="/projet_5/valid-new-user" method="post">
         <div class="form-group">
             <label for="identifiant_user">Identifiant</label>
-            <input type="text" class="form-control" id="identifiant_user" placeholder="Exemple : michel.dupont">
+            <input type="text" class="form-control" id="identifiant_user" name="identifiant" placeholder="Exemple : michel.dupont" required>
         </div>
         <div class="form-group">
             <label for="password_user">Mot de passe</label>
-            <input type="password" class="form-control" id="password_user">
+            <input type="password" class="form-control" id="password_user" name="password" required>
         </div>
         <div class="form-group">
             <label for="lastname_user">Nom</label>
-            <input type="text" class="form-control" id="lastname_user">
+            <input type="text" class="form-control" id="lastname_user" name="lastnameUser" required>
         </div>
         <div class="form-group">
             <label for="name_user">Prénom</label>
-            <input type="text" class="form-control" id="name_user">
+            <input type="text" class="form-control" id="name_user" name="nameUser" required>
         </div>
-        <div class="form-check form-group">
-            <input class="form-check-input" type="checkbox" id="admin_user">
-            <label class="form-check-label" for="admin_user">Administrateur</label>
+        
+        <div class="form-group">
+            <p>Administrateur ?</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="1" id="admin_user" name="admin">
+                <label class="form-check-label" for="admin_user">Oui</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" value="0" id="admin_user" name="admin">
+                <label class="form-check-label" for="admin_user">Non</label>
+            </div>
         </div>
         <button type="submit" class="btn btn-success valid_new_button">Enregistrer</button>
     </form>

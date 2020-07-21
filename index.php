@@ -34,15 +34,15 @@ class Router {
                 $this->frontController->allQuiz($currentPage);
             }, 'all-quiz'),
 
-            array('GET', '/single-category-[i:id]', function($idCategory) {
+            array('GET', '/single-category-[i:idCategory]', function($idCategory) {
                 $this->frontController->singleCategory($idCategory);
             }, 'single-category'),
 
-            array('GET', '/start-quiz-[i:id]', function($idQuiz) {
+            array('GET', '/start-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->startQuiz($idQuiz);
             }, 'start-quiz'),
 
-            array('GET', '/quiz-questions-[i:id]', function($idQuiz) {
+            array('GET', '/quiz-questions-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->showQuizQuestions($idQuiz);
             }, 'quiz-questions'),
 
@@ -56,17 +56,17 @@ class Router {
             }, 'dashboard'),
 
             //---------- Answers ----------//
-            array('POST', '/valid-new-answer-[a:answer]-[a:rightAnswer]-[i:idQuestion]', function($answer, $rightAnswer, $idQuestion) {
-                $this->backController->validNewAnswer($answer, $rightAnswer, $idQuestion);
+            array('POST', '/valid-new-answer-[i:idQuestion]', function($idQuestion) {
+                $this->backController->validNewAnswer($_POST['answer'], $_POST['rightAnswer'], $_POST['idQuestion']);
                 $this->backController->detailsQuestion($idQuestion);
             }, 'valid-new-answer'),
 
-            array('POST', '/update-answer-[i:idAnswer]-[a:answer]-[a:rightAnswer]-[i:idQuestion]', function($idAnswer, $answer, $rightAnswer, $idQuestion) {
-                $this->backController->updateAnswer($idAnswer, $answer, $rightAnswer, $idQuestion);
+            array('POST', '/update-answer-[i:idQuestion]', function($idQuestion) {
+                $this->backController->updateAnswer($_POST['idAnswer'], $_POST['answer'], $_POST['rightAnswer'], $_POST['idQuestion']);
                 $this->backController->detailsQuestion($idQuestion);
             }, 'update-answer'),
 
-            array('POST', '/delete-answer-[i:id]', function($idAnswer) {
+            array('GET', '/delete-answer-[i:idAnswer]', function($idAnswer) {
                 $this->backController->deleteAnswer($idAnswer);
                 $this->backController->detailsQuestion($idQuestion);
             }, 'delete-answer'),
@@ -76,7 +76,7 @@ class Router {
                 $this->backController->categories();
             }, 'categories'),
 
-            array('GET', '/details-category-[i:id]', function($idCategory) {
+            array('GET', '/details-category-[i:idCategory]', function($idCategory) {
                 $this->backController->detailsCategory($idCategory);
             }, 'details-category'),
 
@@ -84,25 +84,25 @@ class Router {
                 $this->backController->newCategory();
             }, 'new-category'),
 
-            array('POST', '/valid-new-category-[a:nameCategory]-[a:imageCategory]', function($nameCategory, $imageCategory) {
-                $this->backController->validNewCategory($nameCategory, $imageCategory);
+            array('POST', '/valid-new-category', function() {
+                $this->backController->validNewCategory($_POST['nameCategory'], $_POST['imageCategory']);
                 $this->backController->categories();                
             }, 'valid-new-category'),
 
-            array('GET', '/edit-category-[i:id]', function($idCategory) {
+            array('GET', '/edit-category-[i:idCategory]', function($idCategory) {
                 $this->backController->editCategory($idCategory);
             }, 'edit-category'),
 
-            array('POST', '/update-category-[i:idCategory]-[a:nameCategory]-[a:imageCategory]', function($idCategory, $nameCategory, $imageCategory) {
-                $this->backController->updateCategory($idCategory, $nameCategory, $imageCategory);
+            array('POST', '/update-category-[i:idCategory]', function($idCategory) {
+                $this->backController->updateCategory($idCategory, $_POST['nameCategory'], $_POST['imageCategory']);
                 $this->backController->detailsCategory($idCategory);
             }, 'update-category'),
 
-            array('GET', '/alert-category-[i:id]', function($idCategory) {
+            array('GET', '/alert-category-[i:idCategory]', function($idCategory) {
                 $this->backController->alertCategory($idCategory);
             }, 'alert-category'),
 
-            array('POST', '/delete-category-[i:id]', function($idCategory) {
+            array('GET', '/delete-category-[i:idCategory]', function($idCategory) {
                 $this->backController->deleteCategory($idCategory);
                 $this->backController->categories(); 
             }, 'delete-category'),
@@ -112,7 +112,7 @@ class Router {
                 $this->backController->quiz($currentPage);
             }, 'quiz'),
 
-            array('GET', '/details-quiz-[i:id]', function($idQuiz) {
+            array('GET', '/details-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->backController->detailsQuiz($idQuiz);
             }, 'details-quiz'),
 
@@ -120,31 +120,31 @@ class Router {
                 $this->backController->newQuiz();
             }, 'new-quiz'),
 
-            array('POST', '/valid-new-quiz-[a:nameQuiz]-[a:imageQuiz]-[i:idCategory]', function($nameQuiz, $imageQuiz, $idCategory) {
-                $this->backController->validNewQuiz($nameQuiz, $imageQuiz, $idCategory);
-                $this->backController->detailsCategory($idCategory);
+            array('POST', '/valid-new-quiz-[i:currentPage]', function($currentPage) {
+                $this->backController->validNewQuiz($_POST['nameQuiz'], $_POST['imageQuiz'], $_POST['idCategory']);
+                $this->backController->quiz($currentPage);
             }, 'valid-new-quiz'),
 
-            array('GET', '/edit-quiz-[i:id]', function($idQuiz) {
+            array('GET', '/edit-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->backController->editQuiz($idQuiz);
             }, 'edit-quiz'),
 
-            array('POST', '/update-quiz-[i:idQuiz]-[a:nameQuiz]-[a:imageQuiz]-[i:idCategory]', function($idQuiz, $nameQuiz, $imageQuiz, $idCategory) {
-                $this->backController->updateQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory);
+            array('POST', '/update-quiz-[i:idQuiz]', function($idQuiz) {
+                $this->backController->updateQuiz($idQuiz, $_POST['nameQuiz'], $_POST['imageQuiz'], $_POST['idCategory']);
                 $this->backController->detailsQuiz($idQuiz);
             }, 'update-quiz'),
 
-            array('GET', '/alert-quiz-[i:id]', function($idQuiz) {
+            array('GET', '/alert-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->backController->alertQuiz($idQuiz);
             }, 'alert-quiz'),
 
-            array('POST', '/delete-quiz-[i:id]', function($idQuiz) {
+            array('GET', '/delete-quiz-[i:idQuiz]-[i:currentPage]', function($idQuiz, $currentPage) {
                 $this->backController->deleteQuiz($idQuiz);
-                $this->backController->quiz();
+                $this->backController->quiz($currentPage);
             }, 'delete-quiz'),
             
             //---------- Question ----------//
-            array('GET', '/details-question-[i:id]', function($idQuestion) {
+            array('GET', '/details-question-[i:idQuestion]', function($idQuestion) {
                 $this->backController->detailsQuestion($idQuestion);
             }, 'details-question'),
 
@@ -152,25 +152,25 @@ class Router {
                 $this->backController->newQuestion();
             }, 'new-question'),
 
-            array('POST', '/valid-new-question-[a:question]-[a:explanation]-[i:idQuiz]', function($question, $explanation, $idQuiz) {
-                $this->backController->validNewQuestion($question, $explanation, $idQuiz);
+            array('POST', '/valid-new-question-[i:idQuiz]', function($idQuiz) {
+                $this->backController->validNewQuestion($_POST['question'], $_POST['explanation'], $_POST['idQuiz']);
                 $this->backController->detailsQuiz($idQuiz);
             }, 'valid-new-question'),
 
-            array('GET', '/edit-question-[i:id]', function($idQuestion) {
+            array('GET', '/edit-question-[i:idQuestion]', function($idQuestion) {
                 $this->backController->editQuestion($idQuestion);
             }, 'edit-question'),
 
-            array('POST', '/update-question-[i:idQuestion]-[a:question]-[a:explanation]-[i:idQuiz]', function($idQuestion, $question, $explanation, $idQuiz) {
-                $this->backController->updateQuestion($idQuestion, $question, $explanation, $idQuiz);
+            array('POST', '/update-question-[i:idQuestion]', function($idQuestion) {
+                $this->backController->updateQuestion($idQuestion, $_POST['question'], $_POST['explanation'], $_POST['idQuiz']);
                 $this->backController->detailsQuestion($idQuestion);
             }, 'update-question'),
 
-            array('GET', '/alert-question-[i:id]', function($idQuestion) {
+            array('GET', '/alert-question-[i:idQuestion]', function($idQuestion) {
                 $this->backController->alertQuestion($idQuestion);
             }, 'alert-question'),
 
-            array('POST', '/delete-question-[i:idQuestion]-[i:idQuiz]', function($idQuestion, $idQuiz) {
+            array('GET', '/delete-question-[i:idQuestion]-[i:idQuiz]', function($idQuestion, $idQuiz) {
                 $this->backController->deleteQuestion($idQuestion);
                 $this->backController->detailsQuiz($idQuiz);
             }, 'delete-question'),
@@ -180,7 +180,7 @@ class Router {
                 $this->backController->users();
             }, 'users'),
 
-            array('GET', '/details-user-[i:id]', function($idUser) {
+            array('GET', '/details-user-[i:idUser]', function($idUser) {
                 $this->backController->detailsUser($idUser);
             }, 'details-user'),
 
@@ -188,25 +188,25 @@ class Router {
                 $this->backController->newUser();
             }, 'new-user'),
 
-            array('POST', '/valid-new-user-[a:identifiant]-[a:password]-[a:nameUser]-[a:lastnameUser]-[a:admin]', function($identifiant, $password, $nameUser, $lastnameUser, $admin) {
-                $this->backController->validNewUser($identifiant, $password, $nameUser, $lastnameUser, $admin);
+            array('POST', '/valid-new-user', function() {
+                $this->backController->validNewUser($_POST['identifiant'], $_POST['password'], $_POST['nameUser'], $_POST['lastnameUser'], $_POST['admin']);
                 $this->backController->users();
             }, 'valid-new-user'),
 
-            array('GET', '/edit-user-[i:id]', function($idUser) {
+            array('GET', '/edit-user-[i:idUser]', function($idUser) {
                 $this->backController->editUser($idUser);
             }, 'edit-user'),
 
-            array('POST', '/update-user-[i:idUser]-[a:identifiant]-[a:password]-[a:nameUser]-[a:lastnameUser]-[a:admin]', function($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin) {
-                $this->backController->updateUser($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin);
+            array('POST', '/update-user-[i:idUser]', function($idUser) {
+                $this->backController->updateUser($idUser, $_POST['identifiant'], $_POST['password'], $_POST['nameUser'], $_POST['lastnameUser'], $_POST['admin']);
                 $this->backController->detailsUser($idUser);
             }, 'update-user'),
 
-            array('GET', '/alert-user-[i:id]', function($idUser) {
+            array('GET', '/alert-user-[i:idUser]', function($idUser) {
                 $this->backController->alertUser($idUser);
             }, 'alert-user'),
             
-            array('POST', '/delete-user-[i:id]', function($idUser) {
+            array('GET', '/delete-user-[i:idUser]', function($idUser) {
                 $this->backController->deleteUser($idUser);
                 $this->backController->users();
             }, 'delete-user'),
@@ -218,7 +218,9 @@ class Router {
         if ($match !==null) {
             if (is_callable($match['target'])) {
                 call_user_func_array($match['target'], $match['params']);
-            } 
+            } else  {
+                echo 'Erreur 404 : Page non trouvée';
+            }
         }
     }
 }

@@ -29,19 +29,19 @@ class CategoryDAO extends DAO {
 
     public function createCategory($nameCategory, $imageCategory) {
         $req = 'INSERT INTO category(nameCategory, imageCategory) VALUES (?, ?)';
-        $data = $this->createQuery($req, [$nameCategory, $imageCategory]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$nameCategory, $imageCategory]);
     }
 
     public function modifyCategory($idCategory, $nameCategory, $imageCategory) {
         $req = 'UPDATE category SET nameCategory = ?, imageCategory = ? WHERE idCategory = ?';
-        $data = $this->createQuery($req, [$nameCategory, $imageCategory, $idCategory]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$nameCategory, $imageCategory, $idCategory]);
     }
 
     public function supprCategory($idCategory) {
         $req = 'DELETE FROM category WHERE idCategory = ?';
-        $data = $this->createQuery($req, [$idCategory]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$idCategory]);
     }
 }

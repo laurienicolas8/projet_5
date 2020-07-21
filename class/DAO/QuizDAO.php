@@ -45,19 +45,19 @@ class QuizDAO extends DAO {
 
     public function createQuiz($nameQuiz, $imageQuiz, $idCategory) {
         $req = 'INSERT INTO quiz(nameQuiz, imageQuiz, idCategory) VALUES (?, ?, ?)';
-        $data = $this->createQuery($req, [$nameQuiz, $imageQuiz, $idCategory]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$nameQuiz, $imageQuiz, $idCategory]);
     }
 
     public function modifyQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory) {
         $req = 'UPDATE quiz SET nameQuiz = ?, imageQuiz = ? WHERE idCategory = ?';
-        $data = $this->createQuery($req, [$nameQuiz, $imageQuiz, $idCategory]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$nameQuiz, $imageQuiz, $idCategory]);
     }
 
     public function supprQuiz($idQuiz) {
         $req = 'DELETE FROM quiz WHERE idQuiz = ?';
-        $data = $this->createQuery($req, [$idQuiz]);
-        return $data;
+        $sql = $this->checkConnection()->prepare($req);
+        $sql->execute([$idQuiz]);
     }
 }
