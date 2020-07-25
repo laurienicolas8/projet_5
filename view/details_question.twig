@@ -8,41 +8,126 @@
 
 {% for question in oneQuestion %}
 <div class="d-flex align-items-center title_details_quiz">
-    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+    <a href="/projet_5/details-quiz-{{ question.idQuiz }}" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
     <h1>Question {{ question.idQuestion }}</h1>
     <a href="/projet_5/edit-question-{{ question.idQuestion }}" class="icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
     <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
 </div>
 
+{% if allAnswers == null %}
+<div class="alert alert-danger" role="alert">
+    Cette question ne contient aucune proposition de réponse, elle est donc indisponible sur le site. Ajoutez-lui des réponses dès maintenant !
+</div>
+{% endif %}
+
 <div class="d-flex flex-column justify-content-center align-items-center">
     <p class="data_question">{{ question.question }}</p>
-{% endfor %}
-    
+
     <div class="col-lg-12 d-flex flex-wrap justify-content-center align-items-center">
-        <div class="col-lg-3 btn-secondary d-flex justify-content-center new_answer">
+        <div class="col-lg-3 btn-secondary d-flex justify-content-around new_answer" id="new_answer">
             <i class="fa fa-plus fa-2x" aria-hidden="true"></i>
-            <a href="/projet_5/new-answer" class="link_new_answer">Nouvelle réponse</a>
+            <a href="#" class="link_new_answer">Nouvelle réponse</a>
         </div>
+
         {% for answer in allAnswers %}
+
         {% if answer.rightAnswer %}
         <div class="col-lg-3 btn-success d-flex justify-content-center answers">
-            {{ answer.answer }}
-        </div>
         {% else %}
         <div class="col-lg-3 btn-primary d-flex justify-content-center answers">
+        {% endif %}
             {{ answer.answer }}
         </div>
-        {% endif %}
+
         <div class="col-lg-1 d-flex flex-column">
-            <a href="" class="answer_icon"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
-            <a href="/projet_5/delete-answer-{{ answer.idAnswer }}" class="answer_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+            <a href="/projet_5/edit-answer-{{ answer.idAnswer }}-{{ question.idQuestion }}" class="answer_icon edit_answer"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+            <a href="/projet_5/delete-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}" class="answer_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
         </div>
         {% endfor %}
-    </div>
 
-        {% for question in oneQuestion %}
-        <p class="data_question">{{ question.explanation }}</p>
+        {% for answerEdit in oneAnswer %}
+        <div class="edit_answer_container" class="col-lg-5 ">
+            <a href="#" id="close_edit_answer" class="close_answer"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <form action="/projet_5/update-answer-{{ answerEdit.idAnswer }}" method="post" class="col-lg-12">
+                <div class="form-group form-inline">
+                    <input type="text" id="answer" name="answer" value="{{ answerEdit.answer }}" required class="col-lg-10 form-text">
+                    <button id="valid_new_answer" class="col-lg-2 btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+                <div class="form-group form-inline">
+                    <p style="margin-bottom: 0; margin-right: 15px;">Est-ce la bonne réponse ?</p>
+                    <div class="form-check form-check-inline">
+                        {% if answerEdit.rightAnswer %}
+                        <input class="form-check-input" type="radio" value="1" id="right_answer" name="rightAnswer" checked>
+                        {% else %}
+                        <input class="form-check-input" type="radio" value="1" id="right_answer" name="rightAnswer">
+                        {% endif %}
+                        <label class="form-check-label" for="right_answer">Oui</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        {% if answerEdit.rightAnswer %}
+                        <input class="form-check-input" type="radio" value="0" id="right_answer" name="rightAnswer">
+                        {% else %}
+                        <input class="form-check-input" type="radio" value="0" id="right_answer" name="rightAnswer" checked>
+                        {% endif %}
+                        <label class="form-check-label" for="right_answer">Non</label>
+                    </div>
+                </div>
+            </form>
+        </div>
         {% endfor %}
+        
+
+        <div id="answer_container" class="col-lg-5 answer_container">
+            <a href="#" id="close_new_answer" class="close_answer"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <form action="/projet_5/valid-new-answer-{{ question.idQuestion }}" method="post" class="col-lg-12">
+                <div class="form-group form-inline">
+                    <input type="text" id="answer" name="answer" required class="col-lg-10 form-text">
+                    <button id="valid_new_answer" class="col-lg-2 btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+                <div class="form-group form-inline">
+                    <p style="margin-bottom: 0; margin-right: 15px;">Est-ce la bonne réponse ?</p>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="1" id="right_answer" name="rightAnswer">
+                        <label class="form-check-label" for="right_answer">Oui</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" value="0" id="right_answer" name="rightAnswer">
+                        <label class="form-check-label" for="right_answer">Non</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+        <p class="data_question">{{ question.explanation }}</p>
 </div>
+{% endfor %}
+
+{% endblock %}
+
+{% block footer %}
+
+<script>
+$('#new_answer').click(function() {
+    $('#answer_container').slideDown(400);
+});
+$('#close_new_answer').click(function() {
+    $('#answer_container').hide();
+});
+$('.edit_answer').click(function() {
+        page = $('.edit_answer').attr('href');
+        $.ajax({
+            url: page,
+            cache: false,
+            success: function(html) {
+                alert('ok');
+            },
+            error: function() {
+                alert('error'),
+            },
+        })
+        return false;
+})
+
+</script>
 
 {% endblock %}

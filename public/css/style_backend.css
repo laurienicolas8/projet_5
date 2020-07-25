@@ -226,6 +226,10 @@ body {
 .cancel_button {
     background-color: #B0B0B0;
 }
+
+.alert_empty {
+    margin: 25px 0;
+}
 /* END ALERT */
 
 /* DETAILS CATEGORY */
@@ -383,6 +387,21 @@ body {
     text-decoration: none;
     color: white;
 }
+
+.answer_container {
+    display: none; 
+    position: relative;
+}
+
+.close_answer {
+    position: absolute;
+    right: 0;
+}
+
+.close_answer i {
+    color: black;
+}
+
 /* END DETAILS QUESTION */
 
 /* QUIZ */

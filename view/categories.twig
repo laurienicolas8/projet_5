@@ -20,10 +20,10 @@
             <p class="title_category">{{ category.nameCategory }}</p>
         </div>
         <div class="d-flex flex-column category_icons">
-            <a href="/projet_5/alert-category-{{ category.idCategory }}" class="category_icon delete_icon"><i class="fa fa-trash-o fa-lg" aria-hidden="true"></i></a>
+            <a href="/projet_5/edit-category-{{ category.idCategory }}" class="category_icon info_icon"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <a href="/projet_5/alert-category-{{ category.idCategory }}" class="category_icon delete_icon"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
         </div>
     </div>
-    
     {% endfor %}
 </div>
 

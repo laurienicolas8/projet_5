@@ -26,9 +26,30 @@ class BackController extends Controller {
         }
     }
 
-    public function updateAnswer($idAnswer, $answer, $rightAnswer, $idQuestion) {
+    public function editAnswer($idAnswer, $idQuestion) {
         try {
-            $this->answerDAO->modifyAnswer($idAnswer, $answer, $rightAnswer, $idQuestion);
+            $singleAnswer = $this->answerDAO->getSingleAnswer($idAnswer);
+            $oneQuestion = $this->singleQuestion($idQuestion);
+            $answers = $this->answerDAO->getQuestionAnswers($idQuestion);
+            foreach ($singleAnswer as $answer) {
+                $oneAnswer[] = new Answer($answer);
+            }
+            foreach ($answers as $answer) {
+                $allAnswers[] = new Answer($answer);
+            }
+            echo $this->twig->render('details_question.twig', [
+                'oneQuestion' => $oneQuestion,
+                'allAnswers' => $allAnswers,
+                'oneAnswer' => $oneAnswer,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : Impossible de modifier cette réponse';
+        }
+    }
+
+    public function updateAnswer($idAnswer, $answer, $rightAnswer) {
+        try {
+            $this->answerDAO->modifyAnswer($idAnswer, $answer, $rightAnswer);
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier cette réponse';
         }
@@ -44,10 +65,7 @@ class BackController extends Controller {
 
     //---------- CATEGORIES ----------//
     public function categories() {
-        $categories = $this->categoryDAO->getAllCategories();
-        foreach ($categories as $category) {
-            $allCategories[] = new Category($category);
-        }
+        $allCategories = $this->allCategories();
         echo $this->twig->render('categories.twig', [
             'allCategories' => $allCategories, 
         ]);
@@ -55,14 +73,8 @@ class BackController extends Controller {
 
     public function detailsCategory($idCategory) {
         try {
-            $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
-            $quizByCategory = $this->quizDAO->getQuizByCategory($idCategory);
-            foreach ($singleCategory as $category) {
-                $oneCategory[] = new Category($category);
-            }
-            foreach ($quizByCategory as $quiz) {
-                $allQuiz[] = new Quiz($quiz);
-            }
+            $oneCategory = $this->singleCategory($idCategory);
+            $allQuiz = $this->quizByCategory($idCategory);
             echo $this->twig->render('details_category.twig', [
                 'oneCategory' => $oneCategory,
                 'allQuiz' => $allQuiz,
@@ -86,10 +98,7 @@ class BackController extends Controller {
 
     public function editCategory($idCategory) {
         try {
-            $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
-            foreach ($singleCategory as $category) {
-                $oneCategory[] = new Category($category);
-            }
+            $oneCategory = $this->singleCategory($idCategory);
             echo $this->twig->render('edit_category.twig', [
                 'oneCategory' => $oneCategory,
             ]);
@@ -108,10 +117,7 @@ class BackController extends Controller {
 
     public function alertCategory($idCategory) {
         try {
-            $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
-            foreach ($singleCategory as $category) {
-                $oneCategory[] = new Category($category);
-            }
+            $oneCategory = $this->singleCategory($idCategory);
             echo $this->twig->render('alert_category.twig', [
                 'oneCategory' => $oneCategory,
             ]);
@@ -123,13 +129,6 @@ class BackController extends Controller {
     public function deleteCategory($idCategory) {
         try {
             $this->categoryDAO->supprCategory($idCategory);
-            $categories = $this->categoryDAO->getAllCategories();
-            foreach ($categories as $category) {
-                $allCategories[] = new Category($category);
-            };
-            echo $this->twig->render('categories.twig', [
-                'allCategories' => $allCategories, 
-            ]);
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de supprimer cette catégorie';
         }
@@ -164,14 +163,8 @@ class BackController extends Controller {
 
     public function detailsQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
-            $questions = $this->questionDAO->getQuizQuestions($idQuiz);
-            foreach ($singleQuiz as $quiz) {
-                $oneQuiz[] = new Quiz($quiz);
-            }
-            foreach ($questions as $question) {
-                $allQuestions[] = new Question($question);
-            }
+            $oneQuiz = $this->singleQuiz($idQuiz);
+            $allQuestions = $this->questions($idQuiz);
             echo $this->twig->render('details_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
                 'allQuestions' => $allQuestions,
@@ -182,10 +175,7 @@ class BackController extends Controller {
     }
 
     public function newQuiz() {
-        $categories = $this->categoryDAO->getAllCategories();
-        foreach ($categories as $category) {
-            $allCategories[] = new Category($category);
-        }
+        $allCategories = $this->allCategories();
         echo $this->twig->render('new_quiz.twig', [
             'allCategories' => $allCategories,
         ]);
@@ -193,7 +183,7 @@ class BackController extends Controller {
 
     public function validNewQuiz($nameQuiz, $imageQuiz, $idCategory) {
         try {
-            $this->quizDAO->createQuiz($nameQuiz, $imageQuiz, $idCategory);
+            $this->quizDAO->createQuiz($nameQuiz, $imageQuiz, $idCategory);            
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer ce quiz';
         }
@@ -201,14 +191,8 @@ class BackController extends Controller {
 
     public function editQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
-            $categories = $this->categoryDAO->getAllCategories();
-            foreach ($singleQuiz as $quiz) {
-                $oneQuiz[] = new Quiz($quiz);
-            }
-            foreach ($categories as $category) {
-                $allCategories[] = new Category($category);
-            }
+            $oneQuiz = $this->singleQuiz($idQuiz);
+            $allCategories = $this->allCategories();
             echo $this->twig->render('edit_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
                 'allCategories' => $allCategories,
@@ -228,10 +212,7 @@ class BackController extends Controller {
 
     public function alertQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
-            foreach ($singleQuiz as $quiz) {
-                $oneQuiz[] = new Quiz($quiz);
-            }
+            $oneQuiz = $this->singleQuiz($idQuiz);
             echo $this->twig->render('alert_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
             ]);
@@ -251,14 +232,8 @@ class BackController extends Controller {
     //---------- QUESTION ----------//
     public function detailsQuestion($idQuestion) {
         try {
-            $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
-            $answers = $this->answerDAO->getQuestionAnswers($idQuestion);
-            foreach ($singleQuestion as $question) {
-                $oneQuestion[] = new Question($question);
-            }
-            foreach ($answers as $answer) {
-                $allAnswers[] = new Answer($answer);
-            }
+            $oneQuestion = $this->singleQuestion($idQuestion);
+            $allAnswers = $this->answers($idQuestion);
             echo $this->twig->render('details_question.twig', [
                 'oneQuestion' => $oneQuestion,
                 'allAnswers' => $allAnswers,
@@ -268,8 +243,15 @@ class BackController extends Controller {
         }
     }
 
-    public function newQuestion() {
-        echo $this->twig->render('new_question.twig');
+    public function newQuestion($idQuiz) {
+        try {
+            $oneQuiz = $this->singleQuiz($idQuiz);
+            echo $this->twig->render('new_question.twig', [
+                'oneQuiz' => $oneQuiz,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : Impossible de créer une nouvelle question sur ce quiz';
+        }
     }
 
     public function validNewQuestion($question, $explanation, $idQuiz) {
@@ -282,10 +264,7 @@ class BackController extends Controller {
 
     public function editQuestion($idQuestion) {
         try {
-            $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
-            foreach ($singleQuestion as $question) {
-                $oneQuestion[] = new Question($question);
-            }
+            $oneQuestion = $this->singleQuestion($idQuestion);
             echo $this->twig->render('edit_question.twig', [
                 'oneQuestion' => $oneQuestion,
             ]);
@@ -294,9 +273,9 @@ class BackController extends Controller {
         }
     }
 
-    public function updateQuestion($idQuestion, $question, $explanation, $idQuiz) {
+    public function updateQuestion($idQuestion, $question, $explanation) {
         try {
-            $this->questionDAO->modifyQuestion($idQuestion, $question, $explanation, $idQuiz);
+            $this->questionDAO->modifyQuestion($idQuestion, $question, $explanation);
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier cette question';
         }
@@ -304,10 +283,7 @@ class BackController extends Controller {
 
     public function alertQuestion($idQuestion) {
         try {
-            $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
-            foreach ($singleQuestion as $question) {
-                $oneQuestion[] = new Question($question);
-            }
+            $oneQuestion = $this->singleQuestion($idQuestion);
             echo $this->twig->render('alert_question.twig', [
                 'oneQuestion' => $oneQuestion,
             ]);
@@ -327,8 +303,12 @@ class BackController extends Controller {
     //---------- USER ----------//
     public function users() {
         $users = $this->userDAO->getAllUsers();
-        foreach ($users as $user) {
-            $allUsers[] = new User($user);
+        if ($users === []) {
+            $allUsers = null;
+        } else {
+            foreach ($users as $user) {
+                $allUsers[] = new User($user);
+            }
         }
         echo $this->twig->render('users.twig', [
             'allUsers' => $allUsers,
@@ -337,10 +317,7 @@ class BackController extends Controller {
 
     public function detailsUser($idUser) {
         try {
-            $singleUser = $this->userDAO->getSingleUser($idUser);
-            foreach ($singleUser as $user) {
-                $oneUser[] = new User($user);
-            }
+            $oneUser = $this->singleUser($idUser);
             echo $this->twig->render('details_user.twig', [
                 'oneUser' => $oneUser,
             ]);
@@ -363,10 +340,7 @@ class BackController extends Controller {
 
     public function editUser($idUser) {
         try {
-            $singleUser = $this->userDAO->getSingleUser($idUser);
-            foreach ($singleUser as $user) {
-                $oneUser[] = new User($user);
-            }
+            $oneUser = $this->singleUser($idUser);
             echo $this->twig->render('edit_user.twig', [
                 'oneUser' => $oneUser,
             ]);
@@ -385,10 +359,7 @@ class BackController extends Controller {
 
     public function alertUser($idUser) {
         try {
-            $singleUser = $this->userDAO->getSingleUser($idUser);
-            foreach ($singleUser as $user) {
-                $oneUser[] = new User($user);
-            }
+            $oneUser = $this->singleUser($iduser);
             echo $this->twig->render('alert_user.twig', [
                 'oneUser' => $oneUser,
             ]);

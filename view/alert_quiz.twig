@@ -12,7 +12,7 @@
 <p class="alert_text">Vous êtes sur le point de supprimer le quiz {{ quiz.nameQuiz }}. Attention, la suppression d'un élément est irréversible et peut entraîner la suppression d'autres éléments contenus par celui-ci ou en lien avec. Etes-vous sûr(e) de vouloir supprimer ce quiz ?</p>
 
 <div class="d-flex justify-content-around">
-    <a href="/projet_5/delete-quiz-{{ quiz.idQuiz }}-1" class="alert_button delete_button">Supprimer</a>
+    <a href="/projet_5/delete-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}" class="alert_button delete_button">Supprimer</a>
     <a href="javascript:history.back()" class="alert_button cancel_button">Annuler</a>
 </div>
 {% endfor %}

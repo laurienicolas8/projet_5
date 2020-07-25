@@ -11,21 +11,21 @@
 </div>
 
 <div class="form_new_container">
-    <form action="" method="post">
+    {% for quiz in oneQuiz %}
+    <form action="/projet_5/update-quiz-{{ quiz.idQuiz }}" method="post">
         <div class="form-group">
-            {% for quiz in oneQuiz %}
             <label for="name_quiz">Nom</label>
-            <input type="text" class="form-control" id="name_quiz" value="{{ quiz.nameQuiz }}">
+            <input type="text" class="form-control" id="name_quiz" name="nameQuiz" value="{{ quiz.nameQuiz }}">
         </div>
         <div class="form-group">
             <label for="image_quiz">Image</label>
             <p class="current_image_quiz">{{ quiz.imageQuiz }}</p>
-            <input type="file" class="form-control-file" id="image_quiz">
+            <input type="file" class="form-control-file" id="image_quiz" name="imageQuiz">
             <small id="image_quiz_help" class="form-text text-muted">Choisissez un fichier seulement si vous souhaitez modifier l'image du quiz. </small>
         </div>
         <div class="form-group">
             <label for="select_id_category">Catégorie d'appartenance</label>
-            <select class="custom-select" id="select_id_category">
+            <select class="custom-select" id="select_id_category" name="idCategory">
                 <option selected>Sélectionner...</option>
                 {% for category in allCategories %}
                 <option value="{{ category.idCategory }}">{{ category.nameCategory }}</option>

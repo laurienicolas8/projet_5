@@ -50,9 +50,9 @@ class QuizDAO extends DAO {
     }
 
     public function modifyQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory) {
-        $req = 'UPDATE quiz SET nameQuiz = ?, imageQuiz = ? WHERE idCategory = ?';
+        $req = 'UPDATE quiz SET nameQuiz = ?, imageQuiz = ?, idCategory = ? WHERE idQuiz = ?';
         $sql = $this->checkConnection()->prepare($req);
-        $sql->execute([$nameQuiz, $imageQuiz, $idCategory]);
+        $sql->execute([$nameQuiz, $imageQuiz, $idCategory, $idQuiz]);
     }
 
     public function supprQuiz($idQuiz) {

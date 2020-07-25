@@ -28,8 +28,9 @@
         <div class="card-text">
             <a class="card-text name_quiz">{{ quiz.nameQuiz }}</a>
         </div>
-        <div class="card-footer d-flex justify-content-end all_quiz_icons">
-            <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+        <div class="card-footer d-flex justify-content-between all_quiz_icons">
+            <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}"><i class="fa fa-pencil info_icon" aria-hidden="true"></i></a>
+            <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o delete_icon" aria-hidden="true"></i></a>
         </div>
     </div>
     {% endfor %}

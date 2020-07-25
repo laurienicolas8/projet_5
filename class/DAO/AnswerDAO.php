@@ -7,8 +7,14 @@ require('vendor/autoload.php');
 
 class AnswerDAO extends DAO {
 
+    public function getSingleAnswer($idAnswer) {
+        $req = 'SELECT * FROM answer WHERE idAnswer = ?';
+        $data = $this->createQuery($req, [$idAnswer]);
+        return $data;
+    }
+
     public function getQuestionAnswers($idQuestion) {
-        $req = 'SELECT * from answer WHERE idQuestion = ? ORDER BY RAND()';
+        $req = 'SELECT * FROM answer WHERE idQuestion = ?';
         $data = $this->createQuery($req, [$idQuestion]);
         return $data;
     }
@@ -22,7 +28,7 @@ class AnswerDAO extends DAO {
     public function modifyAnswer($idAnswer, $answer, $rightAnswer) {
         $req = 'UPDATE answer SET answer = ?, rightAnswer = ? WHERE idAnswer = ?';
         $sql = $this->checkConnection()->prepare($req);
-        $sql->execute([$answer, $rightAnswer, $idQuestion]);
+        $sql->execute([$answer, $rightAnswer, $idAnswer]);
     }
 
     public function supprAnswer($idAnswer) {

@@ -13,11 +13,8 @@ require('vendor/autoload.php');
 class FrontController extends Controller {
     
     public function home() {
-        $categories = $this->categoryDAO->getAllCategories();
+        $allCategories = $this->allCategories();
         $allQuiz = $this->quizDAO->getHomeQuiz();
-        foreach ($categories as $category) {
-            $allCategories[] = new Category($category);
-        }
         foreach ($allQuiz as $quiz) {
             $quizCategory[] = $quiz['idCategory'];
             $homeQuiz[] = new Quiz($quiz);
@@ -63,16 +60,10 @@ class FrontController extends Controller {
         }
     }
 
-    public function singleCategory($idCategory) {
+    public function detailSingleCategory($idCategory) {
         try {
-            $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
-            $quizByCategory = $this->quizDAO->getQuizByCategory($idCategory);
-            foreach ($singleCategory as $category) {
-                $oneCategory[] = new Category($category);
-            }
-            foreach ($quizByCategory as $quiz) {
-                $allQuiz[] = new Quiz($quiz);
-            }
+            $oneCategory = $this->singleCategory($idCategory);
+            $allQuiz = $this->quizByCategory($idCategory);
             echo $this->twig->render('single_category.twig', [
                 'oneCategory' => $oneCategory,
                 'allQuiz' => $allQuiz,
@@ -84,11 +75,8 @@ class FrontController extends Controller {
 
     public function startQuiz($idQuiz) {
         try {
-            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
+            $oneQuiz = $this->singleQuiz($idQuiz);
             $countQuestions = $this->questionDAO->getCountQuizQuestions($idQuiz);
-            foreach ($singleQuiz as $quiz) {
-                $oneQuiz[] = new Quiz($quiz);
-            }
             foreach ($countQuestions as $count) {
                 $oneCount = $count;
             }
@@ -103,14 +91,8 @@ class FrontController extends Controller {
 
     public function showQuizQuestions($idQuiz) {
         try {
-            $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
-            $questions = $this->questionDAO->getQuizQuestions($idQuiz);
-            foreach ($singleQuiz as $quiz) {
-                $oneQuiz[] = new Quiz($quiz);
-            }
-            foreach ($questions as $question) {
-                $allQuestions[] = new Question($question);
-            }
+            $oneQuiz = $this->singleQuiz($idQuiz);
+            $allQuestions = $this->questions($idQuiz);
             foreach ($allQuestions as $oneQuestion) {
                 $answers = $this->answerDAO->getQuestionAnswers($oneQuestion->idQuestion());
                 foreach ($answers as $answer) {

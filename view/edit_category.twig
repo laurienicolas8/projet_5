@@ -20,14 +20,14 @@
         <div class="form-group">
             <label for="image_category">Image</label>
             <p id="current_image_category">{{ category.imageCategory }}</p>
-            <input type="file" class="form-control-file" id="image_category" name="imageCategory">
+            <input type="file" class="form-control-file" id="image_category" name="imageCategory" value="{{ category.imageCategory }}">
             <small id="image_category_help" class="form-text text-muted">Choisissez un fichier seulement si vous souhaitez modifier l'image de la catégorie. </small>
         </div>
         
         <button type="submit" id="valid_new_category" class="btn btn-success valid_new_button">Enregistrer</button>
         
     </form>
-    <button id="ex">valid</button>
+    
     {% endfor %}
 </div>
 {% endblock %}
