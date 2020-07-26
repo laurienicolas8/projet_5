@@ -20,7 +20,7 @@
 </div>
 {% endif %}
 
-<div class="d-flex flex-column justify-content-center align-items-center">
+<div class="d-flex flex-column justify-content-center align-items-center" id="content_question">
     <p class="data_question">{{ question.question }}</p>
 
     <div class="col-lg-12 d-flex flex-wrap justify-content-center align-items-center">
@@ -40,15 +40,15 @@
         </div>
 
         <div class="col-lg-1 d-flex flex-column">
-            <a href="/projet_5/edit-answer-{{ answer.idAnswer }}-{{ question.idQuestion }}" class="answer_icon edit_answer"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+            <a href="/projet_5/edit-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}" class="answer_icon edit_answer"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
             <a href="/projet_5/delete-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}" class="answer_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
         </div>
         {% endfor %}
 
         {% for answerEdit in oneAnswer %}
         <div class="edit_answer_container" class="col-lg-5 ">
-            <a href="#" id="close_edit_answer" class="close_answer"><i class="fa fa-times" aria-hidden="true"></i></a>
-            <form action="/projet_5/update-answer-{{ answerEdit.idAnswer }}" method="post" class="col-lg-12">
+            <a href="#" class="close_answer close_edit_answer"><i class="fa fa-times" aria-hidden="true"></i></a>
+            <form action="/projet_5/update-answer-{{ answerEdit.idAnswer }}-{{ answerEdit.idQuestion }}" method="post" class="col-lg-12">
                 <div class="form-group form-inline">
                     <input type="text" id="answer" name="answer" value="{{ answerEdit.answer }}" required class="col-lg-10 form-text">
                     <button id="valid_new_answer" class="col-lg-2 btn btn-success"><i class="fa fa-check" aria-hidden="true"></i></button>
@@ -114,18 +114,22 @@ $('#close_new_answer').click(function() {
     $('#answer_container').hide();
 });
 $('.edit_answer').click(function() {
-        page = $('.edit_answer').attr('href');
-        $.ajax({
-            url: page,
-            cache: false,
-            success: function(html) {
-                alert('ok');
-            },
-            error: function() {
-                alert('error'),
-            },
-        })
-        return false;
+    page = $(this).attr('href');
+    $.ajax({
+        url: page,
+        cache: false,
+        success: function(html) {
+            $('body').empty();
+            $('body').append(html);
+        },
+        error: function() {
+            alert('error');
+        },
+    });
+    return false;
+});
+$('.close_edit_answer').click(function() {
+    $('.edit_answer_container').hide();
 })
 
 </script>

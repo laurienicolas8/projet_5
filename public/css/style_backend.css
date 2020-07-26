@@ -401,7 +401,6 @@ body {
 .close_answer i {
     color: black;
 }
-
 /* END DETAILS QUESTION */
 
 /* QUIZ */
@@ -508,6 +507,10 @@ body {
 }
 
 .valid_new_button {
+    margin: 15px 0;
+}
+
+.button_change_image {
     margin: 15px 0;
 }
 /* END NEW CATEGORY */

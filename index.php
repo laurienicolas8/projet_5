@@ -65,8 +65,9 @@ class Router {
                 $this->backController->editAnswer($idAnswer, $idQuestion);
             }, 'edit-answer'),
 
-            array('POST', '/update-answer-[i:idAnswer]', function($idAnswer) {
+            array('POST', '/update-answer-[i:idAnswer]-[i:idQuestion]', function($idAnswer, $idQuestion) {
                 $this->backController->updateAnswer($idAnswer, $_POST['answer'], $_POST['rightAnswer']);
+                $this->backController->detailsQuestion($idQuestion);
             }, 'update-answer'),
 
             array('GET', '/delete-answer-[i:idAnswer]-[i:idQuestion]', function($idAnswer, $idQuestion) {
@@ -129,8 +130,8 @@ class Router {
                 $this->backController->detailsCategory($_POST['idCategory']);
             }, 'valid-new-quiz'),
 
-            array('GET', '/edit-quiz-[i:idQuiz]', function($idQuiz) {
-                $this->backController->editQuiz($idQuiz);
+            array('GET', '/edit-quiz-[i:idQuiz]-[i:idCategory]', function($idQuiz, $idCategory) {
+                $this->backController->editQuiz($idQuiz, $idCategory);
             }, 'edit-quiz'),
 
             array('POST', '/update-quiz-[i:idQuiz]', function($idQuiz) {

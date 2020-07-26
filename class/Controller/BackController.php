@@ -189,12 +189,14 @@ class BackController extends Controller {
         }
     }
 
-    public function editQuiz($idQuiz) {
+    public function editQuiz($idQuiz, $idCategory) {
         try {
             $oneQuiz = $this->singleQuiz($idQuiz);
+            $oneCategory = $this->singleCategory($idCategory);
             $allCategories = $this->allCategories();
             echo $this->twig->render('edit_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
+                'oneCategory' => $oneCategory,
                 'allCategories' => $allCategories,
             ]);
         } catch (Exception $e) {

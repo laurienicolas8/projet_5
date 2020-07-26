@@ -15,13 +15,12 @@
     <form action="/projet_5/update-category-{{ category.idCategory }}" method="post">
         <div class="form-group">
             <label for="name_category">Nom</label>
-            <input type="text" class="form-control" id="name_category" name="nameCategory" value="{{ category.nameCategory }}">
+            <input type="text" class="form-control" id="name_category" name="nameCategory" value="{{ category.nameCategory }}" required>
         </div>
-        <div class="form-group">
+        <div class="form-group" id="image_category_container">
             <label for="image_category">Image</label>
-            <p id="current_image_category">{{ category.imageCategory }}</p>
-            <input type="file" class="form-control-file" id="image_category" name="imageCategory" value="{{ category.imageCategory }}">
-            <small id="image_category_help" class="form-text text-muted">Choisissez un fichier seulement si vous souhaitez modifier l'image de la catégorie. </small>
+            <input type="text" class="form-control" readonly id="image_category" name="imageCategory" value="{{ category.imageCategory }}"></input>
+            <a href="#" class="btn btn-secondary button_change_image">Changer d'image</a>
         </div>
         
         <button type="submit" id="valid_new_category" class="btn btn-success valid_new_button">Enregistrer</button>
@@ -33,5 +32,10 @@
 {% endblock %}
 
 {% block footer %}
-<script src="public/js/get_image_name.js"></script>
+<script>
+$('#image_category_container a').click(function() {
+    $('#image_category_container a').hide();
+    $('#image_category_container input').replaceWith('<input type="file" class="form-control-file" id="image_category" name="imageCategory" required>');
+})
+</script>
 {% endblock %}
