@@ -12,7 +12,7 @@
 <p class="alert_text">Vous êtes sur le point de supprimer l'utilisateur {{ user.nameUser }}. Attention, la suppression d'un élément est irréversible et peut entraîner la suppression d'autres éléments contenus par celui-ci ou en lien avec. Etes-vous sûr(e) de vouloir supprimer cet utilisateur ?</p>
 
 <div class="d-flex justify-content-around">
-    <a href="/projet_5/delete-user-{{ user.idUser }}" class="alert_button delete_button">Supprimer</a>
+    <a href="/questionnary/delete-user-{{ user.idUser }}" class="alert_button delete_button">Supprimer</a>
     <a href="javascript:history.back()" class="alert_button cancel_button">Annuler</a>
 </div>
 {% endfor %}

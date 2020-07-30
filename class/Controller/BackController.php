@@ -29,7 +29,7 @@ class BackController extends Controller {
     public function editAnswer($idAnswer, $idQuestion) {
         try {
             $singleAnswer = $this->answerDAO->getSingleAnswer($idAnswer);
-            $oneQuestion = $this->singleQuestion($idQuestion);
+            $oneQuestion = $this->singleQuestionObject($idQuestion);
             $answers = $this->answerDAO->getQuestionAnswers($idQuestion);
             foreach ($singleAnswer as $answer) {
                 $oneAnswer[] = new Answer($answer);
@@ -65,7 +65,7 @@ class BackController extends Controller {
 
     //---------- CATEGORIES ----------//
     public function categories() {
-        $allCategories = $this->allCategories();
+        $allCategories = $this->allCategoriesObject();
         echo $this->twig->render('categories.twig', [
             'allCategories' => $allCategories, 
         ]);
@@ -73,8 +73,8 @@ class BackController extends Controller {
 
     public function detailsCategory($idCategory) {
         try {
-            $oneCategory = $this->singleCategory($idCategory);
-            $allQuiz = $this->quizByCategory($idCategory);
+            $oneCategory = $this->singleCategoryObject($idCategory);
+            $allQuiz = $this->quizByCategoryObject($idCategory);
             echo $this->twig->render('details_category.twig', [
                 'oneCategory' => $oneCategory,
                 'allQuiz' => $allQuiz,
@@ -98,7 +98,7 @@ class BackController extends Controller {
 
     public function editCategory($idCategory) {
         try {
-            $oneCategory = $this->singleCategory($idCategory);
+            $oneCategory = $this->singleCategoryObject($idCategory);
             echo $this->twig->render('edit_category.twig', [
                 'oneCategory' => $oneCategory,
             ]);
@@ -117,7 +117,7 @@ class BackController extends Controller {
 
     public function alertCategory($idCategory) {
         try {
-            $oneCategory = $this->singleCategory($idCategory);
+            $oneCategory = $this->singleCategoryObject($idCategory);
             echo $this->twig->render('alert_category.twig', [
                 'oneCategory' => $oneCategory,
             ]);
@@ -163,8 +163,8 @@ class BackController extends Controller {
 
     public function detailsQuiz($idQuiz) {
         try {
-            $oneQuiz = $this->singleQuiz($idQuiz);
-            $allQuestions = $this->questions($idQuiz);
+            $oneQuiz = $this->singleQuizObject($idQuiz);
+            $allQuestions = $this->questionsObject($idQuiz);
             echo $this->twig->render('details_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
                 'allQuestions' => $allQuestions,
@@ -175,7 +175,7 @@ class BackController extends Controller {
     }
 
     public function newQuiz() {
-        $allCategories = $this->allCategories();
+        $allCategories = $this->allCategoriesObject();
         echo $this->twig->render('new_quiz.twig', [
             'allCategories' => $allCategories,
         ]);
@@ -191,9 +191,9 @@ class BackController extends Controller {
 
     public function editQuiz($idQuiz, $idCategory) {
         try {
-            $oneQuiz = $this->singleQuiz($idQuiz);
-            $oneCategory = $this->singleCategory($idCategory);
-            $allCategories = $this->allCategories();
+            $oneQuiz = $this->singleQuizObject($idQuiz);
+            $oneCategory = $this->singleCategoryObject($idCategory);
+            $allCategories = $this->allCategoriesObject();
             echo $this->twig->render('edit_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
                 'oneCategory' => $oneCategory,
@@ -214,7 +214,7 @@ class BackController extends Controller {
 
     public function alertQuiz($idQuiz) {
         try {
-            $oneQuiz = $this->singleQuiz($idQuiz);
+            $oneQuiz = $this->singleQuizObject($idQuiz);
             echo $this->twig->render('alert_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
             ]);
@@ -234,8 +234,8 @@ class BackController extends Controller {
     //---------- QUESTION ----------//
     public function detailsQuestion($idQuestion) {
         try {
-            $oneQuestion = $this->singleQuestion($idQuestion);
-            $allAnswers = $this->answers($idQuestion);
+            $oneQuestion = $this->singleQuestionObject($idQuestion);
+            $allAnswers = $this->answersObject($idQuestion);
             echo $this->twig->render('details_question.twig', [
                 'oneQuestion' => $oneQuestion,
                 'allAnswers' => $allAnswers,
@@ -247,7 +247,7 @@ class BackController extends Controller {
 
     public function newQuestion($idQuiz) {
         try {
-            $oneQuiz = $this->singleQuiz($idQuiz);
+            $oneQuiz = $this->singleQuizObject($idQuiz);
             echo $this->twig->render('new_question.twig', [
                 'oneQuiz' => $oneQuiz,
             ]);
@@ -266,7 +266,7 @@ class BackController extends Controller {
 
     public function editQuestion($idQuestion) {
         try {
-            $oneQuestion = $this->singleQuestion($idQuestion);
+            $oneQuestion = $this->singleQuestionObject($idQuestion);
             echo $this->twig->render('edit_question.twig', [
                 'oneQuestion' => $oneQuestion,
             ]);
@@ -285,7 +285,7 @@ class BackController extends Controller {
 
     public function alertQuestion($idQuestion) {
         try {
-            $oneQuestion = $this->singleQuestion($idQuestion);
+            $oneQuestion = $this->singleQuestionObject($idQuestion);
             echo $this->twig->render('alert_question.twig', [
                 'oneQuestion' => $oneQuestion,
             ]);
@@ -319,7 +319,7 @@ class BackController extends Controller {
 
     public function detailsUser($idUser) {
         try {
-            $oneUser = $this->singleUser($idUser);
+            $oneUser = $this->singleUserObject($idUser);
             echo $this->twig->render('details_user.twig', [
                 'oneUser' => $oneUser,
             ]);
@@ -342,7 +342,7 @@ class BackController extends Controller {
 
     public function editUser($idUser) {
         try {
-            $oneUser = $this->singleUser($idUser);
+            $oneUser = $this->singleUserObject($idUser);
             echo $this->twig->render('edit_user.twig', [
                 'oneUser' => $oneUser,
             ]);
@@ -361,7 +361,7 @@ class BackController extends Controller {
 
     public function alertUser($idUser) {
         try {
-            $oneUser = $this->singleUser($iduser);
+            $oneUser = $this->singleUserObject($iduser);
             echo $this->twig->render('alert_user.twig', [
                 'oneUser' => $oneUser,
             ]);

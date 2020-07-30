@@ -20,12 +20,6 @@ class QuestionDAO extends DAO {
         return $data;
     }
 
-    public function getCountQuestions() {
-        $req = 'SELECT COUNT(*) FROM question';
-        $data = $this->createQuery($req);
-        return $data;
-    }
-
     public function getCountQuizQuestions($idQuiz) {
         $req = 'SELECT COUNT(*) FROM question WHERE idQuiz = ?';
         $data = $this->createQuery($req, [$idQuiz]);

@@ -17,7 +17,7 @@ class Router {
 
     public function run() {
         $this->router = new AltoRouter();
-        $this->router->setBasePath('/projet_5');
+        $this->router->setBasePath('/questionnary');
 
         $this->frontController = new FrontController;
         $this->backController = new BackController;
@@ -41,6 +41,10 @@ class Router {
             array('GET', '/start-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->startQuiz($idQuiz);
             }, 'start-quiz'),
+
+            array('GET', '/first-question-[i:idQuestion]-[i:idQuiz]', function($idQuestion, $idQuiz) {
+                $this->frontController->firstQuestion($idQuestion, $idQuiz);
+            }, 'first-question'),
 
             array('GET', '/quiz-questions-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->showQuizQuestions($idQuiz);
@@ -90,8 +94,7 @@ class Router {
 
             array('POST', '/valid-new-category', function() {
                 $this->backController->validNewCategory($_POST['nameCategory'], $_POST['imageCategory']);
-                $this->backController->categories();
-                echo "<script>alert('La catégorie a été créé avec succès !')</script>";              
+                $this->backController->categories();           
             }, 'valid-new-category'),
 
             array('GET', '/edit-category-[i:idCategory]', function($idCategory) {
@@ -219,7 +222,6 @@ class Router {
 
         // Trouver une correspondance entre l'URL reçue et les itinéraires
         $match = $this->router->match();
-
         if ($match !==null) {
             if (is_callable($match['target'])) {
                 call_user_func_array($match['target'], $match['params']);

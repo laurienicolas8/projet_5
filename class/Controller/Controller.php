@@ -39,7 +39,7 @@ class Controller {
     //Factorisation pour éviter les répétitions de récupération de données
 
     //Answers
-    public function answers($idQuestion) {
+    public function answersObject($idQuestion) {
         $answers = $this->answerDAO->getQuestionAnswers($idQuestion);
         if ($answers === []) {
             return null;
@@ -52,7 +52,7 @@ class Controller {
     }
 
     //Categories
-    public function singleCategory($idCategory) {
+    public function singleCategoryObject($idCategory) {
         $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
         foreach ($singleCategory as $category) {
             $oneCategory[] = new Category($category);
@@ -60,7 +60,7 @@ class Controller {
         return $oneCategory;
     }
 
-    public function allCategories() {
+    public function allCategoriesObject() {
         $categories = $this->categoryDAO->getAllCategories();
         foreach ($categories as $category) {
             $allCategories[] = new Category($category);
@@ -69,7 +69,7 @@ class Controller {
     }
 
     //Questions
-    public function singleQuestion($idQuestion) {
+    public function singleQuestionObject($idQuestion) {
         $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
         foreach ($singleQuestion as $question) {
             $oneQuestion[] = new Question($question);
@@ -77,7 +77,7 @@ class Controller {
         return $oneQuestion;
     }
 
-    public function questions($idQuiz) {
+    public function questionsObject($idQuiz) {
         $questions = $this->questionDAO->getQuizQuestions($idQuiz);
         if ($questions === []) {
             return null;
@@ -90,16 +90,16 @@ class Controller {
     }
 
     //Quiz
-    public function singleQuiz($idQuiz) {
+    public function singleQuizObject($idQuiz) {
         $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
-        $allQuestions = $this->questions($idQuiz);
+        $allQuestions = $this->questionsObject($idQuiz);
         foreach ($singleQuiz as $quiz) {
             $oneQuiz[] = new Quiz($quiz);
         }
         return $oneQuiz;
     }
 
-    public function quizByCategory($idCategory) {
+    public function quizByCategoryObject($idCategory) {
         $quizByCategory = $this->quizDAO->getQuizByCategory($idCategory);
         if ($quizByCategory === []) {
             return null;
@@ -112,7 +112,7 @@ class Controller {
     }
 
     //Users
-    public function singleUser($idUser) {
+    public function singleUserObject($idUser) {
         $singleUser = $this->userDAO->getSingleUser($idUser);
         foreach ($singleUser as $user) {
             $oneUser[] = new User($user);

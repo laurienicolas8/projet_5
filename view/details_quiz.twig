@@ -8,10 +8,10 @@
 <div class="col-lg-12">
     {% for quiz in oneQuiz %}
     <div class="d-flex align-items-center title_details_quiz">
-        <a href="/projet_5/details-category-{{ quiz.idCategory }}" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
+        <a href="/questionnary/details-category-{{ quiz.idCategory }}" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
         <h1>Quiz | {{ quiz.nameQuiz }}</h1>
-        <a href="/projet_5/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}" class="link_pencil icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
-        <a href="/projet_5/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+        <a href="/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}" class="link_pencil icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
+        <a href="/questionnary/alert-quiz-{{ quiz.idQuiz }}" class="link_pencil icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
     </div>
 
     {% if allQuestions == null %}
@@ -22,7 +22,7 @@
 
     <div class="d-flex justify-content-around flex-wrap questions_container">
         <div class="d-flex flex-column align-items-center justify-content-center card question_card" style="width: 13rem;">
-            <a href="/projet_5/new-question-{{ quiz.idQuiz }}" class="new_question_link">
+            <a href="/questionnary/new-question-{{ quiz.idQuiz }}" class="new_question_link">
                 <i class="fa fa-plus fa-3x" aria-hidden="true"></i>
                 <p>Nouvelle question</p>
             </a>
@@ -37,8 +37,8 @@
                 <p class="question">{{ question.question }}</p>
             </div>
             <div class="d-flex justify-content-around quiz_icons">
-                <a href="/projet_5/details-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-info-circle fa-lg info_icon" aria-hidden="true"></i></a>
-                <a href="/projet_5/alert-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
+                <a href="/questionnary/details-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-info-circle fa-lg info_icon" aria-hidden="true"></i></a>
+                <a href="/questionnary/alert-question-{{ question.idQuestion }}" class="quiz_icon"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
             </div>
         </div>
         {% endfor %}

@@ -12,14 +12,14 @@
 
 <div class="form_new_container">
     {% for category in oneCategory %}
-    <form action="/projet_5/update-category-{{ category.idCategory }}" method="post">
+    <form action="/questionnary/update-category-{{ category.idCategory }}" method="post">
         <div class="form-group">
             <label for="name_category">Nom</label>
             <input type="text" class="form-control" id="name_category" name="nameCategory" value="{{ category.nameCategory }}" required>
         </div>
         <div class="form-group" id="image_category_container">
             <label for="image_category">Image</label>
-            <input type="text" class="form-control" readonly id="image_category" name="imageCategory" value="{{ category.imageCategory }}"></input>
+            <input type="text" class="form-control" readonly id="image_category" name="imageCategory" value="{{ category.imageCategory }}" required>
             <a href="#" class="btn btn-secondary button_change_image">Changer d'image</a>
         </div>
         

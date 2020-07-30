@@ -14,16 +14,14 @@
             </div>
         {% endfor %}
 
-        {% for question in allQuestions %}
+        {% for question in singleQuestion %}
             <div class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
                 <p class="question">{{ question.question }}</p>
                 <div class="d-flex">
                     {% for answer in allAnswers %}
-                        {% if answer.idQuestion == question.idQuestion %}
-                            <div class="btn-primary answer">
-                                {{ answer.answer }}
-                            </div>
-                        {% endif %}
+                        <div class="btn-primary answer">
+                            {{ answer.answer }}
+                        </div>
                     {% endfor %}
                 </div>
                 <p class="explanation">{{ question.explanation }}</p>
