@@ -205,7 +205,7 @@ body {
     text-align: center;
     margin: 30px 0;
     width: 100%;
-    padding: 15px;
+    padding: 15px 0;
     background-color: #E0E0E0;
     box-shadow: 2px 2px 2px #8C8C8C;
 }
@@ -269,7 +269,7 @@ body {
     text-align: center;
     border: 2px solid black;
     border-radius: 20px;
-    height: 350px;
+    height: 250px;
     padding: 20px;
 }
 
@@ -286,17 +286,22 @@ body {
 }
 
 .answer {
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
-    margin: 0 30px;
+    margin: 20px 30px 20px 5px;
     font-size: 1.2em;
 }
 /* END QUESTIONS SECTION */
 
 /* LOGIN PAGE */
+.body_login {
+    background: #E0E0E0;
+}
+
 .login_form {
     width: 500px;
     margin: auto;
+    padding: 20px;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -304,7 +309,12 @@ body {
     align-items: center;
     background: #fff;
     transform: translateY(20%);
+    border: 1px solid grey;
     border-radius: 5%;
+}
+
+.title_login {
+    color: #007bff;
 }
 /* END LOGIN PAGE */
 

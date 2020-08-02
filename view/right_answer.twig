@@ -13,15 +13,21 @@
         {% endfor %}
 
         {% for question in singleQuestion %}
-            <form method="post" action="/questionnary/right-answer-{{ question.idQuestion }}" class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
+            <form class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
                 <p class="question">{{ question.question }}</p>
                 <div class="d-flex align-items-center">
                     {% for answer in allAnswers %}
-                        <input type="radio" id="answer" name="answer" value="{{ answer.idAnswer }}">
+                        <input type="radio" id="answer" name="answer" value="{{ answer.answer }}">
                         <label class="btn-secondary answer">{{ answer.answer }}</label>
                     {% endfor %}
                 </div>
-                <button type="submit" class="col-lg-1 btn btn-success btn_valid">Valider</button>
+                <p class="explanation">{{ question.explanation }}</p>
+
+                {% if nextQuestionIndex != null %}
+                    <a href="/questionnary/question-{{ nextQuestionIndex }}-{{ questions[nextQuestionIndex].idQuiz }}" class=" col-lg-1 btn btn-success btn_valid">Suivant</a>
+                {% else %}
+                    <a href="" class=" col-lg-1 btn btn-success btn_valid">Terminé</a>
+                {% endif %}
             </form>
         {% endfor %}
     </div>

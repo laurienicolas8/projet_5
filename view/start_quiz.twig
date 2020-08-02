@@ -18,7 +18,7 @@
         {% endfor %}
         <div class="col-lg-12 start_quiz_container">
             <img class="rounded" src="public/images/img_quiz/{{ quiz.imageQuiz }}" style="max-width: 35%;" alt="Image représentant le quiz">
-            <a href="/questionnary/first-question-{{ allQuestions[0].idQuestion }}-{{ allQuestions[0].idQuiz }}" class="btn-success btn_start_quiz">Commencer le quiz<i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i></a>
+            <a href="/questionnary/question-{{ firstQuestionIndex }}-{{ questions[firstQuestionIndex].idQuiz }}" class="btn-success btn_start_quiz">Commencer le quiz<i class="fa fa-chevron-right fa-3x" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>

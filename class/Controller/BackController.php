@@ -15,7 +15,9 @@ require('vendor/autoload.php');
 class BackController extends Controller {
     
     public function dashboard() {
-        echo $this->twig->render('dashboard.twig');
+        echo $this->twig->render('dashboard.twig', [
+            'session', $_SESSION,
+        ]);
     }
     //---------- ANSWERS ----------//
     public function validNewAnswer($answer, $rightAnswer, $idQuestion) {
@@ -68,7 +70,14 @@ class BackController extends Controller {
         $allCategories = $this->allCategoriesObject();
         echo $this->twig->render('categories.twig', [
             'allCategories' => $allCategories, 
+            'session' => $_SESSION, // permet d'avoir accès à mes variables de session sous Twig
         ]);
+        if (isset($_SESSION['new_category'])) {
+            unset($_SESSION['new_category']);
+        }
+        if (isset($_SESSION['delete_category'])) {
+            unset($_SESSION['delete_category']);
+        }
     }
 
     public function detailsCategory($idCategory) {
@@ -78,7 +87,17 @@ class BackController extends Controller {
             echo $this->twig->render('details_category.twig', [
                 'oneCategory' => $oneCategory,
                 'allQuiz' => $allQuiz,
+                'session' => $_SESSION,
             ]);
+            if (isset($_SESSION['update_category'])) {
+                unset($_SESSION['update_category']);
+            }
+            if (isset($_SESSION['new_quiz'])) {
+                unset($_SESSION['new_quiz']);
+            }
+            if (isset($_SESSION['delete_quiz'])) {
+                unset($_SESSION['delete_quiz']);
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Aucune catégorie identifiée';
         }
@@ -91,6 +110,7 @@ class BackController extends Controller {
     public function validNewCategory($nameCategory, $imageCategory) {
         try {
             $this->categoryDAO->createCategory($nameCategory, $imageCategory);
+            $_SESSION['new_category'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer cette catégorie';
         }
@@ -110,6 +130,7 @@ class BackController extends Controller {
     public function updateCategory($idCategory, $nameCategory, $imageCategory) {
         try {
             $this->categoryDAO->modifyCategory($idCategory, $nameCategory, $imageCategory);
+            $_SESSION['update_category'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier cette catégorie';
         }
@@ -129,6 +150,7 @@ class BackController extends Controller {
     public function deleteCategory($idCategory) {
         try {
             $this->categoryDAO->supprCategory($idCategory);
+            $_SESSION['delete_category'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de supprimer cette catégorie';
         }
@@ -168,7 +190,17 @@ class BackController extends Controller {
             echo $this->twig->render('details_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
                 'allQuestions' => $allQuestions,
+                'session' => $_SESSION,
             ]);
+            if (isset($_SESSION['update_quiz'])) {
+                unset($_SESSION['update_quiz']);
+            }
+            if (isset($_SESSION['new_question'])) {
+                unset($_SESSION['new_question']);
+            }
+            if (isset($_SESSION['delete_question'])) {
+                unset($_SESSION['delete_question']);
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun quiz identifié';
         }
@@ -183,7 +215,8 @@ class BackController extends Controller {
 
     public function validNewQuiz($nameQuiz, $imageQuiz, $idCategory) {
         try {
-            $this->quizDAO->createQuiz($nameQuiz, $imageQuiz, $idCategory);            
+            $this->quizDAO->createQuiz($nameQuiz, $imageQuiz, $idCategory);
+            $_SESSION['new_quiz'] = 'DONE';            
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer ce quiz';
         }
@@ -207,6 +240,7 @@ class BackController extends Controller {
     public function updateQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory) {
         try {
             $this->quizDAO->modifyQuiz($idQuiz, $nameQuiz, $imageQuiz, $idCategory);
+            $_SESSION['update_quiz'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier ce quiz';
         }
@@ -226,6 +260,7 @@ class BackController extends Controller {
     public function deleteQuiz($idQuiz) {
         try {   
             $this->quizDAO->supprQuiz($idQuiz);
+            $_SESSION['delete_quiz'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de supprimer ce quiz';
         }
@@ -239,7 +274,11 @@ class BackController extends Controller {
             echo $this->twig->render('details_question.twig', [
                 'oneQuestion' => $oneQuestion,
                 'allAnswers' => $allAnswers,
+                'session' => $_SESSION,
             ]);
+            if (isset($_SESSION['update_question'])) {
+                unset($_SESSION['update_question']);
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Aucune question identifiée';
         }
@@ -259,6 +298,7 @@ class BackController extends Controller {
     public function validNewQuestion($question, $explanation, $idQuiz) {
         try {
             $this->questionDAO->createQuestion($question, $explanation, $idQuiz);
+            $_SESSION['new_question'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer cette question';
         }
@@ -278,6 +318,7 @@ class BackController extends Controller {
     public function updateQuestion($idQuestion, $question, $explanation) {
         try {
             $this->questionDAO->modifyQuestion($idQuestion, $question, $explanation);
+            $_SESSION['update_question'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier cette question';
         }
@@ -297,6 +338,7 @@ class BackController extends Controller {
     public function deleteQuestion($idQuestion) {
         try {
             $this->questionDAO->supprQuestion($idQuestion);
+            $_SESSION['delete_question'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de supprimer cette question';
         }      
@@ -314,7 +356,14 @@ class BackController extends Controller {
         }
         echo $this->twig->render('users.twig', [
             'allUsers' => $allUsers,
+            'session' => $_SESSION,
         ]);
+        if (isset($_SESSION['new_user'])) {
+            unset($_SESSION['new_user']);
+        }
+        if (isset($_SESSION['delete_user'])) {
+            unset($_SESSION['delete_user']);
+        }
     }
 
     public function detailsUser($idUser) {
@@ -322,7 +371,11 @@ class BackController extends Controller {
             $oneUser = $this->singleUserObject($idUser);
             echo $this->twig->render('details_user.twig', [
                 'oneUser' => $oneUser,
+                'session' => $_SESSION,
             ]);
+            if (isset($_SESSION['update_user'])) {
+                unset($_SESSION['update_user']);
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun utilisateur identifié';
         }
@@ -334,7 +387,9 @@ class BackController extends Controller {
 
     public function validNewUser($identifiant, $password, $nameUser, $lastnameUser, $admin) {
         try {
-            $this->userDAO->createUser($identifiant, $password, $nameUser, $lastnameUser, $admin);
+            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+            $this->userDAO->createUser($identifiant, $passwordHashed, $nameUser, $lastnameUser, $admin);
+            $_SESSION['new_user'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer cet utilisateur';
         }
@@ -353,7 +408,9 @@ class BackController extends Controller {
 
     public function updateUser($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin) {
         try {
-            $this->userDAO->modifyUser($idUser, $identifiant, $password, $nameUser, $lastnameUser, $admin);
+            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+            $this->userDAO->modifyUser($idUser, $identifiant, $passwordHashed, $nameUser, $lastnameUser, $admin);
+            $_SESSION['update_user'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de modifier cet utilisateur';
         }
@@ -361,7 +418,7 @@ class BackController extends Controller {
 
     public function alertUser($idUser) {
         try {
-            $oneUser = $this->singleUserObject($iduser);
+            $oneUser = $this->singleUserObject($idUser);
             echo $this->twig->render('alert_user.twig', [
                 'oneUser' => $oneUser,
             ]);
@@ -373,6 +430,7 @@ class BackController extends Controller {
     public function deleteUser($idUser) {
         try {
             $this->userDAO->supprUser($idUser);
+            $_SESSION['delete_user'] = 'DONE';
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de supprimer cet utilisateur';
         }

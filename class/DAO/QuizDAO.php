@@ -1,11 +1,6 @@
 <?php
 namespace App\DAO;
 
-use App\Entity\Quiz;
-
-require('vendor/autoload.php');
-
-
 class QuizDAO extends DAO {
 
     public $quizPerPage;

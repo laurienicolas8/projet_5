@@ -22,6 +22,18 @@
     </div>
 {% endif %}
 
+{% if  session.update_category is defined %}
+    <div class="alert alert-success alert_empty" role="alert">La catégorie a été mise à jour avec succès !</div>
+{% endif %}
+
+{% if  session.new_quiz is defined %}
+    <div class="alert alert-success alert_empty" role="alert">Le quiz a été créé avec succès !</div>
+{% endif %}
+
+{% if  session.delete_quiz is defined %}
+    <div class="alert alert-success alert_empty" role="alert">Le quiz a été supprimé avec succès !</div>
+{% endif %}
+
 <div class="col-lg-12 d-flex justify-content-center flex-wrap quiz_container">
     <div class="card quiz_card" style="width: 14rem;">
         <a href="/questionnary/new-quiz"><img class="card-img-top" src="public/images/img_quiz/new_quiz.png" alt="Illustration nouveau quiz"></a>

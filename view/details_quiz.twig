@@ -20,6 +20,18 @@
     </div>
     {% endif %}
 
+    {% if  session.update_quiz is defined %}
+        <div class="alert alert-success alert_empty" role="alert">Le quiz a été mis à jour avec succès !</div>
+    {% endif %}
+
+    {% if  session.new_question is defined %}
+        <div class="alert alert-success alert_empty" role="alert">La question a été créée avec succès !</div>
+    {% endif %}
+
+    {% if  session.delete_question is defined %}
+        <div class="alert alert-success alert_empty" role="alert">La question a été supprimée avec succès !</div>
+    {% endif %}
+
     <div class="d-flex justify-content-around flex-wrap questions_container">
         <div class="d-flex flex-column align-items-center justify-content-center card question_card" style="width: 13rem;">
             <a href="/questionnary/new-question-{{ quiz.idQuiz }}" class="new_question_link">

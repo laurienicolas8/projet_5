@@ -8,11 +8,19 @@
 
 <h1>Catégories</h1>
 
+    {% if  session.new_category is defined %}
+    <div class="alert alert-success alert_empty" role="alert">La catégorie a été créée avec succès !</div>
+    {% endif %}
+    {% if  session.delete_category is defined %}
+    <div class="alert alert-success alert_empty" role="alert">La catégorie a été supprimée avec succès !</div>
+    {% endif %}
+
 <div class="col-lg-12 d-flex justify-content-center flex-wrap category_container">
     <div class="d-flex justify-content-center flex-column category col-lg-2">
         <a href="/questionnary/new-category" class="link_img_category"><img src="public/images/img_categories/new.png" class="img_new_category" alt="Illustration nouvelle catégorie"></a>
         <p class="title_category">Nouvelle catégorie</p>
     </div>
+    
     {% for category in allCategories %}
     <div class="d-flex justify-content-center category col-lg-2">
         <div class="d-flex flex-column align-items-center card_category_container">

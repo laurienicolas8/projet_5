@@ -1,0 +1,19 @@
+public function firstQuestion($idQuestion, $idQuiz) {
+        try {
+            $oneQuiz = $this->singleQuizObject($idQuiz);
+            $singleQuestion = $this->singleQuestionObject($idQuestion);
+            foreach ($singleQuestion as $question) {
+                $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
+                foreach ($answers as $answer) {
+                    $allAnswers[] = new Answer($answer);
+                }
+            }
+            echo $this->twig->render('questions.twig', [
+                'oneQuiz' => $oneQuiz,
+                'singleQuestion' => $singleQuestion,
+                'allAnswers' => $allAnswers,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : Aucun quiz identifié';
+        }
+    }

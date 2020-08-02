@@ -8,7 +8,6 @@ require('vendor/autoload.php');
 $router = new Router;
 $router->run();
 
-
 class Router {
 
     public $router;
@@ -16,6 +15,7 @@ class Router {
     public $backController;
 
     public function run() {
+        session_start();
         $this->router = new AltoRouter();
         $this->router->setBasePath('/questionnary');
 
@@ -38,23 +38,30 @@ class Router {
                 $this->frontController->detailSingleCategory($idCategory);
             }, 'single-category'),
 
+            // QUIZ SYSTEM
             array('GET', '/start-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->startQuiz($idQuiz);
             }, 'start-quiz'),
 
-            array('GET', '/first-question-[i:idQuestion]-[i:idQuiz]', function($idQuestion, $idQuiz) {
-                $this->frontController->firstQuestion($idQuestion, $idQuiz);
+            array('GET', '/question-[i:indexQuestion]-[i:idQuiz]', function($indexQuestion, $idQuiz) {
+                $this->frontController->question($indexQuestion, $idQuiz);
             }, 'first-question'),
 
-            array('GET', '/quiz-questions-[i:idQuiz]', function($idQuiz) {
-                $this->frontController->showQuizQuestions($idQuiz);
-            }, 'quiz-questions'),
-
-            array('GET', '/login', function() {
-                $this->frontController->login();
-            }, 'login'),
+            array('POST', '/right-answer-[i:idQuestion]', function($indexQuestion, $idQuiz, $idQuestion) {
+                $this->frontController->checkAnswer($_POST['answer'], $idQuestion);
+                $this->frontController->question($indexQuestion, $idQuiz);
+            }, 'check-answer'),
 
             //---------- BACK ----------//
+            //---------- Login system ----------//
+            array('GET', '/loginPage', function() {
+                $this->frontController->loginPage();
+            }, 'login'),
+
+            array('POST', '/login', function() {
+                $this->frontController->login($_POST['identifiant'], $_POST['password']);
+            }),
+
             array('GET', '/dashboard', function() {
                 $this->backController->dashboard();
             }, 'dashboard'),
@@ -94,7 +101,7 @@ class Router {
 
             array('POST', '/valid-new-category', function() {
                 $this->backController->validNewCategory($_POST['nameCategory'], $_POST['imageCategory']);
-                $this->backController->categories();           
+                $this->backController->categories();       
             }, 'valid-new-category'),
 
             array('GET', '/edit-category-[i:idCategory]', function($idCategory) {

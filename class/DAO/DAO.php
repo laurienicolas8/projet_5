@@ -3,12 +3,10 @@ namespace App\DAO;
 
 use PDO;
 
+require_once('config.php');
+
 class DAO {
-    const DB_HOST = 'mysql:host=localhost;dbname=questionnary;port=3308';
-    const DB_USER = 'root';
-    const DB_PASS = '';
     private $connection; 
-    
     
     protected function checkConnection() {
         if ($this->connection===null) {
@@ -19,7 +17,7 @@ class DAO {
 
     private function dbConnection() {
         try {
-            $this->connection = new PDO(self::DB_HOST, self::DB_USER, self::DB_PASS);
+            $this->connection = new PDO(DB_HOST, DB_USER, DB_PASS);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             return $this->connection;
         }

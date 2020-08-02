@@ -15,9 +15,13 @@
 </div>
 
 {% if allAnswers == null %}
-<div class="alert alert-danger" role="alert">
+<div class="alert alert-danger alert_empty" role="alert">
     Cette question ne contient aucune proposition de réponse, elle est donc indisponible sur le site. Ajoutez-lui des réponses dès maintenant !
 </div>
+{% endif %}
+
+{% if  session.update_question is defined %}
+    <div class="alert alert-success alert_empty" role="alert">La question a été mise à jour avec succès !</div>
 {% endif %}
 
 <div class="d-flex flex-column justify-content-center align-items-center" id="content_question">

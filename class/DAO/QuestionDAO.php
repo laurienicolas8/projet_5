@@ -1,15 +1,10 @@
 <?php
 namespace App\DAO;
 
-use App\Entity\Question;
-
-require('vendor/autoload.php');
-
-
 class QuestionDAO extends DAO {
 
     public function getQuizQuestions($idQuiz) {
-        $req = 'SELECT * FROM question WHERE idQuiz = ?';
+        $req = 'SELECT * FROM question WHERE idQuiz = ? ORDER BY RAND()';
         $data = $this->createQuery($req, [$idQuiz]);
         return $data;
     }

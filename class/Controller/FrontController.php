@@ -9,6 +9,7 @@ use App\Entity\Question;
 use App\Controller\Controller;
 
 require('vendor/autoload.php');
+require_once('config.php');
 
 class FrontController extends Controller {
     
@@ -98,25 +99,38 @@ class FrontController extends Controller {
     public function startQuiz($idQuiz) {
         try {
             $oneQuiz = $this->singleQuizObject($idQuiz);
-            $allQuestions = $this->questionsObject($idQuiz);
             $countQuestions = $this->questionDAO->getCountQuizQuestions($idQuiz);
             foreach ($countQuestions as $count) {
                 $oneCount = $count;
             }
+            $allQuestions = $this->questionsObject($idQuiz);
+            $_SESSION['quiz_questions'] = $allQuestions;
+            // Je récupère le premier index pour accéder à la première question du quiz
+            $questions = $_SESSION['quiz_questions'];
+            $firstQuestionIndex = array_key_first($questions);
             echo $this->twig->render('start_quiz.twig', [
                 'oneQuiz' => $oneQuiz,
-                'allQuestions' => $allQuestions,
+                'questions' => $questions,
+                'firstQuestionIndex' => $firstQuestionIndex,
                 'oneCount' => $oneCount,
             ]);
+            
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
-    public function firstQuestion($idQuestion, $idQuiz) {
+    public function question($indexQuestion, $idQuiz) {
         try {
             $oneQuiz = $this->singleQuizObject($idQuiz);
-            $singleQuestion = $this->singleQuestionObject($idQuestion);
+            if (isset($_SESSION['quiz_questions'])) {
+                $questions = $_SESSION['quiz_questions'];
+                // Je récupère l'id de la question actuelle pour la récupérer en base
+                $idCurrentQuestion = $questions[$indexQuestion]->idQuestion();
+            } else {
+                echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
+            }
+            $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
             foreach ($singleQuestion as $question) {
                 $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
                 foreach ($answers as $answer) {
@@ -127,13 +141,65 @@ class FrontController extends Controller {
                 'oneQuiz' => $oneQuiz,
                 'singleQuestion' => $singleQuestion,
                 'allAnswers' => $allAnswers,
+                'questions' => $questions,
             ]);
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun quiz identifié';
         }
     }
 
-    public function login() {
-        echo $this->twig->render('login.twig');
+    public function checkAnswer($idAnswer, $idQuestion) {
+        try {
+            $rightAnswerQuestion = $this->answerDAO->getRightAnswer($idQuestion);
+            foreach ($rightAnswerQuestion as $answer) {
+                $rightAnswer[] = new Answer($answer);
+            }
+            $idRightAnswer = $rightAnswer[0]->idAnswer();
+            if ($idRightAnswer == $idAnswer) {
+                $this->resultDAO->addResult(1);
+            } else {
+                $this->resultDAO->addResult(0);
+            }
+        } catch (Exception $e) {
+            echo 'Erreur : Aucune réponse n\'a été sélectionnée';
+        }
+    }
+
+    public function rightAnswer() {
+        try {
+            $oneQuiz = $this->singleQuizObject($idQuiz);
+            if (isset($_SESSION['quiz_questions'])) {
+                $questions = $_SESSION['quiz_questions'];
+                $lastQuestionIndex = array_key_last($questions);
+                // Je récupère l'id de la question actuelle pour la récupérer en base
+                $idCurrentQuestion = $questions[$indexQuestion]->idQuestion();
+                // Je définis l'index de la question suivante
+                if ($indexQuestion + 1 <= $lastQuestionIndex) {
+                    $nextQuestionIndex = $indexQuestion + 1;
+                } else {
+                    $nextQuestionIndex = null;
+                }
+            } else {
+                echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
+            }
+            $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
+            foreach ($singleQuestion as $question) {
+                $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
+                foreach ($answers as $answer) {
+                    $allAnswers[] = new Answer($answer);
+                }
+            }
+            echo $this->twig->render('questions.twig', [
+                'oneQuiz' => $oneQuiz,
+                'singleQuestion' => $singleQuestion,
+                'allAnswers' => $allAnswers,
+                'questions' => $questions,
+                'indexCurrentQuestion' => $indexQuestion,
+                'lastQuestionIndex' => $lastQuestionIndex,
+                'nextQuestionIndex' => $nextQuestionIndex,
+            ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : Aucun quiz identifié';
+        }
     }
 }

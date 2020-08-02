@@ -1,10 +1,6 @@
 <?php 
 namespace App\DAO;
 
-use App\Entity\Answer;
-
-require('vendor/autoload.php');
-
 class AnswerDAO extends DAO {
 
     public function getSingleAnswer($idAnswer) {
@@ -15,6 +11,12 @@ class AnswerDAO extends DAO {
 
     public function getQuestionAnswers($idQuestion) {
         $req = 'SELECT * FROM answer WHERE idQuestion = ?';
+        $data = $this->createQuery($req, [$idQuestion]);
+        return $data;
+    }
+
+    public function getRightAnswer($idQuestion) {
+        $req = 'SELECT * FROM answer WHERE idQuestion = ? AND rightAnswer = 1';
         $data = $this->createQuery($req, [$idQuestion]);
         return $data;
     }

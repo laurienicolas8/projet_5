@@ -1,12 +1,6 @@
 <?php
 namespace App\DAO;
 
-use PDO;
-use App\Entity\Category;
-
-require('vendor/autoload.php');
-
-
 class CategoryDAO extends DAO {
 
     public function getAllCategories() {
