@@ -267,8 +267,6 @@ body {
 .question_container {
     margin: 30px auto;
     text-align: center;
-    border: 2px solid black;
-    border-radius: 20px;
     height: 250px;
     padding: 20px;
 }
@@ -290,6 +288,26 @@ body {
     border-radius: 10px;
     margin: 20px 30px 20px 5px;
     font-size: 1.2em;
+}
+
+.good_appreciation {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #28a745;
+}
+
+.bad_appreciation {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.your_score_is {
+    font-size: 1.3em;
+}
+
+.score {
+    font-size: 6em;
 }
 /* END QUESTIONS SECTION */
 

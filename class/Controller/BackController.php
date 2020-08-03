@@ -387,9 +387,21 @@ class BackController extends Controller {
 
     public function validNewUser($identifiant, $password, $nameUser, $lastnameUser, $admin) {
         try {
-            $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
-            $this->userDAO->createUser($identifiant, $passwordHashed, $nameUser, $lastnameUser, $admin);
-            $_SESSION['new_user'] = 'DONE';
+            $users = $this->userDAO->getAllUsers();
+            foreach ($users as $user) {
+                $allUsers[] = new User($user);
+            }
+            foreach ($allUsers as $user) {
+                $allIdentifiants[] = $user->identifiant();
+            }
+            // Je vérifie que l'identifiant saisi n'existe pas déjà en base
+            if (array_search($identifiant, $allIdentifiants)) {
+                $_SESSION['error_identifiant'] = 'Une erreur est survenue : L\'utilisateur n\'a pas pu être créé car l\'identifiant saisi est déjà utilisé par un autre utilisateur. Veuillez réessayer.';
+            } else {
+                $passwordHashed = password_hash($password, PASSWORD_DEFAULT);
+                $this->userDAO->createUser($identifiant, $passwordHashed, $nameUser, $lastnameUser, $admin);
+                $_SESSION['new_user'] = 'DONE';
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Impossible de créer cet utilisateur';
         }

@@ -123,25 +123,28 @@ class FrontController extends Controller {
     public function question($indexQuestion, $idQuiz) {
         try {
             $oneQuiz = $this->singleQuizObject($idQuiz);
+            // Je vérifie si les questions ont bien été récupérées dans start_quiz
             if (isset($_SESSION['quiz_questions'])) {
                 $questions = $_SESSION['quiz_questions'];
                 // Je récupère l'id de la question actuelle pour la récupérer en base
                 $idCurrentQuestion = $questions[$indexQuestion]->idQuestion();
+                // Je récupère la question actuelle et ses réponses pour les afficher
+                $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
+                foreach ($singleQuestion as $question) {
+                    $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
+                    foreach ($answers as $answer) {
+                        $allAnswers[] = new Answer($answer);
+                    }
+                }
             } else {
                 echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
-            }
-            $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
-            foreach ($singleQuestion as $question) {
-                $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
-                foreach ($answers as $answer) {
-                    $allAnswers[] = new Answer($answer);
-                }
             }
             echo $this->twig->render('questions.twig', [
                 'oneQuiz' => $oneQuiz,
                 'singleQuestion' => $singleQuestion,
                 'allAnswers' => $allAnswers,
                 'questions' => $questions,
+                'indexCurrentQuestion' => $indexQuestion,
             ]);
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun quiz identifié';
@@ -150,25 +153,32 @@ class FrontController extends Controller {
 
     public function checkAnswer($idAnswer, $idQuestion) {
         try {
+            // Je récupère la bonne réponse à la question en cours
             $rightAnswerQuestion = $this->answerDAO->getRightAnswer($idQuestion);
+            // J'en fais un objet pour récupérer son id
             foreach ($rightAnswerQuestion as $answer) {
                 $rightAnswer[] = new Answer($answer);
             }
             $idRightAnswer = $rightAnswer[0]->idAnswer();
+            // Je compare son id avec celui de la réponse sélectionnée par le visiteur
             if ($idRightAnswer == $idAnswer) {
                 $this->resultDAO->addResult(1);
+                $_SESSION['right_answer'] = 'Bonne réponse !';
             } else {
                 $this->resultDAO->addResult(0);
+                $_SESSION['wrong_answer'] = 'Mauvaise réponse !';
             }
         } catch (Exception $e) {
             echo 'Erreur : Aucune réponse n\'a été sélectionnée';
         }
     }
 
-    public function rightAnswer() {
+    public function answer($answerPlayer, $indexQuestion, $idQuiz) {
         try {
             $oneQuiz = $this->singleQuizObject($idQuiz);
+            // Je vérifie si les questions ont bien été récupérées dans start_quiz
             if (isset($_SESSION['quiz_questions'])) {
+                // Je récupère la dernière clé du tableau pour adapter le bouton quand toutes les questions auront été posées
                 $questions = $_SESSION['quiz_questions'];
                 $lastQuestionIndex = array_key_last($questions);
                 // Je récupère l'id de la question actuelle pour la récupérer en base
@@ -179,17 +189,20 @@ class FrontController extends Controller {
                 } else {
                     $nextQuestionIndex = null;
                 }
+                // Je récupère la question actuelle et ses réponses pour les afficher
+                $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
+                foreach ($singleQuestion as $question) {
+                    $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
+                    foreach ($answers as $answer) {
+                        $allAnswers[] = new Answer($answer);
+                    }
+                }
             } else {
                 echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
             }
-            $singleQuestion = $this->singleQuestionObject($idCurrentQuestion);
-            foreach ($singleQuestion as $question) {
-                $answers = $this->answerDAO->getQuestionAnswers($question->idQuestion());
-                foreach ($answers as $answer) {
-                    $allAnswers[] = new Answer($answer);
-                }
-            }
-            echo $this->twig->render('questions.twig', [
+            echo $this->twig->render('answer.twig', [
+                'session' => $_SESSION,
+                'answerPlayer' => $answerPlayer,
                 'oneQuiz' => $oneQuiz,
                 'singleQuestion' => $singleQuestion,
                 'allAnswers' => $allAnswers,
@@ -198,6 +211,34 @@ class FrontController extends Controller {
                 'lastQuestionIndex' => $lastQuestionIndex,
                 'nextQuestionIndex' => $nextQuestionIndex,
             ]);
+        } catch (Exception $e) {
+            echo 'Erreur controller : Aucun quiz identifié';
+        }
+    }
+
+    public function result($idQuiz) {
+        try {
+            $oneQuiz = $this->singleQuizObject($idQuiz);
+            $countQuestions = $this->questionDAO->getCountQuizQuestions($idQuiz);
+            foreach ($countQuestions as $count) {
+                $oneCount = $count;
+            }
+            $allResults = $this->resultDAO->getResults();
+            if (!empty($allResults)) {
+                foreach ($allResults as $results) {
+                    $points[] = $results['result'];
+                }
+                $score = array_sum($points);
+                echo $this->twig->render('result.twig', [
+                    'oneQuiz' => $oneQuiz,
+                    'score' => $score,
+                    'oneCount' => $oneCount,
+                ]);
+                $this->resultDAO->supprResults();
+                unset($_SESSION['quiz_questions']);
+            } else {
+                echo 'Erreur : Aucun quiz joué, aucun résultat';
+            }
         } catch (Exception $e) {
             echo 'Erreur controller : Aucun quiz identifié';
         }

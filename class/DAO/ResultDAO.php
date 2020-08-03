@@ -9,6 +9,12 @@ class ResultDAO extends DAO {
         $sql->execute([$result]);
     }
 
+    public function getResults() {
+        $req = 'SELECT * FROM result';
+        $data = $this->createQuery($req);
+        return $data;
+    }
+
     public function supprResults() {
         $req = 'DELETE FROM result';
         $sql = $this->checkConnection()->prepare($req);

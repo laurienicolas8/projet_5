@@ -45,12 +45,18 @@ class Router {
 
             array('GET', '/question-[i:indexQuestion]-[i:idQuiz]', function($indexQuestion, $idQuiz) {
                 $this->frontController->question($indexQuestion, $idQuiz);
-            }, 'first-question'),
+            }, 'question'),
 
-            array('POST', '/right-answer-[i:idQuestion]', function($indexQuestion, $idQuiz, $idQuestion) {
+            array('POST', '/check-answer-[i:idQuestion]-[i:indexQuestion]-[i:idQuiz]', function($idQuestion, $indexQuestion, $idQuiz) {
                 $this->frontController->checkAnswer($_POST['answer'], $idQuestion);
-                $this->frontController->question($indexQuestion, $idQuiz);
+                $this->frontController->answer($_POST['answer'], $indexQuestion, $idQuiz);
+                unset($_SESSION['right_answer']);
+                unset($_SESSION['wrong_answer']);
             }, 'check-answer'),
+
+            array('GET', '/result-[i:idQuiz]', function($idQuiz) {
+                $this->frontController->result($idQuiz);
+            }, 'result'),
 
             //---------- BACK ----------//
             //---------- Login system ----------//
@@ -193,6 +199,7 @@ class Router {
             //---------- User ----------//
             array('GET', '/users', function() {
                 $this->backController->users();
+                unset($_SESSION['error_identifiant']);
             }, 'users'),
 
             array('GET', '/details-user-[i:idUser]', function($idUser) {

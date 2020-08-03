@@ -13,7 +13,7 @@
         {% endfor %}
 
         {% for question in singleQuestion %}
-            <form method="post" action="/questionnary/right-answer-{{ question.idQuestion }}" class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
+            <form method="post" action="/questionnary/check-answer-{{ question.idQuestion }}-{{ indexCurrentQuestion }}-{{ question.idQuiz }}" class="col-lg-9 d-flex flex-column justify-content-around align-items-center question_container">
                 <p class="question">{{ question.question }}</p>
                 <div class="d-flex align-items-center">
                     {% for answer in allAnswers %}
@@ -28,4 +28,10 @@
 <!-- END ROW QUIZ -->
 </div>
 
+{% endblock %}
+
+{% block footer %}
+<script>
+
+</script>
 {% endblock %}

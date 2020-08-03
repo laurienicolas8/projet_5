@@ -14,6 +14,12 @@
     </div>
     {% endif %}
 
+    {% if session.error_identifiant is defined %}
+        <div class="alert alert-danger" role="alert">
+            {{ session.error_identifiant }}
+        </div>
+    {% endif %}
+
     {% if  session.new_user is defined %}
         <div class="alert alert-success alert_empty" role="alert">L'utilisateur a été créé avec succès !</div>
     {% endif %}
