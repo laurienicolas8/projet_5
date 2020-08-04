@@ -1,100 +1,90 @@
 {% extends 'template_frontend.twig' %}
 
 {% block head %}
-<title>Accueil</title>
+    <title>Accueil</title>
 {% endblock %}
 
 {% block content %}
+    <!-- SLIDER -->
+    <div>
+        <div id='carouselExampleIndicators' class='carousel slide' data-ride='carousel'>
+            <ol class='carousel-indicators'>
+                <li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>
+                <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
+                <li data-target='#carouselExampleIndicators' data-slide-to='2'></li>
+            </ol>
 
-<!-- SLIDER -->
-<div>
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        </ol>
+            <div class='carousel-inner' role='listbox'>
+                <!-- Slide 1 -->
+                <div class='carousel-item active' style='background-image: url("public/images/slider_welcome.png")'></div>
+                <!-- Slide 2 -->
+                <div class='carousel-item' style='background-image: url("public/images/slider_culture.png")'></div>
+                <!-- Slide 3 -->
+                <div class='carousel-item' style='background-image: url("public/images/slider_play.png")'></div>
+            </div>
 
-        <div class="carousel-inner" role="listbox">
-            <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url('public/images/slider_welcome.png')"></div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url('public/images/slider_culture.png')"></div>
-
-            <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url('public/images/slider_play.png')"></div>
+            <a class='carousel-control-prev' href='#carouselExampleIndicators' role='button' data-slide='prev'>
+                <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+                <span class='sr-only'>Previous</span>
+            </a>
+            <a class='carousel-control-next' href='#carouselExampleIndicators' role='button' data-slide='next'>
+                <span class='carousel-control-next-icon' aria-hidden='true'></span>
+                <span class='sr-only'>Next</span>
+            </a>
         </div>
-
-        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+        <br>
+        <a href='#home_categories' class='arrow_container'><i class='fa fa-arrow-down fa-3x arrow_down_home' aria-hidden='true'></i></a>
+        <br>
+        <br>
     </div>
 
-    <br>
-    <a href="#home_categories" class="arrow_container"><i class="fa fa-arrow-down fa-3x arrow_down_home" aria-hidden="true"></i></a>
-    <br>
-    <br>
-</div>
-
-
-
-<!-- PAGE CONTENT -->
-<div class="container">
-    <h2 id="home_categories" class="my-4 h2_home">Catégories</h2>
-    <div class="d-flex justify-content-center p_home">
-        Les catégories rassemblent plusieurs quiz du même thème.
-    </div>
-
-    <!-- CATEGORIES -->
-    <div class="row">
-        <div class='category_container'>
-            {% for category in allCategories %}
-                <div class="category col-lg-2">
-                    <a href="/questionnary/single-category-{{ category.idCategory }}" class="img_category"><img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie"></a>
-                    <p class="title_category">{{ category.nameCategory }}</p>
-                </div>
-            {% endfor %}
-        </div>  
-    </div>
-    <!-- END ROW CATEGORIES -->
-    <br>
-    <br>
-    <!-- QUIZ -->
-    <h2 class='my-4 h2_home'>Quiz</h2>
-    <div class="d-flex justify-content-center p_home">
-        Ici, les quiz sont affichés aléatoirement. Alors laissez-vous tenter, faites votre choix !
-    </div>
-    <div class="row">
-        {% for quiz in homeQuiz %}
-            <div class="col-lg-3 col-sm-6 portfolio-item">
-                <div class="card h-100">
-                    {% for category in oneCategory %}
-                        {% if quiz.idCategory == category.idCategory %}
-                            <div class="card-text d-flex justify-content-center align-items-center quiz_category_card">
-                                {{ category.nameCategory }}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                    <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}"><img class="card-img-top img_quiz" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
-                        </h4>                    
+    <!-- PAGE CONTENT -->
+    <div class='container'>
+        <h2 id='home_categories' class='my-4 h2_home'>Catégories</h2>
+        <div class='d-flex justify-content-center p_home'>
+            Les catégories rassemblent plusieurs quiz du même thème.
+        </div>
+        <!-- CATEGORIES -->
+        <div class='row'>
+            <div class='category_container'>
+                {% for category in allCategories %}
+                    <div class='category col-lg-2'>
+                        <a href='/questionnary/single-category-{{ category.idCategory }}' class='img_category'><img src='public/images/img_categories/{{ category.imageCategory }}' alt='Illustration catégorie'></a>
+                        <p class='title_category'>{{ category.nameCategory }}</p>
+                    </div>
+                {% endfor %}
+            </div>  
+        </div>
+        <br>
+        <br>
+        <!-- QUIZ -->
+        <h2 class='my-4 h2_home'>Quiz</h2>
+        <div class='d-flex justify-content-center p_home'>
+            Ici, les quiz sont affichés aléatoirement. Alors laissez-vous tenter, faites votre choix !
+        </div>
+        <div class='row'>
+            {% for quiz in homeQuiz %}
+                <div class='col-lg-3 col-sm-6 portfolio-item'>
+                    <div class='card h-100'>
+                        {% for category in oneCategory %}
+                            {% if quiz.idCategory == category.idCategory %}
+                                <div class='card-text d-flex justify-content-center align-items-center quiz_category_card'>
+                                    {{ category.nameCategory }}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                        <a href='/questionnary/start-quiz-{{ quiz.idQuiz }}'><img class='card-img-top img_quiz' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>
+                        <div class='card-body'>
+                            <h4 class='card-title'>
+                                <a href='/questionnary/start-quiz-{{ quiz.idQuiz }}'>{{ quiz.nameQuiz }}</a>
+                            </h4>                    
+                        </div>
                     </div>
                 </div>
+            {% endfor %}
+            <div class='col-lg-12 div_button_all_quiz'>
+                <a href='/questionnary/all-quiz-1' class='button_all_quiz'>Voir tous les quiz</a>
             </div>
-        {% endfor %}
-        <div class="col-lg-12 div_button_all_quiz">
-            <a href="/questionnary/all-quiz-1" class="button_all_quiz">Voir tous les quiz</a>
         </div>
     </div>
-    <!-- END ROW QUIZ -->
-</div>
-
 {% endblock %}

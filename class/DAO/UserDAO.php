@@ -1,4 +1,5 @@
 <?php 
+
 namespace App\DAO;
 
 class UserDAO extends DAO {
@@ -8,6 +9,7 @@ class UserDAO extends DAO {
         $data = $this->createQuery($req, [$idUser]);
         return $data;
     }
+    
     public function getAllUsers() {
         $req = 'SELECT * FROM user';
         $data = $this->createQuery($req);

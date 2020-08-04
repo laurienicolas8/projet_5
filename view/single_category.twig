@@ -1,36 +1,33 @@
 {% extends 'template_frontend.twig' %}
 
 {% block head %}
-<title>Contenu de la catégorie</title>
+    <title>Contenu de la catégorie</title>
 {% endblock %}
 
 {% block content %}
+    <div class='container col-lg-11'>
+        <a href='/questionnary/' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
 
-<div class="container col-lg-11">
-    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-    <div class="title-category">
-        {% for category in oneCategory %}
-            <img class="img-category" src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration catégorie">
-            <h1>{{ category.nameCategory }}</h1>
-        {% endfor %}
-    </div>
+        <div class='title-category'>
+            {% for category in oneCategory %}
+                <img class='img-category' src='public/images/img_categories/{{ category.imageCategory }}' alt='Illustration catégorie'>
+                <h1>{{ category.nameCategory }}</h1>
+            {% endfor %}
+        </div>
 
-    <!-- QUIZ OF THE CATEGORY -->
-    <div class="row quiz_by_cat_container">
-        {% for quiz in allQuiz %}
-            <div class="col-lg-2 col-sm-6 portfolio-item quiz_single_category">
-                <div class="card h-100">
-                    <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}"><img class="card-img-top img_quiz" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
-                    <div class="card-body">
-                        <h4 class="card-title">
-                            <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
-                        </h4>                    
+        <div class='row quiz_by_cat_container'>
+            {% for quiz in allQuiz %}
+                <div class='col-lg-2 col-sm-6 portfolio-item quiz_single_category'>
+                    <div class='card h-100'>
+                        <a href='/questionnary/start-quiz-{{ quiz.idQuiz }}'><img class='card-img-top img_quiz' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>
+                        <div class='card-body'>
+                            <h4 class='card-title'>
+                                <a href='/questionnary/start-quiz-{{ quiz.idQuiz }}'>{{ quiz.nameQuiz }}</a>
+                            </h4>                    
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
-<!-- END ROW QUIZ -->
-</div>
-
 {% endblock %}

@@ -1,21 +1,21 @@
 <?php 
+
 namespace App\Controller;
 
-use App\DAO\QuizDAO;
-use App\DAO\UserDAO;
 use App\DAO\AnswerDAO;
 use App\DAO\CategoryDAO;
 use App\DAO\QuestionDAO;
+use App\DAO\QuizDAO;
 use App\DAO\ResultDAO;
+use App\DAO\UserDAO;
 
-use App\Entity\Category;
 use App\Entity\Answer;
-use App\Entity\Quiz;
+use App\Entity\Category;
 use App\Entity\Question;
+use App\Entity\Quiz;
 use App\Entity\User;
 
 require('vendor/autoload.php');
-
 
 class Controller {
 

@@ -1,59 +1,55 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Détails de la catégorie</title>
+    <title>Détails de la catégorie</title>
 {% endblock %}
 
 {% block content %}
-
-{% for category in oneCategory %}
-<div class="d-flex align-items-center title_details_category">
-    <a href="/questionnary/categories" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-    <img src="public/images/img_categories/{{ category.imageCategory }}" alt="Illustration de la catégorie"></img>
-    <h1>Catégorie | {{ category.nameCategory }}</h1>
-    <a href="/questionnary/edit-category-{{ category.idCategory }}" class="link_pencil icons_title"><i class="fa fa-pencil fa-lg info_icon" aria-hidden="true"></i></a>
-    <a href="/questionnary/alert-category-{{ category.idCategory }}" class="link_pencil icons_title"><i class="fa fa-trash-o fa-lg delete_icon" aria-hidden="true"></i></a>
-</div>
-{% endfor %}
-
-{% if allQuiz == null %}
-    <div class="alert alert-danger alert_empty" role="alert">
-        Cette catégorie est vide, elle est donc indisponible sur le site. Remplissez-la dès maintenant !
-    </div>
-{% endif %}
-
-{% if  session.update_category is defined %}
-    <div class="alert alert-success alert_empty" role="alert">La catégorie a été mise à jour avec succès !</div>
-{% endif %}
-
-{% if  session.new_quiz is defined %}
-    <div class="alert alert-success alert_empty" role="alert">Le quiz a été créé avec succès !</div>
-{% endif %}
-
-{% if  session.delete_quiz is defined %}
-    <div class="alert alert-success alert_empty" role="alert">Le quiz a été supprimé avec succès !</div>
-{% endif %}
-
-<div class="col-lg-12 d-flex justify-content-center flex-wrap quiz_container">
-    <div class="card quiz_card" style="width: 14rem;">
-        <a href="/questionnary/new-quiz"><img class="card-img-top" src="public/images/img_quiz/new_quiz.png" alt="Illustration nouveau quiz"></a>
-        <div class="card-text">
-            <p class="card-text name_new_quiz">Nouveau quiz</p>
-        </div>
-    </div>
-    
-    {% for quiz in allQuiz %}
-        <div class="card quiz_card" style="width: 14rem;">
-            <a href="/questionnary/details-quiz-{{ quiz.idQuiz }}"><img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
-            <div class="card-text">
-                <a class="card-text name_quiz">{{ quiz.nameQuiz }}</a>
-            </div>
-            <div class="card-footer d-flex justify-content-between all_quiz_icons">
-                <a href="/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}" class="quiz_icon"><i class="fa fa-pencil info_icon" aria-hidden="true"></i></a>
-                <a href="/questionnary/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o delete_icon" aria-hidden="true"></i></a>
-            </div>
+    {% for category in oneCategory %}
+        <div class='d-flex align-items-center title_details_category'>
+            <a href='/questionnary/categories' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+            <img src='public/images/img_categories/{{ category.imageCategory }}' alt='Illustration de la catégorie'></img>
+            <h1>Catégorie | {{ category.nameCategory }}</h1>
+            <a href='/questionnary/edit-category-{{ category.idCategory }}' class='link_pencil icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
+            <a href='/questionnary/alert-category-{{ category.idCategory }}' class='link_pencil icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>
     {% endfor %}
-</div>
 
+    {% if allQuiz == null %}
+        <div class='alert alert-danger alert_empty' role='alert'>Cette catégorie est vide, elle est donc indisponible sur le site. Remplissez-la dès maintenant !</div>
+    {% endif %}
+
+    {% if  session.update_category is defined %}
+        <div class='alert alert-success alert_empty' role='alert'>La catégorie a été mise à jour avec succès !</div>
+    {% endif %}
+
+    {% if  session.new_quiz is defined %}
+        <div class='alert alert-success alert_empty' role='alert'>Le quiz a été créé avec succès !</div>
+    {% endif %}
+
+    {% if  session.delete_quiz is defined %}
+        <div class='alert alert-success alert_empty' role='alert'>Le quiz a été supprimé avec succès !</div>
+    {% endif %}
+
+    <div class='col-lg-12 d-flex justify-content-center flex-wrap quiz_container'>
+        <div class='card quiz_card' style='width: 14rem;'>
+            <a href='/questionnary/new-quiz'><img class='card-img-top' src='public/images/img_quiz/new_quiz.png' alt='Illustration nouveau quiz'></a>
+            <div class='card-text'>
+                <p class='card-text name_new_quiz'>Nouveau quiz</p>
+            </div>
+        </div>
+        
+        {% for quiz in allQuiz %}
+            <div class='card quiz_card' style='width: 14rem;'>
+                <a href='/questionnary/details-quiz-{{ quiz.idQuiz }}'><img class='card-img-top' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>
+                <div class='card-text'>
+                    <a class='card-text name_quiz'>{{ quiz.nameQuiz }}</a>
+                </div>
+                <div class='card-footer d-flex justify-content-between all_quiz_icons'>
+                    <a href='/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}' class='quiz_icon'><i class='fa fa-pencil info_icon' aria-hidden='true'></i></a>
+                    <a href='/questionnary/alert-quiz-{{ quiz.idQuiz }}' class='quiz_icon'><i class='fa fa-trash-o delete_icon' aria-hidden='true'></i></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

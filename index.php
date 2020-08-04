@@ -18,7 +18,6 @@ class Router {
         session_start();
         $this->router = new AltoRouter();
         $this->router->setBasePath('/questionnary');
-
         $this->frontController = new FrontController;
         $this->backController = new BackController;
 
@@ -38,7 +37,7 @@ class Router {
                 $this->frontController->detailSingleCategory($idCategory);
             }, 'single-category'),
 
-            // QUIZ SYSTEM
+            //---------- Quiz system ----------//
             array('GET', '/start-quiz-[i:idQuiz]', function($idQuiz) {
                 $this->frontController->startQuiz($idQuiz);
             }, 'start-quiz'),
@@ -47,7 +46,7 @@ class Router {
                 $this->frontController->question($indexQuestion, $idQuiz);
             }, 'question'),
 
-            array('POST', '/check-answer-[i:idQuestion]-[i:indexQuestion]-[i:idQuiz]', function($idQuestion, $indexQuestion, $idQuiz) {
+            array('POST', '/question-answer-[i:idQuestion]-[i:indexQuestion]-[i:idQuiz]', function($idQuestion, $indexQuestion, $idQuiz) {
                 $this->frontController->checkAnswer($_POST['answer'], $idQuestion);
                 $this->frontController->answer($_POST['answer'], $indexQuestion, $idQuiz);
                 unset($_SESSION['right_answer']);
@@ -234,7 +233,7 @@ class Router {
             }, 'delete-user'),
         ));
 
-        // Trouver une correspondance entre l'URL reçue et les itinéraires
+        //---------- Match ----------//
         $match = $this->router->match();
         if ($match !==null) {
             if (is_callable($match['target'])) {

@@ -1,15 +1,15 @@
 <?php
+
 namespace App\Controller;
 
 use Exception;
-use App\Entity\Quiz;
 use App\Entity\Answer;
 use App\Entity\Category;
-use App\Entity\Question;
 use App\Controller\Controller;
+use App\Entity\Question;
+use App\Entity\Quiz;
 
 require('vendor/autoload.php');
-require_once('config.php');
 
 class FrontController extends Controller {
     
@@ -137,7 +137,7 @@ class FrontController extends Controller {
                     }
                 }
             } else {
-                echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
+                echo 'Erreur : Aucune question n\'a été trouvée dans ce quiz';
             }
             echo $this->twig->render('questions.twig', [
                 'oneQuiz' => $oneQuiz,
@@ -198,7 +198,7 @@ class FrontController extends Controller {
                     }
                 }
             } else {
-                echo "Erreur : Aucune question n'a été trouvée dans ce quiz";
+                echo 'Erreur : Aucune question n\'a été trouvée dans ce quiz';
             }
             echo $this->twig->render('answer.twig', [
                 'session' => $_SESSION,

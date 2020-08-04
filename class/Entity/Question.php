@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 class Question extends Entity {

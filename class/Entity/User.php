@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Entity;
 
 class User extends Entity {
@@ -35,7 +36,7 @@ class User extends Entity {
         return $this->_admin;
     }
 
-
+    
     //setters
     public function setIdUser($idUser) {
         $idUser = (int) $idUser;
@@ -69,8 +70,8 @@ class User extends Entity {
     }
 
     public function setAdmin($admin) {
-        //if (is_bool($admin)){
+        if ($admin == 1 || $admin == 0){
             $this->_admin = $admin;
-        //}
+        }
     }
 } 

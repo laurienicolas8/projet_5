@@ -1,53 +1,52 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Quiz - Administration</title>
+    <title>Quiz - Administration</title>
 {% endblock %}
 
 {% block content %}
+    <h1>Quiz</h1>
 
-<h1>Quiz</h1>
-
-<div class="col-lg-12 d-flex justify-content-center flex-wrap quiz_container">
-    <div class="card quiz_card" style="width: 14rem;">
-        <a href="/questionnary/new-quiz"><img class="card-img-top" src="public/images/img_quiz/new_quiz.png" alt="Illustration nouveau quiz"></a>
-        <div class="card-text">
-            <p class="card-text name_new_quiz">Nouveau quiz</p>
+    <div class='col-lg-12 d-flex justify-content-center flex-wrap quiz_container'>
+        <div class='card quiz_card' style='width: 14rem;'>
+            <a href='/questionnary/new-quiz'><img class='card-img-top' src='public/images/img_quiz/new_quiz.png' alt='Illustration nouveau quiz'></a>
+            <div class='card-text'>
+                <p class='card-text name_new_quiz'>Nouveau quiz</p>
+            </div>
         </div>
-    </div>
-    {% for quiz in allQuiz %}
-    <div class="card quiz_card" style="width: 14rem;">
-        {% for category in oneCategory %}
-            {% if quiz.idCategory == category.idCategory %}
-                <div class="card-text d-flex justify-content-center align-items-center quiz_category_card">
-                    {{ category.nameCategory }}
+
+        {% for quiz in allQuiz %}
+            <div class='card quiz_card' style='width: 14rem;'>
+                {% for category in oneCategory %}
+                    {% if quiz.idCategory == category.idCategory %}
+                        <div class='card-text d-flex justify-content-center align-items-center quiz_category_card'>
+                            {{ category.nameCategory }}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <a href='/questionnary/details-quiz-{{ quiz.idQuiz }}'><img class='card-img-top' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>
+                <div class='card-text'>
+                    <a class='card-text name_quiz'>{{ quiz.nameQuiz }}</a>
                 </div>
-            {% endif %}
+                <div class='card-footer d-flex justify-content-between all_quiz_icons'>
+                    <a href='/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}'><i class='fa fa-pencil info_icon' aria-hidden='true'></i></a>
+                    <a href='/questionnary/alert-quiz-{{ quiz.idQuiz }}' class='quiz_icon'><i class='fa fa-trash-o delete_icon' aria-hidden='true'></i></a>
+                </div>
+            </div>
         {% endfor %}
-        <a href="/questionnary/details-quiz-{{ quiz.idQuiz }}"><img class="card-img-top" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
-        <div class="card-text">
-            <a class="card-text name_quiz">{{ quiz.nameQuiz }}</a>
-        </div>
-        <div class="card-footer d-flex justify-content-between all_quiz_icons">
-            <a href="/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}"><i class="fa fa-pencil info_icon" aria-hidden="true"></i></a>
-            <a href="/questionnary/alert-quiz-{{ quiz.idQuiz }}" class="quiz_icon"><i class="fa fa-trash-o delete_icon" aria-hidden="true"></i></a>
-        </div>
+
+        <nav aria-label='Page navigation example' class='pagination'>
+            <ul class='pagination d-flex justify-content-center'>
+                {% for i in 1..nbPages %}
+                    {% if i == currentPage %}
+                        <li class='page-item disabled'>
+                            <a class='page-link' href='' tabindex='-1'>{{ i }}</a>
+                        </li>
+                    {% else %}
+                        <li class='page-item'><a class='page-link' href='/questionnary/quiz-{{ i }}'>{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
     </div>
-    {% endfor %}
-
-    <nav aria-label="Page navigation example" class="pagination">
-        <ul class="pagination d-flex justify-content-center">
-            {% for i in 1..nbPages %}
-                {% if i == currentPage %}
-                <li class="page-item disabled">
-                    <a class="page-link" href="" tabindex="-1">{{ i }}</a>
-                </li>
-                {% else %}
-                <li class="page-item"><a class="page-link" href="/questionnary/quiz-{{ i }}">{{ i }}</a></li>
-                {% endif %}
-            {% endfor %}
-        </ul>
-    </nav>
-</div>
-
 {% endblock %}

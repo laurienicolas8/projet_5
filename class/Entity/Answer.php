@@ -1,4 +1,5 @@
 <?php 
+
 namespace App\Entity;
 
 class Answer extends Entity {
@@ -53,5 +54,4 @@ class Answer extends Entity {
             $this->_idQuestion = $idQuestion;
         }
     }
-
 }

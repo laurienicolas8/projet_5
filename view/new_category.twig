@@ -1,31 +1,27 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Nouvelle catégorie</title>
+    <title>Nouvelle catégorie</title>
 {% endblock %}
 
 {% block content %}
-<div class="d-flex title-category">
-    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-    <h1>Nouvelle catégorie</h1>
-</div>
+    <div class='d-flex title-category'>
+        <a href='javascript:history.back()' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+        <h1>Nouvelle catégorie</h1>
+    </div>
 
-<div class="form_new_container">
-    <form action="/questionnary/valid-new-category" method="post">
-        <div class="form-group">
-            <label for="name_category">Nom</label>
-            <input type="text" class="form-control" id="name_category" name="nameCategory" placeholder="Exemple : Animaux" required>
-        </div>
-        <div class="form-group">
-            <label for="image_category">Image</label>
-            <input type="file" class="form-control-file" id="image_category" name="imageCategory" accept="image/png, image/jpeg" required>
-            <small id="image_quiz_help" class="form-text text-muted">Seuls les fichiers .png et .jpeg sont acceptés.</small>
-        </div>
-        <button type="submit" class="btn btn-success valid_new_button">Enregistrer</button>
-    </form>
-</div>
-{% endblock %}
-
-{% block footer %}
-<script src="public/js/get_current_image.js"></script>
+    <div class='form_new_container'>
+        <form action='/questionnary/valid-new-category' method='post'>
+            <div class='form-group'>
+                <label for='name_category'>Nom</label>
+                <input type='text' class='form-control' id='name_category' name='nameCategory' placeholder='Exemple : Animaux' required>
+            </div>
+            <div class='form-group'>
+                <label for='image_category'>Image</label>
+                <input type='file' class='form-control-file' id='image_category' name='imageCategory' accept='image/png, image/jpeg' required>
+                <small id='image_quiz_help' class='form-text text-muted'>Seuls les fichiers .png et .jpeg sont acceptés.</small>
+            </div>
+            <button type='submit' class='btn btn-success valid_new_button'>Enregistrer</button>
+        </form>
+    </div>
 {% endblock %}

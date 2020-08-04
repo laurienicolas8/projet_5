@@ -1,13 +1,10 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Dashboard</title>
+    <title>Dashboard</title>
 {% endblock %}
 
 {% block content %}
-
-<h1>Dashboard</h1>
-<h2 class="d-flex justify-content-center">Bonjour, {{ session.user_connected.nameUser }} !</h2>
-
-
+    <h1>Dashboard</h1>
+    <h2 class='d-flex justify-content-center'>Bonjour, {{ session.user_connected.nameUser }} !</h2>
 {% endblock %}

@@ -1,11 +1,12 @@
 <?php
-namespace App\DAO;
 
+namespace App\DAO;
 use PDO;
 
 require_once('config.php');
 
 class DAO {
+
     private $connection; 
     
     protected function checkConnection() {

@@ -1,41 +1,36 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Nouveau quiz</title>
+    <title>Nouveau quiz</title>
 {% endblock %}
 
 {% block content %}
-<div class="d-flex title-category">
-    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-    <h1>Nouveau quiz</h1>
-</div>
+    <div class='d-flex title-category'>
+        <a href='javascript:history.back()' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+        <h1>Nouveau quiz</h1>
+    </div>
 
-<div class="form_new_container">
-    <form action="/questionnary/valid-new-quiz-1" method="post">
-        <div class="form-group">
-            <label for="name_quiz">Nom</label>
-            <input type="text" class="form-control" id="name_quiz" name="nameQuiz" placeholder="Exemple : La Seconde Guerre mondiale" required>
-        </div>
-        <div class="form-group">
-            <label for="image_quiz">Image</label>
-            <input type="file" class="form-control-file" id="image_quiz" name="imageQuiz" accept="image/png, image/jpeg" required>
-            <small id="image_quiz_help" class="form-text text-muted">Seuls les fichiers .png et .jpeg sont acceptés.</small>
-        </div>
-        <div class="form-group">
-            <label for="select_id_category">Catégorie d'appartenance</label>
-            <select class="custom-select" id="select_id_category" name="idCategory" required>
-                <option value="" selected>Sélectionner...</option>
-                {% for category in allCategories %}
-                <option value="{{ category.idCategory }}">{{ category.nameCategory }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-success valid_new_button">Enregistrer</button>
-    </form>
-</div>
-{% endblock %}
-
-{% block footer %}
-<script src="public/js/get_current_image.js"></script>
+    <div class='form_new_container'>
+        <form action='/questionnary/valid-new-quiz-1' method='post'>
+            <div class='form-group'>
+                <label for='name_quiz'>Nom</label>
+                <input type='text' class='form-control' id='name_quiz' name='nameQuiz' placeholder='Exemple : La Seconde Guerre mondiale' required>
+            </div>
+            <div class='form-group'>
+                <label for='image_quiz'>Image</label>
+                <input type='file' class='form-control-file' id='image_quiz' name='imageQuiz' accept='image/png, image/jpeg' required>
+                <small id='image_quiz_help' class='form-text text-muted'>Seuls les fichiers .png et .jpeg sont acceptés.</small>
+            </div>
+            <div class='form-group'>
+                <label for='select_id_category'>Catégorie d'appartenance</label>
+                <select class='custom-select' id='select_id_category' name='idCategory' required>
+                    <option value='' selected>Sélectionner...</option>
+                    {% for category in allCategories %}
+                        <option value='{{ category.idCategory }}'>{{ category.nameCategory }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type='submit' class='btn btn-success valid_new_button'>Enregistrer</button>
+        </form>
+    </div>
 {% endblock %}

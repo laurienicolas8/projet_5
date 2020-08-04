@@ -1,4 +1,5 @@
 <?php 
+
 namespace App\DAO;
 
 class AnswerDAO extends DAO {

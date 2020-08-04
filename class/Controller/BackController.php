@@ -1,16 +1,16 @@
 <?php 
+
 namespace App\Controller;
 
 use Exception;
-use App\Entity\Quiz;
-use App\Entity\User;
 use App\Entity\Answer;
 use App\Entity\Category;
-use App\Entity\Question;
 use App\Controller\Controller;
+use App\Entity\Question;
+use App\Entity\Quiz;
+use App\Entity\User;
 
 require('vendor/autoload.php');
-
 
 class BackController extends Controller {
     
@@ -19,6 +19,7 @@ class BackController extends Controller {
             'session', $_SESSION,
         ]);
     }
+    
     //---------- ANSWERS ----------//
     public function validNewAnswer($answer, $rightAnswer, $idQuestion) {
         try {

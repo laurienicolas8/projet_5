@@ -1,58 +1,56 @@
 {% extends 'template_backend.twig' %}
 
 {% block head %}
-<title>Modifier</title>
+    <title>Modifier</title>
 {% endblock %}
 
 {% block content %}
-<div class="d-flex title-category">
-    <a href="javascript:history.back()" class="back_arrow"><i class="fa fa-arrow-left fa-2x" aria-hidden="true"></i></a>
-    <h1>Modifier l'utilisateur</h1>
-</div>
+    <div class='d-flex title-category'>
+        <a href='javascript:history.back()' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+        <h1>Modifier l'utilisateur</h1>
+    </div>
 
-<div class="form_new_container">
-    {% for user in oneUser %}
-    <form action="/questionnary/update-user-{{ user.idUser }}" method="post">
-        <div class="form-group">
-            <label for="identifiant_user">Identifiant</label>
-            <input type="text" class="form-control" id="identifiant_user" name="identifiant" value="{{ user.identifiant }}" required>
-        </div>
-        <div class="form-group">
-            <label for="password_user">Mot de passe</label>
-            <input type="password" class="form-control" id="password_user" name="password" required>
-            <small>Si vous ne souhaitez pas modifier le mot de passe, saisissez le mot de passe actuel.</small>
-        </div>
-        <div class="form-group">
-            <label for="lastname_user">Nom</label>
-            <input type="text" class="form-control" id="lastname_user" name="lastnameUser" value="{{ user.lastnameUser }}" required>
-        </div>
-        <div class="form-group">
-            <label for="name_user">Prénom</label>
-            <input type="text" class="form-control" id="name_user" name="nameUser" value="{{ user.nameUser }}" required>
-        </div>
-        <div class="form-group">
-            <p>Administrateur ?</p>
-            <div class="form-check form-check-inline">
-                {% if user.admin %}
-                <input class="form-check-input" type="radio" value="1" id="admin_user" name="admin" checked required>
-                {% else %}
-                <input class="form-check-input" type="radio" value="1" id="admin_user" name="admin">
-                {% endif %}
-                <label class="form-check-label" for="admin_user">Oui</label>
-            </div>
-            <div class="form-check form-check-inline">
-                {% if user.admin %}
-                <input class="form-check-input" type="radio" value="0" id="admin_user" name="admin">
-                {% else %}
-                <input class="form-check-input" type="radio" value="0" id="admin_user" name="admin" checked>
-                {% endif %}
-                <label class="form-check-label" for="admin_user">Non</label>
-            </div>
-        </div>
-    
-        <button type="submit" class="btn btn-success valid_new_button">Enregistrer</button>
+    <div class='form_new_container'>
+        {% for user in oneUser %}
+            <form action='/questionnary/update-user-{{ user.idUser }}' method='post'>
+                <div class='form-group'>
+                    <label for='identifiant_user'>Identifiant</label>
+                    <input type='text' class='form-control' id='identifiant_user' name='identifiant' value='{{ user.identifiant }}' required>
+                </div>
+                <div class='form-group'>
+                    <label for='password_user'>Mot de passe</label>
+                    <input type='password' class='form-control' id='password_user' name='password' required>
+                    <small>Si vous ne souhaitez pas modifier le mot de passe, saisissez le mot de passe actuel.</small>
+                </div>
+                <div class='form-group'>
+                    <label for='lastname_user'>Nom</label>
+                    <input type='text' class='form-control' id='lastname_user' name='lastnameUser' value='{{ user.lastnameUser }}' required>
+                </div>
+                <div class='form-group'>
+                    <label for='name_user'>Prénom</label>
+                    <input type='text' class='form-control' id='name_user' name='nameUser' value='{{ user.nameUser }}' required>
+                </div>
+                <div class='form-group'>
+                    <p>Administrateur ?</p>
+                    <div class='form-check form-check-inline'>
+                        {% if user.admin %}
+                            <input class='form-check-input' type='radio' value='1' id='admin_user' name='admin' checked required>
+                        {% else %}
+                            <input class='form-check-input' type='radio' value='1' id='admin_user' name='admin'>
+                        {% endif %}
+                        <label class='form-check-label' for='admin_user'>Oui</label>
+                    </div>
+                    <div class='form-check form-check-inline'>
+                        {% if user.admin %}
+                            <input class='form-check-input' type='radio' value='0' id='admin_user' name='admin'>
+                        {% else %}
+                            <input class='form-check-input' type='radio' value='0' id='admin_user' name='admin' checked>
+                        {% endif %}
+                        <label class='form-check-label' for='admin_user'>Non</label>
+                    </div>
+                </div>
+                <button type='submit' class='btn btn-success valid_new_button'>Enregistrer</button>
+            </form>
         {% endfor %}
-    </form>
-</div>
-
+    </div>
 {% endblock %}
