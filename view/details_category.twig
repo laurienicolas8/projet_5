@@ -19,15 +19,15 @@
         <div class='alert alert-danger alert_empty' role='alert'>Cette catégorie est vide, elle est donc indisponible sur le site. Remplissez-la dès maintenant !</div>
     {% endif %}
 
-    {% if  session.update_category is defined %}
+    {% if session.update_category is defined %}
         <div class='alert alert-success alert_empty' role='alert'>La catégorie a été mise à jour avec succès !</div>
     {% endif %}
 
-    {% if  session.new_quiz is defined %}
+    {% if session.new_quiz is defined %}
         <div class='alert alert-success alert_empty' role='alert'>Le quiz a été créé avec succès !</div>
     {% endif %}
 
-    {% if  session.delete_quiz is defined %}
+    {% if session.delete_quiz is defined %}
         <div class='alert alert-success alert_empty' role='alert'>Le quiz a été supprimé avec succès !</div>
     {% endif %}
 
@@ -38,7 +38,6 @@
                 <p class='card-text name_new_quiz'>Nouveau quiz</p>
             </div>
         </div>
-        
         {% for quiz in allQuiz %}
             <div class='card quiz_card' style='width: 14rem;'>
                 <a href='/questionnary/details-quiz-{{ quiz.idQuiz }}'><img class='card-img-top' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>

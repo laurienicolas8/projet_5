@@ -12,15 +12,26 @@
         <div class='container col-lg-11'>
             <div class='row'>
                 {% for countQuestions in oneCount %}
-                    <div class='col-lg-12 p_start_quiz'>
-                        {{ countQuestions }} questions
+                    {% if countQuestions > 1 %}
+                        <div class='col-lg-12 p_start_quiz'>
+                            {{ countQuestions }} questions
+                        </div>
+                    {% else %}
+                        <div class='col-lg-12 p_start_quiz'>
+                            {{ countQuestions }} question
+                        </div>
+                    {% endif %}
+
+                    <div class='col-lg-12 start_quiz_container'>
+                        <img class='rounded' src='public/images/img_quiz/{{ quiz.imageQuiz }}' style='max-width: 35%;' alt='Image représentant le quiz'>
+
+                        {% if countQuestions > 0 %}
+                            <a href='/questionnary/question-{{ firstQuestionIndex }}-{{ questions[firstQuestionIndex].idQuiz }}' class='btn-success btn_start_quiz'>Commencer le quiz<i class='fa fa-chevron-right fa-3x' aria-hidden='true'></i></a>
+                        {% elseif countQuestions == 0 %}
+                            <div class="alert alert-primary" style='margin: 20px;' role="alert">Cet élément est en cours de création, il est actuellement indisponible.</div>
+                        {% endif %}
                     </div>
                 {% endfor %}
-                
-                <div class='col-lg-12 start_quiz_container'>
-                    <img class='rounded' src='public/images/img_quiz/{{ quiz.imageQuiz }}' style='max-width: 35%;' alt='Image représentant le quiz'>
-                    <a href='/questionnary/question-{{ firstQuestionIndex }}-{{ questions[firstQuestionIndex].idQuiz }}' class='btn-success btn_start_quiz'>Commencer le quiz<i class='fa fa-chevron-right fa-3x' aria-hidden='true'></i></a>
-                </div>
             </div>
         </div>
     {% endfor %}
