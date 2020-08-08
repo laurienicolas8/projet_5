@@ -96,26 +96,22 @@ body {
     transform: scale(1.2);
 }
 
-.dashboard_data_container {
-    margin: 50px;
+.title_profile {
+    margin-bottom: 30px;
 }
 
-.circle_dashboard {
-    width: 100px;
-    height: 100px;
-    margin: 20px 30px;
-    background-color: #00AB11;
-    color: white;
-    border: 3px solid #00AB11;
-    border-radius: 50%;
-    text-align: center;
-    vertical-align: middle;
-    font-size: 1.5em;
+.dashboard_info_container {
+    border: 2px solid grey;
+    border-radius: 20px;
+    margin: 40px auto;
+    padding: 10px 20px 30px 20px;
 }
 
-.data_dashboard {
-    font-size: 1.4em;
+.info_profile {
+    font-size: 1.3em;
 }
+
+
 /* END DASHBOARD */
 
 /* CATEGORIES */
@@ -483,6 +479,11 @@ body {
 
 .user_icon:hover {
     transform: scale(1.2);
+}
+
+.icon_admin {
+    color: #595959;
+    margin-bottom: 10px;
 }
 /* END USERS */
 

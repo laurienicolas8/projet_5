@@ -40,6 +40,7 @@ class FrontController extends Controller {
             }
         }
         echo $this->twig->render('home.twig', [
+            'session' => $_SESSION,
             'allCategories' => $allCategories, 
             'homeQuiz' => $homeQuiz,
             'oneCategory' => $oneCategory,
@@ -80,11 +81,12 @@ class FrontController extends Controller {
         try {
             $oneCategory = $this->singleCategoryObject($idCategory);
             $quiz = $this->quizDAO->getQuizByCategory($idCategory);
+            $allQuiz = [];
             foreach ($quiz as $oneQuiz) {
                 $questions = $this->questionsObject($oneQuiz['idQuiz']);
                 if ($questions !== null) {
                     $allQuiz[] = new Quiz($oneQuiz); 
-                }
+                } 
             }
             
             echo $this->twig->render('single_category.twig', [

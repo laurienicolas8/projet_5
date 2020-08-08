@@ -290,6 +290,10 @@ body {
     font-size: 1.2em;
 }
 
+.appreciation {
+    display: none;
+}
+
 .good_appreciation {
     font-size: 1.4em;
     font-weight: bold;

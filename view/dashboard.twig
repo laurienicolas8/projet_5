@@ -6,5 +6,28 @@
 
 {% block content %}
     <h1>Dashboard</h1>
-    <h2 class='d-flex justify-content-center'>Bonjour, {{ session.user_connected.nameUser }} !</h2>
+    {% if user != null %}
+        <h2 class='d-flex justify-content-center title_dashboard'>Bonjour, {{ user.nameUser }} !</h2>
+        <div class='col-lg-10 dashboard_info_container text-center'>
+            <h2 class='title_profile'>Votre profil</h2>
+            <div class='d-flex justify-content-around align-items-center'>
+                <i class='fas fa-user-alt fa-10x img_profile' style='color: #595959;'></i>
+                <div class='text-left info_profile'>
+                    <p>{{ user.identifiant }}</p>
+                    <p>{{ user.nameUser }}</p>
+                    <p>{{ user.lastnameUser }}</p>
+                    {% if user.admin == 1 %}
+                        <p>Administrateur</p>
+                    {% endif %}
+                </div>
+                <div class='d-flex align-items-center'>
+                    <a href='/questionnary/edit-user-{{ user.idUser }}' class='btn btn-secondary btn-lg'><i class='fas fa-pen'></i> Modifier</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class='alert alert-danger' role='alert'>
+            Attention ! Aucun utilisateur reconnu à la connexion. Impossible de charger le tableau de bord. Veuillez réessayer.
+        </div>
+    {% endif %}
 {% endblock %}

@@ -67,6 +67,11 @@ class Router {
                 $this->frontController->login($_POST['identifiant'], $_POST['password']);
             }),
 
+            array('GET', '/logout', function() {
+                $this->frontController->logout();
+                $this->frontController->home();
+            }, 'logout'),
+
             array('GET', '/dashboard', function() {
                 $this->backController->dashboard();
             }, 'dashboard'),

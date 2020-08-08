@@ -6,6 +6,8 @@
 
         {% block head %}{% endblock %}
 
+        <!-- Favicon -->
+        <link rel='icon' href='public/images/favicon.png'>
         <!-- Bootstrap -->
         <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
         <!-- CSS -->
@@ -17,6 +19,12 @@
     </head>
 
     <body>
+        {% if session.user_connected is defined %}
+            <nav class='navbar sticky-top navbar-dark bg-dark'>
+                <p class='navbar-brand'>{{ session.user_connected.identifiant }}</p>
+                <a href='/questionnary/dashboard' class='btn btn-warning'>Retour au tableau de bord</a>
+            </nav>
+        {% endif %}
         <header id='menu'>
             <a href='/questionnary' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;' alt='Logo Questionnary'></a>
         </header>

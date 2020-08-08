@@ -38,30 +38,57 @@ class Controller {
         $this->twig = new \Twig\Environment($loader, [
             'cache' => false,
         ]);
+        $this->twig->addGlobal('session', $_SESSION);
     }
-
+    
+    /**
+     * loginPage
+     * check if an user is connected
+     * save the session variable user_connected
+     * render the page dashboard
+     * @return void
+     */
     public function loginPage() {
-        echo $this->twig->render('login.twig');
+        if (isset($_SESSION['user_connected'])) {
+            $user = $_SESSION['user_connected'];
+            echo $this->twig->render('dashboard.twig', [
+                'user' => $user,
+            ]);
+        } else {
+            echo $this->twig->render('login.twig');
+        }
     }
-
+    
+    /**
+     * login
+     * fetch the identifiant typed
+     * verify the password
+     * create an user object with the user connected
+     * create the session variable user_connected
+     * render the page dashboard or an error message if identifiant and password don't match
+     * @param  string $identifiant
+     * @param  string $password
+     * @return void
+     */
     public function login($identifiant, $password) {
-        // Je vérifie si l'identifiant saisi existe en base de données
+        // I check that the typed identifiant exists in database
         $userByIdentifiant = $this->userDAO->getUserByIdentifiant($identifiant);
         if (!empty($userByIdentifiant)) {
-            // Si c'est le cas, je vérifie si le password saisi lui correspond
+            // If it's the case, I check that the password corresponds 
             $passwordFound = $this->userDAO->getPasswordByIdentifiant($identifiant);
             $passwordHashed = $passwordFound[0]['password'];
             if (password_verify($password, $passwordHashed)) {
-                // Si l'identifiant et le mot de passe sont corrects, j'enregistre l'utilisateur qui s'est connecté en variable de session et j'appelle le dashboard
+                // If the identifiant and the password are correct, I save the user connected in session variable and I call the dashboard
                 foreach ($userByIdentifiant as $user) {
                     $userConnected = new User($user);
                 }
                 $_SESSION['user_connected'] = $userConnected;
+                $user = $_SESSION['user_connected'];
                 echo $this->twig->render('dashboard.twig', [
-                    'session' => $_SESSION,
+                    'user' => $user,
                 ]);
             } else {
-                // Si le mot de passe ne correspond pas, j'enregistre en session de variable un message d'erreur
+                // If the password doesn't correspond, I save in session variable an error message
                 $_SESSION['error_login'] = 'La connexion est impossible, l\'identifiant ou le mot de passe n\'est pas correct';
                 echo $this->twig->render('login.twig', [
                     'session' => $_SESSION,
@@ -71,7 +98,7 @@ class Controller {
                 }
             }
         } else {
-            // Si l'identifiant n'existe pas en base, j'enregistre aussi en session de variable un message d'erreur
+            // If the identifiant doesn't exit in database, I save in session variable an error message too
             $_SESSION['error_login'] = 'La connexion est impossible, l\'identifiant ou le mot de passe n\'est pas correct';
             echo $this->twig->render('login.twig', [
                 'session' => $_SESSION,
@@ -81,12 +108,33 @@ class Controller {
             }
         }
     }
+    
+    /**
+     * logout
+     * create the logout by deleting the session variable user_connected
+     * @return void
+     */
+    public function logout() {
+        if (isset($_SESSION['user_connected'])) {
+            unset($_SESSION['user_connected']);
+        } else {
+            echo 'Erreur Controller : Impossible de se déconnecter, aucune connexion trouvée';
+        }
+    }
 
-    //Factorisation pour éviter les répétitions de récupération de données
+    // Factoring to avoid duplications of creating objects of database data
 
-    //Answers
+    //Answers    
+    /**
+     * answersObject
+     * fetch answers of the question concerned
+     * create object foreach answer
+     * @param  int $idQuestion
+     * @return array or null
+     */
     public function answersObject($idQuestion) {
         $answers = $this->answerDAO->getQuestionAnswers($idQuestion);
+        // Avoid a php error
         if ($answers === []) {
             return null;
         } else {
@@ -97,7 +145,14 @@ class Controller {
         }
     }
 
-    //Categories
+    //Categories    
+    /**
+     * singleCategoryObject
+     * fetch the category concerned
+     * create object
+     * @param  int $idCategory
+     * @return array
+     */
     public function singleCategoryObject($idCategory) {
         $singleCategory = $this->categoryDAO->getSingleCategory($idCategory);
         foreach ($singleCategory as $category) {
@@ -105,7 +160,13 @@ class Controller {
         }
         return $oneCategory;
     }
-
+    
+    /**
+     * allCategoriesObject
+     * fetch all categories
+     * create object foreach category
+     * @return array
+     */
     public function allCategoriesObject() {
         $categories = $this->categoryDAO->getAllCategories();
         foreach ($categories as $category) {
@@ -114,7 +175,14 @@ class Controller {
         return $allCategories;
     }
 
-    //Questions
+    //Questions    
+    /**
+     * singleQuestionObject
+     * fetch the question concerned
+     * create object
+     * @param  int $idQuestion
+     * @return array
+     */
     public function singleQuestionObject($idQuestion) {
         $singleQuestion = $this->questionDAO->getSingleQuestion($idQuestion);
         foreach ($singleQuestion as $question) {
@@ -122,9 +190,17 @@ class Controller {
         }
         return $oneQuestion;
     }
-
+    
+    /**
+     * questionsObject
+     * fetch the questions of the quiz concerned
+     * create object foreach question
+     * @param  int $idQuiz
+     * @return array or null
+     */
     public function questionsObject($idQuiz) {
         $questions = $this->questionDAO->getQuizQuestions($idQuiz);
+        // Avoid a php error
         if ($questions === []) {
             return null;
         } else {
@@ -135,7 +211,15 @@ class Controller {
         }
     }
 
-    //Quiz
+    //Quiz    
+    /**
+     * singleQuizObject
+     * fetch the quiz concerned
+     * fetch the questions of the quiz concerned
+     * create object 
+     * @param  int $idQuiz
+     * @return array
+     */
     public function singleQuizObject($idQuiz) {
         $singleQuiz = $this->quizDAO->getSingleQuiz($idQuiz);
         $allQuestions = $this->questionsObject($idQuiz);
@@ -144,9 +228,17 @@ class Controller {
         }
         return $oneQuiz;
     }
-
+    
+    /**
+     * quizByCategoryObject
+     * fetch quiz of the category concerned
+     * create object foreach quiz
+     * @param  int $idCategory
+     * @return array or null
+     */
     public function quizByCategoryObject($idCategory) {
         $quizByCategory = $this->quizDAO->getQuizByCategory($idCategory);
+        // Avoid a php error
         if ($quizByCategory === []) {
             return null;
         } else {
@@ -157,7 +249,14 @@ class Controller {
         }
     }
 
-    //Users
+    //Users    
+    /**
+     * singleUserObject
+     * fetch the user concerned
+     * create object
+     * @param  int $idUser
+     * @return array
+     */
     public function singleUserObject($idUser) {
         $singleUser = $this->userDAO->getSingleUser($idUser);
         foreach ($singleUser as $user) {

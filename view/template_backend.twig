@@ -6,9 +6,11 @@
 
         {% block head %}{% endblock %}
 
-        <!-- Bootstrap core CSS -->
+        <!-- Favicon -->
+        <link rel='icon' href='public/images/favicon.png'>
+        <!-- Bootstrap -->
         <link href='vendor/bootstrap/css/bootstrap.min.css' rel='stylesheet'>
-        <!-- Custom styles for this template -->
+        <!-- CSS -->
         <link href='public/css/style_backend.css' rel='stylesheet'>
         <!-- Icons -->
         <script src='https://kit.fontawesome.com/a7057ee266.js'></script>
@@ -44,10 +46,8 @@
                                     <i class='fa fa-user' aria-hidden='true'></i>
                                     </a>
                                     <div class='dropdown-menu dropdown-menu-right' aria-labelledby='navbarDropdown'>
-                                        <a class='dropdown-item' href='#'>Mon profil</a>
-                                        <a class='dropdown-item' href='#'>Modifier mon profil</a>
-                                        <div class='dropdown-divider'></div>
-                                        <a class='dropdown-item' href='#'>Déconnexion</a>
+                                        <a class='dropdown-item' href='/questionnary/'>Retour au blog</a>
+                                        <a class='dropdown-item' href='/questionnary/logout'>Déconnexion</a>
                                     </div>
                                 </li>
                             </ul>
