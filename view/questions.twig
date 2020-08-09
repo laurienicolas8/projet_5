@@ -5,23 +5,25 @@
 {% endblock %}
 
 {% block content %}
-    <div class='container col-lg-12'>
+    <div class='container col-12'>
         <div class='row'>
             {% for quiz in oneQuiz %}
-                <h1 class='title_start_quiz'>{{ quiz.nameQuiz }}</h1>
+                <h1 class='col-12 title_start_quiz'>{{ quiz.nameQuiz }}</h1>
             {% endfor %}
 
             {% if allAnswers != null %}
                 {% for question in singleQuestion %}
                     <form method='post' action='/questionnary/question-answer-{{ question.idQuestion }}-{{ indexCurrentQuestion }}-{{ question.idQuiz }}' class='col-lg-9 d-flex flex-column justify-content-around align-items-center question_container'>
                         <p class='question'>{{ question.question }}</p>
-                        <div class='d-flex align-items-center'>
+                        <div class='d-flex flex-wrap justify-content-center align-items-center'>
                             {% for answer in allAnswers %}
-                                <input type='radio' id='answer' name='answer' value='{{ answer.idAnswer }}'>
-                                <label class='btn-secondary answer'>{{ answer.answer }}</label>
+                                <div>
+                                    <input type='radio' id='answer' name='answer' value='{{ answer.idAnswer }}'>
+                                    <label class='btn-secondary answer'>{{ answer.answer }}</label>
+                                </div>
                             {% endfor %}
                         </div>
-                        <button type='submit' class='col-lg-1 btn btn-success btn_valid'>Valider</button>
+                        <button type='submit' class='col-lg-2 col-md-3 col-sm-3 btn btn-success btn_valid'>Valider</button>
                     </form>
                 {% endfor %}
             {% else %}

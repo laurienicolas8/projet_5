@@ -9,7 +9,7 @@
         {% for quiz in oneQuiz %}
             <div class='d-flex align-items-center title_details_quiz'>
                 <a href='/questionnary/details-category-{{ quiz.idCategory }}' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
-                <h1>Quiz | {{ quiz.nameQuiz }}</h1>
+                <p class='title_details'>Quiz | {{ quiz.nameQuiz }}</p>
                 <a href='/questionnary/edit-quiz-{{ quiz.idQuiz }}-{{ quiz.idCategory }}' class='link_pencil icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
                 <a href='/questionnary/alert-quiz-{{ quiz.idQuiz }}' class='link_pencil icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
             </div>

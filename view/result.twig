@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block content %}
-    <div class='container col-lg-12'>
+    <div class='container col-12'>
         <div class='row'>
             {% for quiz in oneQuiz %}
                 <h1 class='title_start_quiz'>{{ quiz.nameQuiz }}</h1>
                 {% for nbQuestions in oneCount %}
-                    <div class='col-lg-12 d-flex flex-column align-items-center'>
+                    <div class='col-12 d-flex flex-column align-items-center'>
                         <p class='your_score_is'>Votre score est de ...</p>
                         <p class='score'>{{ score }} / {{ nbQuestions }}</p>
                         <a href='/questionnary/single-category-{{ quiz.idCategory }}' class='btn btn-lg btn-secondary'>Retour à la catégorie</a>

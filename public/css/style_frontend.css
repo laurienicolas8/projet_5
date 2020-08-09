@@ -234,7 +234,7 @@ body {
     text-align: center;
     padding: 10px;
     font-size: 1.5em;
-    margin: 0 100px;
+    margin: 0 50px;
     color: white;
     background-color: #28B032;
     border-radius: 50px;
@@ -395,3 +395,54 @@ body {
     transform: scale(1.2);
 }
 /* END FOOTER */
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 870px) {
+    .footer_front {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .login_button {
+        position: absolute;
+        padding: 5px;
+        bottom: 5px;
+    }
+
+    #slider {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .back_arrow {
+        left: 0px;
+    }
+    
+    .btn_start_quiz {
+        font-size: 1.2em;
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .img_category img {
+        max-width: 45%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .title_footer {
+        display: none;
+    }
+    
+    .title_contact {
+        font-size: 1.1em;
+    }
+
+    .btn_start_quiz {
+        font-size: 1em;
+    }
+}
+/* END RESPONSIVE */

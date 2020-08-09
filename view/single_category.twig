@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class='container col-lg-11'>
+    <div class='container col-11'>
         <a href='/questionnary/' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
 
         <div class='title-category'>
@@ -18,7 +18,7 @@
         {% if allQuiz != null %}
             <div class='row quiz_by_cat_container'>
                 {% for quiz in allQuiz %}
-                    <div class='col-lg-2 col-sm-6 portfolio-item quiz_single_category'>
+                    <div class='col-lg-2 col-sm-4 portfolio-item quiz_single_category'>
                         <div class='card h-100'>
                             <a href='/questionnary/start-quiz-{{ quiz.idQuiz }}'><img class='card-img-top img_quiz' src='public/images/img_quiz/{{ quiz.imageQuiz }}' alt='Image représentant le quiz'></a>
                             <div class='card-body'>

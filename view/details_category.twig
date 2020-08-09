@@ -9,7 +9,7 @@
         <div class='d-flex align-items-center title_details_category'>
             <a href='/questionnary/categories' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
             <img src='public/images/img_categories/{{ category.imageCategory }}' alt='Illustration de la catégorie'></img>
-            <h1>Catégorie | {{ category.nameCategory }}</h1>
+            <p class='title_details'>Catégorie | {{ category.nameCategory }}</p>
             <a href='/questionnary/edit-category-{{ category.idCategory }}' class='link_pencil icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
             <a href='/questionnary/alert-category-{{ category.idCategory }}' class='link_pencil icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>

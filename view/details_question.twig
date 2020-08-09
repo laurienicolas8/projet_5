@@ -8,7 +8,7 @@
     {% for question in oneQuestion %}
         <div class='d-flex align-items-center title_details_quiz'>
             <a href='/questionnary/details-quiz-{{ question.idQuiz }}' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
-            <h1>Question {{ question.idQuestion }}</h1>
+            <p class='title_details'>Question {{ question.idQuestion }}</p>
             <a href='/questionnary/edit-question-{{ question.idQuestion }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
             <a href='/questionnary/alert-question-{{ question.idQuestion }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>
@@ -24,25 +24,28 @@
         <div class='d-flex flex-column justify-content-center align-items-center' id='content_question'>
             <p class='data_question'>{{ question.question }}</p>
 
-            <div class='col-lg-12 d-flex flex-wrap justify-content-center align-items-center'>
-                <div class='col-lg-3 btn-secondary d-flex justify-content-around new_answer' id='new_answer'>
+            <div class='col-12 d-flex flex-column justify-content-around align-items-center'>
+                <div class='col-lg-3 col-md-5 col-sm-5 btn-secondary d-flex justify-content-around new_answer' id='new_answer'>
                     <i class='fa fa-plus fa-2x' aria-hidden='true'></i>
                     <a href='#' class='link_new_answer'>Nouvelle réponse</a>
                 </div>
 
-                {% for answer in allAnswers %}
-                    {% if answer.rightAnswer %}
-                        <div class='col-lg-3 btn-success d-flex justify-content-center answers'>{{ answer.answer }}</div>
-                    {% else %}
-                        <div class='col-lg-3 btn-primary d-flex justify-content-center answers'>{{ answer.answer }}</div>
-                    {% endif %}
-                    
-                    <div class='col-lg-1 d-flex flex-column'>
-                        <a href='/questionnary/edit-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon edit_answer'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
-                        <a href='/questionnary/delete-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
-                    </div>
-                {% endfor %}
-
+                <div class='col-lg-9 col-md-9 col-sm-9 d-flex justify-content-center align-content-center flex-wrap'>
+                    {% for answer in allAnswers %}
+                        <div class='col-lg-4 d-flex justify-content-center align-items-center'>
+                            {% if answer.rightAnswer %}
+                                <div class='btn-success d-flex justify-content-center answers'>{{ answer.answer }}</div>
+                            {% else %}
+                                <div class='btn-primary d-flex justify-content-center answers'>{{ answer.answer }}</div>
+                            {% endif %}
+                            
+                            <div class='d-flex flex-column'>
+                                <a href='/questionnary/edit-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon edit_answer'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
+                                <a href='/questionnary/delete-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
                 {% for answerEdit in oneAnswer %}
                     <div class='edit_answer_container' class='col-lg-5'>
                         <a href='#' class='close_answer close_edit_answer'><i class='fa fa-times' aria-hidden='true'></i></a>

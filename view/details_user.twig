@@ -8,7 +8,7 @@
     {% for user in oneUser %}
         <div class='d-flex align-items-center title_details_user'>
             <a href='/questionnary/users' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
-            <h1><i class='fa fa-user' aria-hidden='true'></i> Utilisateur | {{ user.nameUser }} {{ user.lastnameUser }}</h1>
+            <p class='title_details'><i class='fa fa-user' aria-hidden='true'></i> Utilisateur | {{ user.nameUser }} {{ user.lastnameUser }}</p>
             <a href='/questionnary/edit-user-{{ user.idUser }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
             <a href='/questionnary/alert-user-{{ user.idUser }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>
@@ -18,19 +18,19 @@
         {% endif %}
 
         <div class='data_user_container'>
-            <div class='col-lg-4 d-flex justify-content-between data_user'>
+            <div class='col-lg-5 col-md-6 col-sm-9 d-flex justify-content-between data_user'>
                 <p>Identifiant :</p>
                 <p>{{ user.identifiant }}</p>
             </div>
-            <div class='col-lg-4 d-flex justify-content-between data_user'>
+            <div class='col-lg-5 col-md-6 col-sm-9 d-flex justify-content-between data_user'>
                 <p>Nom :</p>
                 <p>{{ user.lastnameUser }}</p>
             </div>
-            <div class='col-lg-4 d-flex justify-content-between data_user'>
+            <div class='col-lg-5 col-md-6 col-sm-9 d-flex justify-content-between data_user'>
                 <p>Prénom :</p>
                 <p>{{ user.nameUser }}</p>
             </div>
-            <div class='col-lg-4 d-flex justify-content-between data_user'>
+            <div class='col-lg-5 col-md-6 col-sm-9 d-flex justify-content-between data_user'>
                 <p>Administrateur :</p>
                 <p> {% if user.admin %}
                     Oui

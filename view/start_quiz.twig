@@ -9,20 +9,20 @@
         <a href='javascript:history.back()' class='back_arrow_start'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
         <h1 class='title_start_quiz'>{{ quiz.nameQuiz }}</h1>
 
-        <div class='container col-lg-11'>
+        <div class='container col-11'>
             <div class='row'>
                 {% for countQuestions in oneCount %}
                     {% if countQuestions > 1 %}
-                        <div class='col-lg-12 p_start_quiz'>
+                        <div class='col-12 p_start_quiz'>
                             {{ countQuestions }} questions
                         </div>
                     {% else %}
-                        <div class='col-lg-12 p_start_quiz'>
+                        <div class='col-12 p_start_quiz'>
                             {{ countQuestions }} question
                         </div>
                     {% endif %}
 
-                    <div class='col-lg-12 start_quiz_container'>
+                    <div class='col-12 d-flex justify-content-center start_quiz_container'>
                         <img class='rounded' src='public/images/img_quiz/{{ quiz.imageQuiz }}' style='max-width: 35%;' alt='Image représentant le quiz'>
 
                         {% if countQuestions > 0 %}

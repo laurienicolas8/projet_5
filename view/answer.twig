@@ -5,14 +5,14 @@
 {% endblock %}
 
 {% block content %}
-    <div class='container col-lg-12'>
+    <div class='col-12'>
         <div class='row'>
             {% for quiz in oneQuiz %}
-                <h1 class='title_start_quiz'>{{ quiz.nameQuiz }}</h1>
+                <h1 class='col-12 title_start_quiz'>{{ quiz.nameQuiz }}</h1>
             {% endfor %}
 
             {% for question in singleQuestion %}
-                <div class='col-lg-9 d-flex flex-column justify-content-around align-items-center question_container'>
+                <div class='col-9 d-flex flex-column justify-content-around align-items-center question_container'>
                     <p class='question'>{{ question.question }}</p>
 
                     {% if session.right_answer is defined %}
@@ -47,11 +47,11 @@
                     <p class='explanation'>{{ question.explanation }}</p>
                 </div>
 
-                <div class='col-lg-10 d-flex justify-content-end next_question_button'>
+                <div class='col-lg-10 col-md-10 col-sm-12 d-flex justify-content-end next_question_button'>
                     {% if nextQuestionIndex != null %}
                         <a href='/questionnary/question-{{ nextQuestionIndex }}-{{ questions[nextQuestionIndex].idQuiz }}' class='col-lg-2 btn btn-lg btn-success btn_next'>Suivant</a>
                     {% else %}
-                        <a href='/questionnary/result-{{ question.idQuiz }}' class='col-lg-2 btn btn-lg btn-success'>Terminé</a>
+                        <a href='/questionnary/result-{{ question.idQuiz }}' class='col-lg-2 col-md-3 col-sm-3 btn btn-lg btn-success'>Terminé</a>
                     {% endif %}
                 </div>
             {% endfor %}
