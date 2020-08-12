@@ -13,7 +13,7 @@
 
             {% if allAnswers != null %}
                 {% for question in singleQuestion %}
-                    <form method='post' action='/questionnary/question-answer-{{ question.idQuestion }}-{{ indexCurrentQuestion }}-{{ question.idQuiz }}' class='col-lg-9 d-flex flex-column justify-content-around align-items-center question_container'>
+                    <form method='post' action='./index.php?action=question-answer&idQuestion={{ question.idQuestion }}&indexQuestion={{ indexCurrentQuestion }}&idQuiz={{ question.idQuiz }}' class='col-lg-9 d-flex flex-column justify-content-around align-items-center question_container'>
                         <p class='question'>{{ question.question }}</p>
                         <div class='d-flex flex-wrap justify-content-center align-items-center'>
                             {% for answer in allAnswers %}
@@ -30,7 +30,7 @@
                 {% for question in singleQuestion %}
                     <div class='col-lg-12 d-flex flex-column justify-content-center align-items-center'>
                         <div class="col-lg-11 alert alert-primary" style='margin: 20px;' role="alert">Cet élément est en cours de création, il est actuellement indisponible. Vous devez impérativement mettre fin au quiz. Nous sommes navrés pour ce désagrément.</div>
-                        <a href='/questionnary/result-{{ question.idQuiz }}' class='col-lg-2 btn btn-lg btn-success'>Terminé</a>
+                        <a href='./index.php?action=result&idQuiz={{ question.idQuiz }}' class='col-lg-2 btn btn-lg btn-success'>Terminé</a>
                     </div>
                 {% endfor %}
             {% endif %}

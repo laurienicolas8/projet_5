@@ -22,11 +22,11 @@
         {% if session.user_connected is defined %}
             <nav class='navbar sticky-top navbar-dark bg-dark'>
                 <p class='navbar-brand'>{{ session.user_connected.identifiant }}</p>
-                <a href='/questionnary/dashboard' class='btn btn-warning'>Retour au tableau de bord</a>
+                <a href='./index.php?action=dashboard' class='btn btn-warning'>Retour au tableau de bord</a>
             </nav>
         {% endif %}
         <header id='menu'>
-            <a href='/questionnary' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;' alt='Logo Questionnary'></a>
+            <a href='./index.php?action=home' class='logo_button'><img src='public/images/logo.png' style='max-width:100%;' alt='Logo Questionnary'></a>
         </header>
 
         {% block content %}{% endblock %}
@@ -37,7 +37,7 @@
                 <p class='title_contact'>Contact</p>
                 <p>laurienicolas8@gmail.com</p>
             </div>
-            <a href='/questionnary/loginPage' class='login_button'>Se connecter</a>
+            <a href='./index.php?action=loginPage' class='login_button'>Se connecter</a>
             <a href='#menu'><i class='fas fa-arrow-circle-up fa-2x up'></i></a>
         </footer>
 

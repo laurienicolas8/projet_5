@@ -12,7 +12,7 @@
 
     <div class='form_new_container'>
         {% for quiz in oneQuiz %}
-            <form action='/questionnary/update-quiz-{{ quiz.idQuiz }}' method='post'>
+            <form action='./index.php?action=update-quiz&idQuiz={{ quiz.idQuiz }}' method='post'>
                 <div class='form-group'>
                     <label for='name_quiz'>Nom</label>
                     <input type='text' class='form-control' id='name_quiz' name='nameQuiz' value='{{ quiz.nameQuiz }}' required>

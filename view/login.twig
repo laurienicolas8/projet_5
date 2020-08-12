@@ -23,7 +23,7 @@
     </head>
 
     <body class='body_login'>
-        <form method='post' action='/questionnary/login' class='login_form'>
+        <form method='post' action='./index.php?action=login' class='login_form'>
             <h1 class='title_login'>Connectez-vous</h1>
             {% if session.error_login is defined %}
                 <div class='alert alert-danger text-center' role='alert'>

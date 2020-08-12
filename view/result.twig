@@ -13,7 +13,7 @@
                     <div class='col-12 d-flex flex-column align-items-center'>
                         <p class='your_score_is'>Votre score est de ...</p>
                         <p class='score'>{{ score }} / {{ nbQuestions }}</p>
-                        <a href='/questionnary/single-category-{{ quiz.idCategory }}' class='btn btn-lg btn-secondary'>Retour à la catégorie</a>
+                        <a href='./index.php?action=single-category&idCategory={{ quiz.idCategory }}' class='btn btn-lg btn-secondary'>Retour à la catégorie</a>
                     </div>
                 {% endfor %}
             {% endfor %}

@@ -12,7 +12,7 @@
         </div>
 
         <div class='form_new_container'>
-            <form action='/questionnary/valid-new-question-{{ quiz.idQuiz }}' method='post'>
+            <form action='./index.php?action=valid-new-question&idQuiz={{ quiz.idQuiz }}' method='post'>
                 <div class='form-group'>
                     <label for='question'>Question</label>
                     <input type='text' class='form-control' id='question' name='question' required>

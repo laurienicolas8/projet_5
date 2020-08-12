@@ -20,10 +20,10 @@
                                 </div>
                             {% endif %}
                         {% endfor %}
-                        <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}"><img class="card-img-top img_quiz" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
+                        <a href="./index.php?action=start-quiz&idQuiz={{ quiz.idQuiz }}"><img class="card-img-top img_quiz" src="public/images/img_quiz/{{ quiz.imageQuiz }}" alt="Image représentant le quiz"></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="/questionnary/start-quiz-{{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
+                                <a href="./index.php?action=start-quiz&idQuiz={{ quiz.idQuiz }}">{{ quiz.nameQuiz }}</a>
                             </h4>                    
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                                 <a class="page-link" href="" tabindex="-1">{{ i }}</a>
                             </li>
                         {% else %}
-                            <li class="page-item"><a class="page-link" href="/questionnary/all-quiz-{{ i }}">{{ i }}</a></li>
+                            <li class="page-item"><a class="page-link" href="./index.php?action=all-quiz&currentPage={{ i }}">{{ i }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>

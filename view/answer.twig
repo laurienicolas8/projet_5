@@ -49,9 +49,9 @@
 
                 <div class='col-lg-10 col-md-10 col-sm-12 d-flex justify-content-end next_question_button'>
                     {% if nextQuestionIndex != null %}
-                        <a href='/questionnary/question-{{ nextQuestionIndex }}-{{ questions[nextQuestionIndex].idQuiz }}' class='col-lg-2 btn btn-lg btn-success btn_next'>Suivant</a>
+                        <a href='./index.php?action=question&indexQuestion={{ nextQuestionIndex }}&idQuiz={{ questions[nextQuestionIndex].idQuiz }}' class='col-lg-2 btn btn-lg btn-success btn_next'>Suivant</a>
                     {% else %}
-                        <a href='/questionnary/result-{{ question.idQuiz }}' class='col-lg-2 col-md-3 col-sm-3 btn btn-lg btn-success'>Terminé</a>
+                        <a href='./index.php?action=result&idQuiz={{ question.idQuiz }}' class='col-lg-2 col-md-3 col-sm-3 btn btn-lg btn-success'>Terminé</a>
                     {% endif %}
                 </div>
             {% endfor %}

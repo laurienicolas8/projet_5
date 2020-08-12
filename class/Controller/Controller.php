@@ -122,7 +122,7 @@ class Controller {
         }
     }
 
-    // Factoring to avoid duplications of creating objects of database data
+    // Factoring to avoid duplications of creating objects of database datas
 
     //Answers    
     /**

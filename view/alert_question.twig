@@ -11,7 +11,7 @@
         <p class='alert_text'>Vous êtes sur le point de supprimer la question suivante : "{{ question.question }}". Attention, la suppression d'un élément est irréversible et peut entraîner la suppression d'autres éléments contenus par celui-ci ou en lien avec. Etes-vous sûr(e) de vouloir supprimer cette question ?</p>
 
         <div class='d-flex justify-content-around'>
-            <a href='/questionnary/delete-question-{{ question.idQuestion }}-{{ question.idQuiz }}' class='alert_button delete_button'>Supprimer</a>
+            <a href='./index.php?action=delete-question&idQuestion={{ question.idQuestion }}&idQuiz={{ question.idQuiz }}' class='alert_button delete_button'>Supprimer</a>
             <a href='javascript:history.back()' class='alert_button cancel_button'>Annuler</a>
         </div>
     {% endfor %}

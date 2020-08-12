@@ -7,10 +7,10 @@
 {% block content %}
     {% for user in oneUser %}
         <div class='d-flex align-items-center title_details_user'>
-            <a href='/questionnary/users' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+            <a href='./index.php?action=users' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
             <p class='title_details'><i class='fa fa-user' aria-hidden='true'></i> Utilisateur | {{ user.nameUser }} {{ user.lastnameUser }}</p>
-            <a href='/questionnary/edit-user-{{ user.idUser }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
-            <a href='/questionnary/alert-user-{{ user.idUser }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
+            <a href='./index.php?action=edit-user&idUser={{ user.idUser }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
+            <a href='./index.php?action=alert-user&idUser={{ user.idUser }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>
 
         {% if  session.update_user is defined %}

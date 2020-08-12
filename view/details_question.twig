@@ -7,10 +7,10 @@
 {% block content %}
     {% for question in oneQuestion %}
         <div class='d-flex align-items-center title_details_quiz'>
-            <a href='/questionnary/details-quiz-{{ question.idQuiz }}' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
+            <a href='./index.php?action=details-quiz&idQuiz={{ question.idQuiz }}' class='back_arrow'><i class='fa fa-arrow-left fa-2x' aria-hidden='true'></i></a>
             <p class='title_details'>Question {{ question.idQuestion }}</p>
-            <a href='/questionnary/edit-question-{{ question.idQuestion }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
-            <a href='/questionnary/alert-question-{{ question.idQuestion }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
+            <a href='./index.php?action=edit-question&idQuestion={{ question.idQuestion }}' class='icons_title'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
+            <a href='./index.php?action=alert-question&idQuestion={{ question.idQuestion }}' class='icons_title'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
         </div>
 
         {% if allAnswers == null %}
@@ -40,8 +40,8 @@
                             {% endif %}
                             
                             <div class='d-flex flex-column'>
-                                <a href='/questionnary/edit-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon edit_answer'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
-                                <a href='/questionnary/delete-answer-{{ answer.idAnswer }}-{{ answer.idQuestion }}' class='answer_icon'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
+                                <a href='./index.php?action=edit-answer&idAnswer={{ answer.idAnswer }}&idQuestion={{ answer.idQuestion }}' class='answer_icon edit_answer'><i class='fa fa-pencil fa-lg info_icon' aria-hidden='true'></i></a>
+                                <a href='./index.php?action=delete-answer&idAnswer={{ answer.idAnswer }}&idQuestion={{ answer.idQuestion }}' class='answer_icon'><i class='fa fa-trash-o fa-lg delete_icon' aria-hidden='true'></i></a>
                             </div>
                         </div>
                     {% endfor %}
@@ -49,7 +49,7 @@
                 {% for answerEdit in oneAnswer %}
                     <div class='edit_answer_container' class='col-lg-5'>
                         <a href='#' class='close_answer close_edit_answer'><i class='fa fa-times' aria-hidden='true'></i></a>
-                        <form action='/questionnary/update-answer-{{ answerEdit.idAnswer }}-{{ answerEdit.idQuestion }}' method='post' class='col-lg-12'>
+                        <form action='./index.php?action=update-answer&idAnswer={{ answerEdit.idAnswer }}&idQuestion={{ answerEdit.idQuestion }}' method='post' class='col-lg-12'>
                             <div class='form-group form-inline'>
                                 <input type='text' id='answer' name='answer' value='{{ answerEdit.answer }}' required class='col-lg-10 form-text'>
                                 <button id='valid_new_answer' class='col-lg-2 btn btn-success'><i class='fa fa-check' aria-hidden='true'></i></button>
@@ -79,7 +79,7 @@
                 
                 <div id='answer_container' class='col-lg-5 answer_container'>
                     <a href='#' id='close_new_answer' class='close_answer'><i class='fa fa-times' aria-hidden='true'></i></a>
-                    <form action='/questionnary/valid-new-answer-{{ question.idQuestion }}' method='post' class='col-lg-12'>
+                    <form action='./index.php?action=valid-new-answer&idQuestion={{ question.idQuestion }}' method='post' class='col-lg-12'>
                         <div class='form-group form-inline'>
                             <input type='text' id='answer' name='answer' required class='col-lg-10 form-text'>
                             <button id='valid_new_answer' class='col-lg-2 btn btn-success'><i class='fa fa-check' aria-hidden='true'></i></button>

@@ -17,19 +17,19 @@
 
     <div class='col-lg-11 col-sm-12 d-flex justify-content-center flex-wrap category_container'>
         <div class='d-flex justify-content-center flex-column category col-lg-2'>
-            <a href='/questionnary/new-category' class='link_img_category'><img src='public/images/img_categories/new.png' class='img_new_category' alt='Illustration nouvelle catégorie'></a>
+            <a href='./index.php?action=new-category' class='link_img_category'><img src='public/images/img_categories/new.png' class='img_new_category' alt='Illustration nouvelle catégorie'></a>
             <p class='title_category'>Nouvelle catégorie</p>
         </div>
         
         {% for category in allCategories %}
             <div class='d-flex justify-content-center category col-lg-2 col-md-3 col-sm-3'>
                 <div class='d-flex flex-column align-items-center card_category_container'>
-                    <a href='/questionnary/details-category-{{ category.idCategory }}' class='link_img_category'><img src='public/images/img_categories/{{ category.imageCategory }}' class='img_category' alt='Illustration catégorie'></a>
+                    <a href='./index.php?action=details-category&idCategory={{ category.idCategory }}' class='link_img_category'><img src='public/images/img_categories/{{ category.imageCategory }}' class='img_category' alt='Illustration catégorie'></a>
                     <p class='title_category'>{{ category.nameCategory }}</p>
                 </div>
                 <div class='d-flex flex-column category_icons'>
-                    <a href='/questionnary/edit-category-{{ category.idCategory }}' class='category_icon info_icon'><i class='fa fa-pencil' aria-hidden='true'></i></a>
-                    <a href='/questionnary/alert-category-{{ category.idCategory }}' class='category_icon delete_icon'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
+                    <a href='./index.php?action=edit-category&idCategory={{ category.idCategory }}' class='category_icon info_icon'><i class='fa fa-pencil' aria-hidden='true'></i></a>
+                    <a href='./index.php?action=alert-category&idCategory={{ category.idCategory }}' class='category_icon delete_icon'><i class='fa fa-trash-o' aria-hidden='true'></i></a>
                 </div>
             </div>
         {% endfor %}
